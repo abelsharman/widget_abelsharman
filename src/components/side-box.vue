@@ -451,9 +451,18 @@ export default {
         }
       },
       btnPrimaryStyles(){
-        return {
-          "background-color": this.primary + " !important",
-          "color": this.text_button + " !important",
+        if(this.width > 768){
+          return {
+            "background-color": this.primary + " !important",
+            "color": this.text_button + " !important",
+          }
+        }
+        else{
+          return {
+            "background-color": this.primary + " !important",
+            "color": this.text_button + " !important",
+            "font-size": "15px"
+          }
         }
       },
       pPrimaryColor(){
