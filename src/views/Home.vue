@@ -1291,7 +1291,7 @@ export default {
 	}
 
 	.visible .description .titles .tags_list p::before {
-		content: url("@/assets/images/accomodation/dotblue.png");
+		content: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/dotblue.png");
 		top: -3px;
 		left: -11px;
 		position: absolute;
@@ -1619,7 +1619,7 @@ export default {
 
 .mobile_acc_box .visible .avatar {
 	position: relative;
-	background-image: url("@/assets/images/accomodation/placeholder.png");
+	background-image: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/placeholder.png");
 	cursor: pointer;
 	background-size: cover;
 	background-position: center center;
@@ -1678,7 +1678,7 @@ export default {
 }
 
 .mobile_acc_box .visible .description .titles .tags_list p::before {
-	content: url("@/assets/images/accomodation/dotblue.png");
+	content: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/dotblue.png");
 	top: -3px;
 	left: -11px;
 	position: absolute;
@@ -1997,7 +1997,7 @@ export default {
 	}
 
 	.mobile_acc_box .visible .description .titles .tags_list p::before {
-		content: url("@/assets/images/accomodation/dotblue.png");
+		content: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/dotblue.png");
 		top: -3px;
 		left: -11px;
 		position: absolute;
