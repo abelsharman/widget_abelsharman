@@ -116,7 +116,7 @@
 
       <div v-show="resultCheck">
         <div v-for="(item, index) in results" :key="index" id="categories" class="boxes">
-          <acc-box
+          <AccBox
             v-show="item.room_count"
             class="web_acc_box"
             :item="item"
@@ -124,10 +124,10 @@
             :currentindex="currentIndex"
             @change-form='changeForm'
             @toggle='toggleOrderCard($event)'
-            @set-active="setActive">
-          </acc-box>
+            @set-active="setActive"
+          />
 
-          <mobile-acc-box
+          <MobileAccBox
             style="background-color: black;"
             class="mobile_acc_box"
             v-show="item.room_count"
@@ -136,8 +136,8 @@
             :currentindex="currentIndex"
             @change-form='changeForm'
             @toggle='toggleOrderCard($event)'
-            @set-active="setActive">
-          </mobile-acc-box>
+            @set-active="setActive"
+          />
 
         </div>
       </div>
@@ -146,24 +146,23 @@
 
 
       <v-container class="main_card" v-show="checkForm" style="background-color: white;width: 110%;position: relative;left: -5%;padding: 2% 5%;">
-        <acc-form
+        <AccForm
           ref="accform"
           :submitaccbtnloading="submitAccBtnloading"
           :accomodationsubmit="accomodationSubmit"
           :ordercard="orderCard"
           @change-form='changeForm'
-          @success="success">
-        </acc-form>
+          @success="success"
+        />
 
 
-        <side-box
+        <SideBox
           :accomodationsubmit="accomodationSubmit"
           @refresh-page="refreshPage"
           @toggle='toggleOrderCard($event)'
           :ordercard="orderCard"
           :submitaccbtnloading="submitAccBtnloading"
-        >
-        </side-box>
+        />
 
       </v-container>
 
@@ -272,7 +271,7 @@
 
       <div v-show="resultCheck">
         <div v-for="(item, index) in results" :key="index" id="categories" class="boxes">
-          <acc-box
+          <AccBox
             v-show="item.room_count"
             class="web_acc_box"
             :item="item"
@@ -280,10 +279,10 @@
             :currentindex="currentIndex"
             @change-form='changeForm'
             @toggle='toggleOrderCard($event)'
-            @set-active="setActive">
-          </acc-box>
+            @set-active="setActive"
+          />
 
-          <mobile-acc-box
+          <MobileAccBox
             style="background-color: black;"
             class="mobile_acc_box"
             v-show="item.room_count"
@@ -292,8 +291,8 @@
             :currentindex="currentIndex"
             @change-form='changeForm'
             @toggle='toggleOrderCard($event)'
-            @set-active="setActive">
-          </mobile-acc-box>
+            @set-active="setActive"
+          />
 
         </div>
       </div>
@@ -302,7 +301,7 @@
 
 
       <v-container class="main_card" v-show="checkForm" style="background-color: rgb(231, 236, 239);width: 110%;position: relative;left: -5%;padding: 2% 5%;" :style="divBackground">
-        <acc-form
+        <AccForm
           ref="accform"
           :style="divBackground"
           :submitaccbtnloading="submitAccBtnloading"
@@ -310,18 +309,17 @@
           :ordercard="orderCard"
           @change-form='changeForm'
           @change-detail='toggleDetailCard'
-          @success="success">
-        </acc-form>
+          @success="success"
+        />
         
         <v-dialog v-model="detailCard" fullscreen hide-overlay>
           <img src="https://marketbot.abelsharman.kz/widget_go2trip/assets/close.png" @click="toggleDetailCard" class="closeMobileCard">
-          <side-box
+          <SideBox
             :accomodationsubmit="accomodationSubmit"
             @refresh-page="refreshPage"
             :ordercard="orderCard"
             :submitaccbtnloading="submitAccBtnloading"
-          >
-          </side-box>
+          />
         </v-dialog>
 
       </v-container>
@@ -336,9 +334,20 @@
 import moment from 'moment'
 import axios from 'axios'
 import Vuetify from "vuetify"
+import AccBox from "@/components/acc-box.vue"
+import AccForm from "@/components/acc-form.vue"
+import SideBox from "@/components/side-box.vue"
+import MobileAccBox from "@/components/mobile-acc-box.vue"
+
 
 export default {
   name: 'Home',
+  components:{
+	AccBox,
+	AccForm,
+	SideBox,
+	MobileAccBox
+  },
   vuetify: new Vuetify(),
   data() {
     return{
