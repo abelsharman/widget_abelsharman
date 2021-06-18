@@ -263,24 +263,6 @@ export default {
       text_color: localStorage.getItem("text"),
     }),
     watch: {
-      tabModel() {
-        if(this.checked || !this.checked){
-          let buttons = document.querySelectorAll(".widget_button_primary_color")
-          let primary = localStorage.getItem("primary") 
-          console.log(primary)
-          for (let i = 0; i < buttons.length; i++) {
-            buttons[i].setAttribute( 'style', 'background-color:'+ primary+'  !important' );
-          }
-        }
-        if(this.width > 768 || this.width <= 768){
-          let buttons = document.querySelectorAll(".widget_descr button")
-          let primary = localStorage.getItem("primary") 
-          console.log(primary)
-          for (let i = 0; i < buttons.length; i++) {
-            buttons[i].setAttribute( 'style', 'background-color:'+ primary+'  !important' );
-          }
-        }
-      },
       dialog() {
         if (!this.dialog) {
           this.currentItem = {};
@@ -496,18 +478,5 @@ export default {
       }
   
     },
-    mounted(){
-      let primary = localStorage.getItem("primary") 
-      
-      Array.from(document.querySelectorAll('.widget_descr button')).map(function(button) {
-        button.setAttribute( 'style', 'background-color:'+ primary+'  !important' );
-      })
-  
-      let text_p = document.querySelectorAll("#app p, h1, h2, h3, strong")
-      let text = localStorage.getItem("text")
-      for (let i = 0; i < text_p.length; i++) {
-        text_p[i].setAttribute( 'style', 'color:'+ text+'  !important' );
-      }
-    }
 }
 </script>

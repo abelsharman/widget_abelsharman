@@ -63,7 +63,7 @@
 
         <div id="widget_form" class="widget_form" :style="[ width > 768 && resultCheck || checkForm ? { 'width': '30vw', 'marginLeft': '0.5vw' }: { 'width': '35vw', 'marginLeft': '1vw' }]">
           <img id="widget_form_img" style="margin-left: 1.5vw;" src="https://marketbot.abelsharman.kz/widget_go2trip/assets/user.png" alt="user"> 
-          <span id="widget_form_span" style="margin-left: 0.5vw;">{{ adult_count }} взрослых, {{ children_count }} детей</span>
+          <span id="widget_form_span" style="margin-left: 0.5vw;" :style="pTextColor">{{ adult_count }} взрослых, {{ children_count }} детей</span>
         </div>
 
       </div>
@@ -71,12 +71,12 @@
 
 
       <div id="widget_people" class="widget_people" style="width: 40%;position: absolute;background-color: white;left: 51%;top:39px;animation: appearBlock 0.5s; border-radius: 5px; padding-left: 20px; padding-top: 10px; display: none;">
-        <p>Взрослых 
+        <p :style="pTextColor">Взрослых 
           <svg :style="svgAccentColor"  @click="parentMinus" id="widget_people_1" style="cursor: pointer;margin-left: 11px;vertical-align: top;width: 24px;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"/></svg> 
             <span style="margin-left: 11px;">{{ adult_count }} </span> 
           <svg :style="svgAccentColor" @click="parentPlus" id="widget_people_2" style="margin-left: 10px;vertical-align: top;width: 24px; cursor: pointer;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"/></svg>
         </p>
-        <p>Детей 
+        <p :style="pTextColor">Детей 
           <svg :style="svgAccentColor"  @click="childMinus" id="widget_people_3" style="cursor: pointer;margin-left: 11px;vertical-align: top;width: 24px;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"/></svg> 
             <span style="margin-left: 11px;">{{ children_count }}</span>  
           <svg :style="svgAccentColor" @click="childPlus" id="widget_people_4" style="margin-left: 10px;vertical-align: top;width: 24px; cursor: pointer;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"/></svg>
@@ -232,19 +232,19 @@
 
         <div id="widget_form" class="widget_form" :style="[ width > 768 && resultCheck || checkForm ? { 'width': '33vw', 'marginLeft': '0.5vw' }: { 'width': '33vw', 'marginLeft': '1vw' }]">
           <img id="widget_form_img" style="margin-left: 1.5vw;width: 3.5vw;" src="https://marketbot.abelsharman.kz/widget_go2trip/assets/user.png" alt="user"> 
-          <span id="widget_form_span" style="margin-left: 0.5vw;">{{ adult_count }} взрослых, {{ children_count }} детей</span>
+          <span id="widget_form_span" style="margin-left: 0.5vw;" :style="pTextColor">{{ adult_count }} взрослых, {{ children_count }} детей</span>
         </div>
 
       </div>
 
 
       <div id="widget_people" class="widget_people" style="display: none;width: 50vw;position: absolute;background-color: white;left: 45%;top: 39px;animation: appearBlock 0.5s; border-radius: 5px; padding-left: 20px; padding-top: 10px; font-size: 2.9vw;">
-        <p>Взрослых 
+        <p :style="pTextColor">Взрослых 
           <svg :style="svgAccentColor"  @click="parentMinus" id="widget_people_1" style="cursor: pointer;margin-left: 11px;vertical-align: top;width: 24px;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"/></svg> 
             <span style="margin-left: 11px;">{{ adult_count }} </span> 
           <svg :style="svgAccentColor" @click="parentPlus" id="widget_people_2" style="margin-left: 10px;vertical-align: top;width: 24px; cursor: pointer;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"/></svg>
         </p>
-        <p>Детей 
+        <p :style="pTextColor">Детей 
           <svg :style="svgAccentColor"  @click="childMinus" id="widget_people_3" style="cursor: pointer;margin-left: 11px;vertical-align: top;width: 24px;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"/></svg> 
             <span style="margin-left: 11px;">{{ children_count }}</span>  
           <svg :style="svgAccentColor" @click="childPlus" id="widget_people_4" style="margin-left: 10px;vertical-align: top;width: 24px; cursor: pointer;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"/></svg>
@@ -385,37 +385,28 @@ export default {
           accent_color: localStorage.getItem("accent"),
           background: localStorage.getItem("background"),
           primary_1: localStorage.getItem("primary"),
-          text_button: localStorage.getItem("text_button")
+          text_button: localStorage.getItem("text_button"),
+			text: localStorage.getItem("text")
           }
         },
         mounted(){
+		
             this.$vuetify.lang.current = 'ru'
             if(!localStorage.getItem("orders")){
               let datas = [];
               localStorage.setItem("orders", JSON.stringify(datas));
             }
-            console.log(localStorage.getItem("id_company"), localStorage.getItem("primary"), localStorage.getItem("accent"))
-            let primary_buttons = document.querySelectorAll(".widget_button_primary_color")
-            let primary = localStorage.getItem("primary") 
-            let text_button = localStorage.getItem("text_button")
-            for (let i = 0; i < primary_buttons.length; i++) {
-              primary_buttons[i].setAttribute('style', 'background-color:'+ primary+' !important',  'color:'+ text_button+' !important' );
-
-            }
-
-
-            let text_p = document.querySelectorAll("#app p, h1, h2, h3, strong")
-            let text = localStorage.getItem("text")
-            for (let i = 0; i < text_p.length; i++) {
-              text_p[i].setAttribute('style', 'color:'+ text+'  !important' );
-            }
-
 
             
 
 
         },
         computed:{
+			pTextColor(){
+				return {
+              "color": this.text + " !important",
+            }
+			},
           divBackground(){
             return {
               "background-color": this.background + " !important",
@@ -555,14 +546,6 @@ export default {
         },
         watch: {
           tabModel() {
-            if(this.menu || !this.menu){
-              let buttons = document.querySelectorAll(".widget_button_primary_color")
-              let primary = localStorage.getItem("primary") 
-              console.log(primary)
-              for (let i = 0; i < buttons.length; i++) {
-                buttons[i].setAttribute( 'style', 'background-color:'+ primary+'  !important' );
-              }
-            }
             if (this.tabModel) {
               this.luckyDate &&= this.luckyDate[0];
             } else {
@@ -1123,12 +1106,7 @@ export default {
 		margin-right: 19px;
 	}
 
-	.web_acc_box .visible .description .titles .tags_list p::before {
-		content: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/dotblue.png");
-		top: -3px;
-		left: -11px;
-		position: absolute;
-	}
+	
 
 	.web_acc_box .visible .description .titles h2 {
 		font-size: 1.180vw; /* 17px */
@@ -1301,12 +1279,7 @@ export default {
 		margin-right: 19px;
 	}
 
-	.visible .description .titles .tags_list p::before {
-		content: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/dotblue.png");
-		top: -3px;
-		left: -11px;
-		position: absolute;
-	}
+	
 
 	.visible .description .titles h2 {
 		font-size: 17px;
@@ -1688,12 +1661,6 @@ export default {
 	position: relative;
 }
 
-.mobile_acc_box .visible .description .titles .tags_list p::before {
-	content: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/dotblue.png");
-	top: -3px;
-	left: -11px;
-	position: absolute;
-}
 
 .mobile_acc_box .visible .description .titles h2 {
 	font-family: "Roboto", sans-serif;
@@ -2007,12 +1974,7 @@ export default {
 		margin-right: 19px;
 	}
 
-	.mobile_acc_box .visible .description .titles .tags_list p::before {
-		content: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/dotblue.png");
-		top: -3px;
-		left: -11px;
-		position: absolute;
-	}
+	
 	.single_service_p{
 		font-family: "Roboto",sans-serif;
 		font-weight: 400;
