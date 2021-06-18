@@ -120,6 +120,7 @@
                   <h3 :style="pTextColor">{{ item.adult_price.toLocaleString('ru-RU') }} KZT</h3>
                   <div class="actions">
                     <v-btn
+                      style="background-color: transparent !important; margin-right: 0px"
                       icon
                       @click="
                         additional_counts.splice(
@@ -135,6 +136,7 @@
   
                     <p :style="pTextColor">{{ additional_counts[idx - 1] }}</p>
                     <v-btn
+                      style="background-color: transparent !important; margin-right: 0px"
                       icon
                       @click="
                         additional_counts.splice(
@@ -164,6 +166,7 @@
                   <h3 :style="pTextColor">{{ item.child_price.toLocaleString('ru-RU') }} KZT</h3>
                   <div class="actions">
                     <v-btn
+                      style="background-color: transparent !important; margin-right: 0px"
                       icon
                       @click="
                         child_counts.splice(idx - 1, 1, child_counts[idx - 1] - 1)
@@ -175,6 +178,7 @@
                     </v-btn>
                     <p :style="pTextColor">{{ child_counts[idx - 1] }}</p>
                     <v-btn
+                      style="background-color: transparent !important; margin-right: 0px"
                       icon
                       @click="
                         child_counts.splice(idx - 1, 1, child_counts[idx - 1] + 1)

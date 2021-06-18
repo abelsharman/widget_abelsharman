@@ -213,6 +213,7 @@
                 v-model="filter.dates"
                 no-title
                 scrollable
+                style="margin: 0;"
                 @input="closeModal">
               </v-date-picker>
 
