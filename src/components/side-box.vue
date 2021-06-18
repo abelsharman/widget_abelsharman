@@ -45,7 +45,7 @@
         <div class="time">
           <p :style="pPrimaryColor">
             Время заезда:
-            <strong :style="pTextColor">{{ item.hotel.check_in_time.substring(0, 5) }}</strong>
+            <strong style="font-size: 14px;" :style="pTextColor">{{ item.hotel.check_in_time.substring(0, 5) }}</strong>
             <!-- <img
               @click="isTime = true"
               src="https://marketbot.abelsharman.kz/widget_go2trip/assets/edit.png"
@@ -53,7 +53,7 @@
           </p>
           <p :style="pPrimaryColor">
             Время выезда:
-            <strong :style="pTextColor">{{ item.hotel.check_out_time.substring(0, 5) }}</strong>
+            <strong style="font-size: 14px;" :style="pTextColor">{{ item.hotel.check_out_time.substring(0, 5) }}</strong>
           </p>
         </div>
   
