@@ -117,6 +117,7 @@
                 </div>
                 <div class="actions" :style="pTextColor">
                   <v-btn
+                    style="background-color: transparent !important; margin-right: 0px"
                     icon
                     @click="
                       additional_counts.splice(
@@ -134,6 +135,7 @@
   
                   <v-btn
                     icon
+                    style="background-color: transparent !important; margin-right: 0px"
                     @click="
                       additional_counts.splice(
                         idx - 1,
@@ -163,6 +165,7 @@
                 <div class="actions" :style="pTextColor">
                   <v-btn
                     icon
+                    style="background-color: transparent !important; margin-right: 0px"
                     @click="
                       child_counts.splice(idx - 1, 1, child_counts[idx - 1] - 1)
                     "
@@ -176,6 +179,7 @@
   
                   <v-btn
                     icon
+                    style="background-color: transparent !important; margin-right: 0px"
                     @click="
                       child_counts.splice(idx - 1, 1, child_counts[idx - 1] + 1)
                     "
