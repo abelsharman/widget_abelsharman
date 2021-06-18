@@ -8,6 +8,8 @@ import 'document-register-element/build/document-register-element'
 import Vuetify from 'vuetify'
 export default new Vuetify()
 
+
+
 Vue.use(Vuetify)
 Vue.use(vueCustomElement)
 App.store = store
