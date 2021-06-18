@@ -14,7 +14,7 @@
             ]"
           >
             <div v-show="item.images.length > 0" class="avatar__count">
-              <p>1/{{ item.images.length }}</p>
+              <p :style="pTextColor">1/{{ item.images.length }}</p>
             </div>
             <div class="room_left" :style="divPrimary">
               <h4 :style="h4TextButton">{{ roomCounter(item.room_count) }}</h4>
@@ -22,12 +22,12 @@
           </div>
           <div class="description">
             <div class="titles">
-              <h2>{{ item.name }}</h2>
-              <p class="titles__main">
+              <h2 :style="pTextColor">{{ item.name }}</h2>
+              <p class="titles__main" :style="pTextColor">
                 {{ item.description }}
               </p>
               <div class="tags_list">
-                <p v-for="(tag, idx) in item.tags" :key="idx">
+                <p v-for="(tag, idx) in item.tags" :key="idx" :style="pTextColor">
                   <svg height="5" width="5">
                     <circle cx="2" cy="2" r="2" stroke-width="3" :style="svgPrimaryColor" />
                   </svg> 
@@ -86,9 +86,9 @@
                 </p>
               </div>
             </div>
-            <div class="price">
+            <div class="price" >
               <div>
-                <h2>
+                <h2 :style="pTextColor">
                   {{
                     (item.price * bookCount +
                       (additional_counts.reduce((a, b) => a + b) * item.adult_price +
@@ -98,7 +98,7 @@
                   }}
                   KZT
                 </h2>
-                <p>Цена за всех</p>
+                <p :style="pTextColor">Цена за всех</p>
               </div>
               <button @click="goBooking" :style="btnAccentColor">Выбрать</button>
             </div>
@@ -376,13 +376,6 @@ export default {
           "color": this.primary + " !important",
         }
       },
-    },
-    mounted(){
-      let text_p = document.querySelectorAll("#app p, h1, h2, h3, strong")
-      let text = localStorage.getItem("text")
-      for (let i = 0; i < text_p.length; i++) {
-        text_p[i].setAttribute( 'style', 'color:'+ text+'  !important' );
-      }
     },
     methods: {
       scipServices() {

@@ -1,12 +1,12 @@
 <template>
     <div class="main_form">
-    <h1><img class="main_form_img" @click="back" src="https://img.icons8.com/ios/452/back--v1.png">Оформление бронирования</h1>
+    <h1 :style="pTextColor"><img class="main_form_img" @click="back" src="https://img.icons8.com/ios/452/back--v1.png" :style="pTextColor">Оформление бронирования</h1>
     <h5 :style="h5TextColor">
       Введите корректные контактные данные, на которые будет оформлен билет.
       После совершения оплаты на указанный email будет выслано письмо с
       подтверждением и номером брони.
     </h5>
-    <h2>Контактная информация</h2>
+    <h2 :style="pTextColor">Контактная информация</h2>
     <v-form ref="form">
       <v-row>
   
@@ -315,13 +315,6 @@ export default {
       this.availableUsers = [];
       if (this.$refs.form) {
         this.$refs.form.resetValidation();
-      }
-    },
-    mounted(){
-      let text_p = document.querySelectorAll("#app p, h1, h2, h3, strong")
-      let text = localStorage.getItem("text")
-      for (let i = 0; i < text_p.length; i++) {
-        text_p[i].setAttribute( 'style', 'color:'+ text+'  !important' );
       }
     },
     methods: {

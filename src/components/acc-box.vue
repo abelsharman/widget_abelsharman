@@ -19,12 +19,12 @@
         </div>
         <div class="description">
           <div class="titles">
-            <h2>{{ item.name }}</h2>
-            <p class="titles__main">
+            <h2 :style="pTextColor">{{ item.name }}</h2>
+            <p class="titles__main" :style="pTextColor">
               {{ item.description }}
             </p>
             <div class="tags_list">
-              <p v-for="(tag, idx) in item.tags" :key="idx">
+              <p v-for="(tag, idx) in item.tags" :key="idx" :style="pTextColor">
                 <svg height="5" width="5">
                   <circle cx="2" cy="2" r="2" stroke-width="3" :style="svgPrimaryColor" />
                 </svg> 
@@ -75,7 +75,7 @@
             </div>
           </div>
           <div class="price">
-            <h2>
+            <h2 :style="pTextColor">
               {{
                 (item.price * bookCount +
                   (additional_counts.reduce((a, b) => a + b) * item.adult_price +
@@ -85,13 +85,13 @@
               }}
               KZT
             </h2>
-            <p>Цена за всех</p>
+            <p :style="pTextColor">Цена за всех</p>
           </div>
           <div class="actions">
-            <h4 :style="pPrimaryColor">
+            <h4 :style="pPrimaryColor" >
               {{ roomCounter(item.room_count) }}
             </h4>
-            <p>
+            <p :style="pTextColor">
             <svg :style="svgAccentColor" @click="addBookCount(-1)" style="cursor: pointer;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"/></svg>
               {{ bookCount }}
             <svg :style="svgAccentColor" @click="addBookCount(1)" style="cursor: pointer;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"/></svg>
@@ -495,12 +495,5 @@ export default {
   
       }
     },
-    mounted(){
-      let text_p = document.querySelectorAll("#app p, h1, h2, h3, strong")
-      let text = localStorage.getItem("text")
-      for (let i = 0; i < text_p.length; i++) {
-        text_p[i].setAttribute( 'style', 'color:'+ text+'  !important' );
-      }
-    }
 }
 </script>

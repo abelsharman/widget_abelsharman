@@ -10,7 +10,7 @@ export default new Vuex.Store({
       last_name: '',
       document_type: '',
       document_number: '',
-      phone_number: 7,
+      phone_number: "+7",
       email: '',
       comment: ''
     },
