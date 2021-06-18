@@ -8,9 +8,13 @@ module.exports = {
       })
     ]
   },
+  devServer: {
+    proxy: 'https://equipmetry.abelsharman.kz/',
+  },
   chainWebpack:
     config => {
       config.optimization.delete('splitChunks')
     }
 }
+
 

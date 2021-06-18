@@ -441,9 +441,6 @@ export default {
         this.ordercard.map(el => {
           price += Number(el.price);
         });
-        this.selectedServicesList.map(el => {
-          price += Number(el.price)
-        })
         return price;
       },
       getmainImage(item) {
