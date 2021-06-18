@@ -2282,10 +2282,10 @@ export default {
 
 .main_form {
 	width: 100%;
-  	max-width: 27vw;
-  	display: inline-block;
-  	vertical-align: top;
-  	margin-top: 2vh;
+  max-width: 27vw;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 2vh;
 }
 
 .main_form h1 {
@@ -3018,8 +3018,8 @@ input {
 	}
 	.main_box_2{
 		margin-left: 0vw;
-    	width: 100vw !important;
-    	padding: 2.5vw;
+    width: 100vw !important;
+    padding: 2.5vw;
 	}
 
 	.text--white {
