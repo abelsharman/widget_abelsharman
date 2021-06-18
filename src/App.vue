@@ -343,7 +343,7 @@ import MobileAccBox from "@/components/mobile-acc-box.vue"
 
 
 export default {
-  name: 'Home',
+  name: 'App',
   components:{
 	AccBox,
 	AccForm,
