@@ -5,12 +5,13 @@ module.exports = {
     plugins: [
       new webpack.optimize.LimitChunkCountPlugin({
         maxChunks: 1
-      })
+      }),
     ]
   },
   devServer: {
     proxy: 'https://equipmetry.abelsharman.kz/',
   },
+
   chainWebpack:
     config => {
       config.optimization.delete('splitChunks')

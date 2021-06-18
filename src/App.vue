@@ -575,9 +575,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
-.v-application .primary {
+#app .v-application .primary {
     background-color: transparent !important;
     border-color: transparent !important;
 }
@@ -617,7 +617,7 @@ export default {
 
 
 
-.v-application p{
+#app .v-application p{
   margin-bottom: 0px;
 }
 
