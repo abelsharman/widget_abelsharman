@@ -6,6 +6,7 @@ import store from './store/index'
 import vueCustomElement from 'vue-custom-element'
 import 'document-register-element/build/document-register-element'
 import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 export default new Vuetify()
 
 

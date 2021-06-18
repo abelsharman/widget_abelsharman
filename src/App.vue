@@ -579,7 +579,6 @@ export default {
 <style scoped>
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 
-  @import url("https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css");
 #app .v-application .primary {
     background-color: transparent !important;
     border-color: transparent !important;
