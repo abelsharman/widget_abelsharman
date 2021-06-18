@@ -22,6 +22,7 @@
               <v-btn
                 v-if="width > 768"
                 color="primary"
+                style="margin-top: 1vw;"
                 :style="btnPrimaryStyles"
                 @click="openServices(item)"
                 :loading="openServicesLoading"

@@ -42,6 +42,8 @@
                 v-model="filter.dates"
                 no-title
                 scrollable
+                class="widget_date_picker"
+                style="margin: 0;"
                 @input="closeModal">
               </v-date-picker>
 
