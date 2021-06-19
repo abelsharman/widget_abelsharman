@@ -586,7 +586,7 @@ export default {
 	border: 0px;
 }
 .widget input{
-	margin-bottom: 0px;
+	margin-bottom: 0px !important;
 }
 .widget th, td, button{
 	padding: 0px !important;
@@ -838,14 +838,14 @@ export default {
 .web_acc_box .visible .description .titles .additional button {
 	width: 149px !important ;
 	height: 40px !important ;
-	border: 1px solid #ff7f51 !important ;
-	background: #ff7f51 !important ;
-	box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1) !important ;
+	border: 1px solid #ff7f51  ;
+	background: #ff7f51  ;
+	box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1)  ;
 	border-radius: 4px !important ;
 	transition: 0.22s !important ;
 	font-size: 1.11vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
-	color: #ffffff !important ;
+	color: #ffffff  ;
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
 	display: flex !important ;
@@ -858,12 +858,12 @@ export default {
 }
 
 .web_acc_box .visible .description .titles .additional button:hover {
-	background: #fff !important ;
-	color: #ff7f51 !important ;
+	background: #fff  ;
+	color: #ff7f51  ;
 }
 
 .web_acc_box .visible .description .titles .additional button:hover svg path {
-	fill: #ff7f51 !important ;
+	fill: #ff7f51  ;
 }
 
 .web_acc_box .visible .description .price {
