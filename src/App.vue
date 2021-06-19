@@ -579,7 +579,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 
 #app th, td{
