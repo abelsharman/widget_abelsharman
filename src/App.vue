@@ -589,6 +589,7 @@ export default {
 	margin-bottom: 0px !important;
 	padding: 0px !important;
 	transition: none !important;
+	box-shadow: 0px !important;
 }
 .widget h1{
 	padding-bottom: 0px !important;
