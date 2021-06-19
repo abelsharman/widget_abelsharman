@@ -587,6 +587,17 @@ export default {
 }
 .widget input{
 	margin-bottom: 0px !important;
+	padding: 0px !important;
+	transition: none !important;
+}
+.widget h1{
+	padding-bottom: 0px !important;
+}
+.widget label{
+	text-transform: capitalize !important;
+	margin-top: 0px !important;
+	position: relative !important;
+
 }
 .widget th, td, button{
 	padding: 0px !important;
@@ -1488,20 +1499,27 @@ export default {
 .single_service .price {
 	padding-left: 8px !important ;
 }
-
+.single_service h3 {
+	font-family: "Roboto", sans-serif !important ;
+	font-weight: 500 !important ;
+	font-size: 1.180vw !important ; /* 17px */
+	line-height: 1.388vw !important ; /* 20px !important ; */
+	color: #FF7F51  ;
+	margin-bottom: 2px  !important ;
+}
 .single_service .price h1 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
 	font-size: 1.180vw !important ; /* 17px */
 	line-height: 1.388vw !important ; /* 20px !important ; */
-	color: #FF7F51 !important ;
+	color: #FF7F51  ;
 	margin-bottom: 2px  !important ;
 }
 
 .single_service .title h2 {
 	font-size: 1.041vw !important ; /* 15px */
 	line-height: 1.25vw !important ; /* 18px !important ; */
-	color: #001239 !important ;
+	color: #001239  ;
 	margin-bottom: 2px  !important ;
 }
 
@@ -2007,7 +2025,7 @@ export default {
 		font-weight: 400 !important ;
 		font-size: 13px !important ;
 		line-height: 16px !important ;
-		color: #bab8b8 !important ;
+		color: #bab8b8  ;
 		margin: 0 !important ;
 	}
 
@@ -2720,11 +2738,11 @@ input {
 }
 
 .price div {
-	display: block !important ;
-	align-items: center !important ;
-	justify-content: space-between !important ;
-	width: 100% !important ;
-	margin: 2vw 0 !important ;
+	display: block  ;
+	align-items: center  ;
+	justify-content: space-between  ;
+	width: 100%  ;
+	margin: 2vw 0  ;
 	
 }
 
@@ -2734,7 +2752,7 @@ input {
 	font-weight: 400 !important ;
 	font-size: 1.11vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
-	color: #001239 !important ;
+	color: #001239  ;
 	margin: 0 !important ;
 }
 
@@ -3074,7 +3092,7 @@ input {
 		line-height: 14px !important ;	
 	}
 	.main_box_2 .price div{
-		display: flex !important ;
+		display: flex  ;
 	}
 	.additional_service h2 {
 		font-size: 16px !important ;
