@@ -588,10 +588,10 @@ export default {
 .widget th, td, button{
 	padding: 0px !important;
 }
-.widget .v-date-picker-table .v-btn{
+.v-date-picker-table .v-btn{
 	padding: 0px !important;
 }
-.widget .v-date-picker-table td, .v-date-picker-table th{
+.v-date-picker-table td, .v-date-picker-table th{
 	border: 0px !important;
 	padding: 0px !important;
 }
