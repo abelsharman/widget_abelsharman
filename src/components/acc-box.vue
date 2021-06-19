@@ -9,7 +9,7 @@
             getMainimage()
               ? { backgroundImage: 'url(' + getMainimage() + ')' }
               : {
-                  backgroundImage: url('https://marketbot.abelsharman.kz/widget_go2trip/assets/placeholder.png')
+                  backgroundImage: `url('https://marketbot.abelsharman.kz/widget_go2trip/assets/placeholder.png')`
                 }
           ]"
         >
