@@ -293,7 +293,7 @@ export default {
   
   
         if(this.$store.state.person.first_name.length > 0 && this.$store.state.person.last_name.length > 0 && this.$store.state.person.email.length > 0){
-            axios.post("http://185.121.81.239/api/booking-module/book/", data)
+            axios.post("https://app.easybook.kz/api/booking-module/book/", data)
             .then(res => {
               if(res.status == 200){
                 alert("Вы успешно забронировали номер. С вами свяжется менеджер")
@@ -352,13 +352,13 @@ export default {
           price: service.price,
           name: service.name
         }
-        axios.post("http://185.121.81.239/api/booking-module/add/services/", data).then(resp => {
+        axios.post("https://app.easybook.kz/api/booking-module/add/services/", data).then(resp => {
             console.log(resp)
           this.selectedServicesList.push(dataWithPrice)
           this.servicePostLoading = false;
   
   
-          axios.get("http://185.121.81.239/api/booking-module/order/detail/", { 
+          axios.get("https://app.easybook.kz/api/booking-module/order/detail/", { 
           params: 
             { 
               bookings_id: bookings_id 
@@ -387,7 +387,7 @@ export default {
         this.currentItem = item;
         this.openServicesLoading = true;
         let id = localStorage.getItem("id_company")
-        axios.get(`http://185.121.81.239/api/booking-module/service/list/${id}/`)
+        axios.get(`https://app.easybook.kz/api/booking-module/service/list/${id}/`)
           .then(res => {
             this.servicesList = res.data;
             [...this.servicesList].forEach(item => {
