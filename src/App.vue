@@ -64,7 +64,7 @@
 
 
         <div id="widget_form" class="widget_form" :style="[ width > 768 && resultCheck || checkForm ? { 'width': '30vw', 'marginLeft': '0.5vw' }: { 'width': '35vw', 'marginLeft': '1vw' }]">
-          <img id="widget_form_img" style="margin-left: 1.5vw !important ;" src="https://marketbot.abelsharman.kz/widget_go2trip/assets/user.png" alt="user"> 
+          <img id="widget_form_img" style="margin-left: 1.5vw !important ;vertical-align: inherit;" src="https://marketbot.abelsharman.kz/widget_go2trip/assets/user.png" alt="user"> 
           <span id="widget_form_span" style="margin-left: 0.5vw !important ;" :style="pTextColor">{{ adult_count }} взрослых, {{ children_count }} детей</span>
         </div>
 
@@ -234,7 +234,7 @@
 
 
         <div id="widget_form" class="widget_form" :style="[ width > 768 && resultCheck || checkForm ? { 'width': '33vw', 'marginLeft': '0.5vw' }: { 'width': '33vw', 'marginLeft': '1vw' }]">
-          <img id="widget_form_img" style="margin-left: 1.5vw !important ;width: 3.5vw !important ;" src="https://marketbot.abelsharman.kz/widget_go2trip/assets/user.png" alt="user"> 
+          <img id="widget_form_img" style="margin-left: 1.5vw !important ;vertical-align: inherit;;width: 3.5vw !important ;" src="https://marketbot.abelsharman.kz/widget_go2trip/assets/user.png" alt="user"> 
           <span id="widget_form_span" style="margin-left: 0.5vw !important ;" :style="pTextColor">{{ adult_count }} взрослых, {{ children_count }} детей</span>
         </div>
 
