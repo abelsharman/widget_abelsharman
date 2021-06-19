@@ -585,6 +585,9 @@ export default {
 #app th, td{
 	border: 0px;
 }
+.widget input{
+	margin-bottom: 0px;
+}
 .widget th, td, button{
 	padding: 0px !important;
 }
