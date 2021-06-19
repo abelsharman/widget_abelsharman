@@ -591,6 +591,9 @@ export default {
 	transition: none !important;
 	box-shadow: none !important;
 }
+.widget .hidden{
+	display: block !important;
+}
 .widget h1{
 	padding-bottom: 0px !important;
 }
