@@ -515,6 +515,7 @@ export default {
 }
 .widget .v-date-picker-table td, .v-date-picker-table th{
 	border: 0px;
+	padding: 0px;
 }
 .widget{
     position: relative !important ;

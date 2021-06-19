@@ -583,6 +583,7 @@ export default {
 	padding: 0px;
 }
 .widget .v-date-picker-table td, .v-date-picker-table th{
+	padding: 0px;
 	border: 0px;
 }
 #app th, td, button{
