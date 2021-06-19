@@ -925,21 +925,21 @@ export default {
 .web_acc_box .visible .description .actions button {
 	width: 160px !important ;
 	height: 44px !important ;
-	background: #ff7f51 !important ;
+	background: #ff7f51  ;
 	font-size: 1.11vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	color: #ffffff !important ;
+	color: #ffffff  ;
 	box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1) !important ;
 	border-radius: 4px !important ;
 	transition: 0.22s !important ;
-	border: 1px solid #ff7f51 !important ;
+	border: 1px solid #ff7f51  ;
 }
 
 .web_acc_box .visible .description .actions button:hover {
-	background: #fff !important ;
-	color: #ff7f51 !important ;
+	background: #fff  ;
+	color: #ff7f51  ;
 }
 
 .web_acc_box .hidden {
@@ -1844,21 +1844,21 @@ export default {
 .mobile_acc_box .visible .description .actions button {
 	width: 160px !important ;
 	height: 44px !important ;
-	background: #ff7f51 !important ;
+	background: #ff7f51  ;
 	font-size: 16px !important ;
 	line-height: 19px !important ;
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	color: #ffffff !important ;
-	box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1) !important ;
+	color: #ffffff  ;
+	box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1)  ;
 	border-radius: 4px !important ;
 	transition: 0.22s !important ;
-	border: 1px solid #ff7f51 !important ;
+	border: 1px solid #ff7f51  ;
 }
 
 .mobile_acc_box .visible .description .actions button:hover {
-	background: #fff !important ;
-	color: #ff7f51 !important ;
+	background: #fff  ;
+	color: #ff7f51  ;
 }
 
 .mobile_acc_box .hidden {
