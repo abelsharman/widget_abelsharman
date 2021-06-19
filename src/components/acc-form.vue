@@ -384,11 +384,11 @@ export default {
 	padding: 0px;
 }
 .widget .v-date-picker-table .v-btn{
-	padding: 0px;
+	padding: 0px !important;
 }
 .widget .v-date-picker-table td, .v-date-picker-table th{
-	border: 0px;
-	padding: 0px;
+	border: 0px !important;
+	padding: 0px !important;
 }
 #app .v-application .primary {
     background-color: transparent  !important ;
