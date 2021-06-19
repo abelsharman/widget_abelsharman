@@ -504,6 +504,12 @@ export default {
     background-color: transparent  !important ;
     border-color: transparent  !important ;
 }
+#app th, td{
+	border: 0px;
+}
+#app th, td, button{
+	padding: 0px;
+}
 .widget{
     position: relative !important ;
     background: #e7ecef  !important ;
