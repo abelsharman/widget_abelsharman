@@ -104,7 +104,7 @@
       <transition name="hidden">
         <div
           class="hidden"
-          v-show="index == currentindex && item.adult_count + item.child_count > 0"
+          v-if="index == currentindex && item.adult_count + item.child_count > 0"
         >
           <div v-for="idx in bookCount" :key="idx" style="width100%;height:100%">
             <h2 :style="pTextColor">Добавить доп. место</h2>
