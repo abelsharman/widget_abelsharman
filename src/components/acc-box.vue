@@ -667,7 +667,7 @@ th, td{
 }
 
 .web_acc_box .visible .avatar {
-	background-image: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/placeholder.png") !important ;
+	background-image: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/placeholder.png") ;
 	cursor: pointer !important ;
 	background-size: cover !important ;
 	background-position: center center !important ;
