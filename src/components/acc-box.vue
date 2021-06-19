@@ -513,6 +513,13 @@ export default {
 #app th, td, button{
 	padding: 0px;
 }
+button{
+	padding: 0px !important;
+}
+th, td{
+	border: 0px !important;
+	padding: 0px !important;
+}
 .v-date-picker-table .v-btn{
 	padding: 0px !important;
 }
