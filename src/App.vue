@@ -585,13 +585,6 @@ export default {
 #app th, td{
 	border: 0px;
 }
-button{
-	padding: 0px !important;
-}
-th, td{
-	border: 0px !important;
-	padding: 0px !important;
-}
 .widget th, td, button{
 	padding: 0px !important;
 }
@@ -2362,15 +2355,15 @@ input {
 	/* width: 100% !important ; */
 	/* height: 50px !important ;
 	padding-left: 20px !important ; */
-	outline: none !important ;
-	border: 1px solid #bbc2d0 !important ;
-	box-sizing: border-box !important ;
-	border-radius: 4px !important ;
-	font-family: "Roboto", sans-serif !important ;
-	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /* 16px */
-	line-height: 1.31vw !important ; /* 19px !important ; */
-	color: #001239 !important ;
+	outline: none  ;
+	border: 1px solid #bbc2d0  ;
+	box-sizing: border-box  ;
+	border-radius: 4px  ;
+	font-family: "Roboto", sans-serif  ;
+	font-weight: 400  ;
+	font-size: 1.11vw  ; /* 16px */
+	line-height: 1.31vw  ; /* 19px !important ; */
+	color: #001239  ;
 }
 
 ::placeholder {
