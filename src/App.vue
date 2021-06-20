@@ -861,7 +861,7 @@ export default {
 	box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1)  ;
 	border-radius: 4px !important ;
 	transition: 0.22s !important ;
-	font-size: 1.11vw !important ; /*16px !important ;*/
+	font-size: 0.81vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	color: #ffffff  ;
 	font-family: "Roboto", sans-serif !important ;
