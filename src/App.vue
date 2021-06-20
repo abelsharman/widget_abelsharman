@@ -1448,9 +1448,9 @@ export default {
 }
 
 .swiper_container .slider_content {
-	border-bottom: 0px solid #FF7F51 !important ;
+	border-bottom: 0px solid #FF7F51  ;
 	padding-bottom: 6px !important ;
-	color: #FF7F51  !important ;
+	color: #FF7F51   ;
 }
 
 .swiper_container .swiper_slide {
@@ -1463,10 +1463,10 @@ export default {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
 	width: 95px !important ;
-	font-size: 1.11vw !important ; /* 16px */
-	line-height: 19px !important ; /* 19px !important ; */
+	font-size: 1.11vw  ; /* 16px */
+	line-height: 19px  ; /* 19px !important ; */
 	text-align: center !important ;
-	color: #001239 !important ;
+	color: #001239  ;
 	padding-bottom: 10px !important ;
 }
 
@@ -1759,14 +1759,14 @@ export default {
 .mobile_acc_box .visible .description .additional button {
 	width: 149px !important ;
 	height: 40px !important ;
-	border: 1px solid #ff7f51 !important ;
-	background: #ff7f51 !important ;
-	box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1) !important ;
+	border: 1px solid #ff7f51  ;
+	background: #ff7f51  ;
+	box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1)  ;
 	border-radius: 4px !important ;
 	transition: 0.22s !important ;
 	font-size: 16px !important ;
 	line-height: 19px !important ;
-	color: #ffffff !important ;
+	color: #ffffff  ;
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
 	display: flex !important ;
@@ -1779,12 +1779,12 @@ export default {
 }
 
 .mobile_acc_box .visible .description .additional button:hover {
-	background: #fff !important ;
-	color: #ff7f51 !important ;
+	background: #fff  ;
+	color: #ff7f51  ;
 }
 
 .mobile_acc_box .visible .description .additional button:hover svg path {
-	fill: #ff7f51 !important ;
+	fill: #ff7f51  ;
 }
 
 .mobile_acc_box .visible .description .price {
@@ -1816,19 +1816,19 @@ export default {
 	height: 40px !important ;
 	font-size: 16px !important ;
 	line-height: 19px !important ;
-	background: #ff7f51 !important ;
+	background: #ff7f51  ;
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	color: #ffffff !important ;
-	box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1) !important ;
+	color: #ffffff  ;
+	box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1)  ;
 	border-radius: 4px !important ;
 	transition: 0.22s !important ;
-	border: 1px solid #ff7f51 !important ;
+	border: 1px solid #ff7f51  ;
 }
 
 .mobile_acc_box .visible .description .price button:hover {
-	background: #fff !important ;
-	color: #ff7f51 !important ;
+	background: #fff  ;
+	color: #ff7f51  ;
 }
 
 .mobile_acc_box .visible .description .actions {
@@ -2182,10 +2182,10 @@ export default {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
 	width: 95px !important ;
-	font-size: 16px !important ;
-	line-height: 19px !important ;
+	font-size: 16px  ;
+	line-height: 19px  ;
 	text-align: center !important ;
-	color: #001239 !important ;
+	color: #001239  ;
 	padding-bottom: 10px !important ;
 }
 
@@ -2448,13 +2448,13 @@ input {
 		/* height: 50px !important ;
 		padding-left: 20px !important ; */
 		outline: none !important ;
-		border: 1px solid #bbc2d0 !important ;
+		border: 1px solid #bbc2d0  ;
 		box-sizing: border-box !important ;
 		border-radius: 4px !important ;
 		font-family: "Roboto", sans-serif !important ;
 		font-weight: 400 !important ;
-		font-size: 16px !important ; /* 1.11vw !important ; */
-		line-height: 19px !important ; /* 1.31vw !important ; !important ; */
+		font-size: 16px  ; /* 1.11vw !important ; */
+		line-height: 19px  ; /* 1.31vw !important ; !important ; */
 		color: #001239 !important ;
 	}
 	::placeholder {
@@ -3035,6 +3035,22 @@ input {
 }
 
 @media all and (max-width: 768px) {
+	.sum_up button {
+		display: flex !important ;
+		align-items: center !important ;
+		justify-content: center !important ;
+		width: 100% !important ;
+		height: 56px !important ;
+		background: #ff7f51  ;
+		border-radius: 4px !important ;
+		font-size: 16px !important ; /* 16px */
+		line-height: 1.31vw !important ; /* 19px !important ; */
+		font-family: "Roboto", sans-serif !important ;
+		font-weight: 500 !important ;
+		color: #ffffff  ;
+		text-transform: none !important ;
+		letter-spacing: normal !important ;
+	}
 	.main_card{
 		top: -15vh !important ;
 	}
