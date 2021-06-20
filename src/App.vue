@@ -2462,6 +2462,11 @@ input {
 		line-height: 19px !important ; /* 1.31vw !important ; !important ; */
 		color: #001239 !important ;
 	}
+	input[type="checkbox"]{
+		appearance: auto !important;
+		-webkit-appearance: auto !important;
+
+	}
 	::placeholder {
 		font-family: "Roboto", sans-serif !important ;
 		font-weight: 400 !important ;
