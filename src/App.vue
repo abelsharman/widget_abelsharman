@@ -431,8 +431,8 @@ export default {
             if (this.isRange == "range") {
               if (this.filter.dates) {
                 return `${moment(this.filter.dates[0]).format(
-                  "L"
-                )} - ${moment(this.filter.dates[1]).format("L")}` ;
+                  "DD.MM.YYYY"
+                )} - ${moment(this.filter.dates[1]).format("DD/MM/YYYY")}` ;
               }
             } else if (this.isRange == "lucky") {
               if (this.tabModel) {
