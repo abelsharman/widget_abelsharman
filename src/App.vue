@@ -2458,7 +2458,7 @@ input {
 		border-radius: 4px !important ;
 		font-family: "Roboto", sans-serif !important ;
 		font-weight: 400 !important ;
-		font-size: 16px !important ; /* 1.11vw !important ; */
+		font-size: 2.6vw !important ; /* 1.11vw !important ; */
 		line-height: 19px !important ; /* 1.31vw !important ; !important ; */
 		color: #001239 !important ;
 	}
