@@ -1655,7 +1655,7 @@ export default {
 
 .mobile_acc_box .visible .avatar {
 	position: relative !important ;
-	background-image: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/placeholder.png") !important ;
+	background-image: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/placeholder.png") ;
 	cursor: pointer !important ;
 	background-size: cover !important ;
 	background-position: center center !important ;
@@ -1666,7 +1666,9 @@ export default {
 	padding: 10px !important ;
 	border-radius: 4px !important ;
 }
-
+.v-list-item__title{
+	font-size: 1.11vw;
+}
 .mobile_acc_box .visible .avatar__count {
 	padding: 4px 7px !important ;
 	background: rgba(0, 0, 0, 0.5) !important ;
@@ -1980,6 +1982,9 @@ export default {
 }
 
 @media all and (max-width: 768px) {
+	.v-list-item__title{
+		font-size: 3vw;
+	}
 	.mobile_acc_box .main_box {
 		width: 100% !important ;
 		min-height: 402px !important ;
@@ -2448,13 +2453,13 @@ input {
 		/* height: 50px !important ;
 		padding-left: 20px !important ; */
 		outline: none !important ;
-		border: 1px solid #bbc2d0  ;
+		border: 0px solid #bbc2d0 !important ;
 		box-sizing: border-box !important ;
 		border-radius: 4px !important ;
 		font-family: "Roboto", sans-serif !important ;
 		font-weight: 400 !important ;
-		font-size: 16px  ; /* 1.11vw !important ; */
-		line-height: 19px  ; /* 1.31vw !important ; !important ; */
+		font-size: 16px !important ; /* 1.11vw !important ; */
+		line-height: 19px !important ; /* 1.31vw !important ; !important ; */
 		color: #001239 !important ;
 	}
 	::placeholder {
