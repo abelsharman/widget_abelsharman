@@ -2329,7 +2329,7 @@ export default {
 .main_form h5 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.01vw !important ; /* 16px */
+	font-size: 0.91vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: rgba(0, 18, 57, 0.5) !important ;
 	margin-bottom: 30px !important ;
@@ -2338,7 +2338,7 @@ export default {
 .main_form h2 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.01vw !important ; /* 16px */
+	font-size: 0.91vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 32px !important ;
@@ -2648,7 +2648,7 @@ input {
 	width: 100% !important ;
 	border: 1px solid #ff7f51 !important ;
 	border-radius: 4px !important ;
-	font-size: 1.01vw !important ; /* 16px */
+	font-size: 0.91vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #fff !important ;
 	letter-spacing: normal !important ;
