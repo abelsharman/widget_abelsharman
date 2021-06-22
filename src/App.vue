@@ -87,7 +87,7 @@
 
 
 
-      <div class="text-center" v-show="width > 768" style="margin-top: 13vh !important ; position: relative !important ; transition: 0.5s all ease !important ;left: 94% !important ; width: 10vw !important ;" :style="[ resultCheck || checkForm && width > 768 ? { 'marginTop': '0vh', 'top': '-50px', 'left': '88% !important' }: { 'marginTop': '13vh', 'top': '0px', 'left': '43% !important'  }]">
+      <div class="text-center" v-show="width > 768" style="margin-top: 13vh !important ; position: relative !important ; transition: 0.5s all ease !important ;left: 94% !important ; width: 10vw !important ;" :style="[ resultCheck || checkForm && width > 768 ? { 'marginTop': '0vh', 'top': '-50px', 'left': '88% !important' }: { 'marginTop': '13vh', 'top': '0px', 'left': '39% !important'  }]">
         <v-btn
           class="widget_button_primary_color"
           x-large
