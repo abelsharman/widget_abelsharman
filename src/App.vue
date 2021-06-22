@@ -585,7 +585,7 @@ export default {
 .widget .v-btn.v-size--x-large{
 	font-size: 15px !important;
 }
-.v-card{
+.widget .v-card{
 	max-width: 91% !important;
 }
 .widget h1{
