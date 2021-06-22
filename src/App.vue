@@ -803,7 +803,7 @@ export default {
 .web_acc_box .visible .description .titles h2 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-  	font-size: 1.42777vw !important ; /* 22px */
+    font-size: 1.42777vw !important ; /* 22px */
 	line-height: 1.805vw !important ; /*26px !important ;*/
 	color: #001239 !important ;
 	margin-bottom: 12px !important ;
