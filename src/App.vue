@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="widget" @click="clickWidget">
-    <v-app class="app_1" v-if="width > 768" style="background: #e7ecef !important ; border-radius: 10px !important ; padding: 5vw 10% !important ; width: 100% !important ;height: 40vh !important ; overflow-y: scroll !important ; display: inline-block !important ;" :style="[ resultCheck || checkForm ? { 'height': '80vh', 'background-color': background }: { 'height': '40vh', 'background-color': background }]">
+    <v-app class="app_1" v-if="width > 768" style="background: #e7ecef !important ; border-radius: 10px !important ; padding: 5vw 10% !important ; width: 80% !important ;height: 40vh !important ; overflow-y: scroll !important ; display: inline-block !important ;" :style="[ resultCheck || checkForm ? { 'height': '80vh', 'background-color': background }: { 'height': '40vh', 'background-color': background }]">
 
       <div style="display: flex !important ;position: relative !important ;transition:0.5s all ease !important ;" :style="[ width > 768 && resultCheck || checkForm ? { 'left': '-3%' }: { 'left': '0%' }]">
         <div style="width: 35vw !important ; display: flex !important ;transition: 0.5s all ease !important ;" :style="[ width > 768 && resultCheck || checkForm ? { 'width': '30vw' }: { 'width': '35vw' }]">
@@ -625,7 +625,7 @@ export default {
     background: #e7ecef  !important ;
     color: rgba(61,61,61,.8) !important ;
     margin: 5vw 0 !important ;
-    width: 80vw !important ;
+    width: 100% !important ;
     display: inline-block !important ;
     font-family: "Roboto",sans-serif !important ;
     text-align: left !important ;
