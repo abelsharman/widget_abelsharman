@@ -72,7 +72,7 @@
 
 
 
-      <div id="widget_people" class="widget_people" style="width: 40% !important ;position: absolute !important ;background-color: white !important ;left: 51% !important ;top:45px !important ;animation: appearBlock 0.5s !important ; border-radius: 5px !important ; padding-left: 20px !important ; padding-top: 10px !important ; display: none !important ;"  :style="[ resultCheck || checkForm && width > 768 ? {  'left': '44%' }: { 'left': '51%'  }]">
+      <div id="widget_people" class="widget_people" style="width: 40% !important ;position: absolute !important ;background-color: white !important ;left: 51% !important ;top:45px !important ;animation: appearBlock 0.5s !important ; border-radius: 5px !important ; padding-left: 20px !important ; padding-top: 10px !important ; display: none !important ;"  :style="[ resultCheck || checkForm && width > 768 ? {  'left': '47%' }: { 'left': '49%'  }]">
         <p :style="pTextColor">Взрослых 
           <svg :style="svgAccentColor"  @click="parentMinus" id="widget_people_1" style="cursor: pointer !important ;margin-left: 11px !important ;vertical-align: top !important ;width: 24px !important ;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"/></svg> 
             <span style="margin-left: 11px !important ;">{{ adult_count }} </span> 
@@ -619,9 +619,7 @@ export default {
     text-align: left !important ;
 }
 .widget_form{
-	width: 35vw !important ; 
 	transition: 0.5s all ease !important ; 
-	margin-left: 1vw !important ;
 	background-color:white !important ;
 	display: inline-block !important ;
 	cursor: pointer !important ; 
