@@ -613,7 +613,7 @@ export default {
     background: #e7ecef  !important ;
     color: rgba(61,61,61,.8) !important ;
     margin: 5vw 0 !important ;
-    width: 100% !important ;
+    width: 1200px !important ;
     display: inline-block !important ;
     font-family: "Roboto",sans-serif !important ;
     text-align: left !important ;
@@ -635,7 +635,7 @@ export default {
 	position: relative !important ; 
 	top: -3px !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /*16px !important ;*/
+	font-size: 1.01vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	color: #001239 !important ; 
 }
@@ -713,7 +713,7 @@ export default {
 .web_acc_box .mobile_header p {
 	font-family: SFsemibold !important ;
 	text-align: center !important ;
-	font-size: 1.180vw !important ; /* 17px */
+	font-size: 1.080vw !important ; /* 17px */
 	line-height: 1.388vw !important ; /* 20px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 0  !important ;
@@ -768,7 +768,7 @@ export default {
 .web_acc_box .visible .avatar__count p {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 700 !important ;
-	font-size: 0.8333vw !important ; /*12px !important ;*/
+	font-size: 0.7333vw !important ; /*12px !important ;*/
 	line-height: 0.97vw !important ; /*14px !important ;*/
 	color: #ffffff !important ;
 	margin: 0 !important ;
@@ -791,7 +791,7 @@ export default {
 .web_acc_box .visible .description .titles .tags_list p {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /*16px !important ;*/
+	font-size: 1.01vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	color: #000000 !important ;
 	margin-right: 19px !important ;
@@ -803,7 +803,7 @@ export default {
 .web_acc_box .visible .description .titles h2 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-  font-size: 1.52777vw !important ; /* 22px */
+  	font-size: 1.42777vw !important ; /* 22px */
 	line-height: 1.805vw !important ; /*26px !important ;*/
 	color: #001239 !important ;
 	margin-bottom: 12px !important ;
@@ -812,7 +812,7 @@ export default {
 .web_acc_box .visible .description .titles__main {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /*16px !important ;*/
+	font-size: 1.01vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	color: #000000 !important ;
 	margin-bottom: 12px !important ;
@@ -834,7 +834,7 @@ export default {
 .web_acc_box .visible .description .titles .additional h4 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.11vw !important ; /*16px !important ;*/
+	font-size: 1.01vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	color: #ff7f51 !important ;
 	margin-bottom: 0 !important ;
@@ -849,7 +849,7 @@ export default {
 	box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1)  ;
 	border-radius: 4px !important ;
 	transition: 0.22s !important ;
-	font-size: 0.81vw !important ; /*16px !important ;*/
+	font-size: 0.71vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	color: #ffffff  ;
 	font-family: "Roboto", sans-serif !important ;
@@ -880,14 +880,14 @@ export default {
 .web_acc_box .visible .description .price h2 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.52777vw !important ; /* 22px */
+	font-size: 1.42777vw !important ; /* 22px */
 	line-height: 1.80vw !important ; /*26px !important ;*/
 	color: #001239 !important ;
 	margin-bottom: 6px !important ;
 }
 
 .web_acc_box .visible .description .price p {
-	font-size: 0.8333vw !important ; /*12px !important ;*/
+	font-size: 0.7333vw !important ; /*12px !important ;*/
 	line-height: 0.97vw !important ; /*14px !important ;*/
 	color: #021011 !important ;
 	margin: 0 !important ;
@@ -904,7 +904,7 @@ export default {
 .web_acc_box .visible .description .actions h4 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.01vw !important ; /*16px !important ;*/
+	font-size: 0.91vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	color: #00b1bb !important ;
 }
@@ -917,7 +917,7 @@ export default {
 	text-align: center !important ;
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 700 !important ;
-	font-size: 1.38vw !important ; /*20px !important ;*/
+	font-size: 1.32vw !important ; /*20px !important ;*/
 	line-height: 1.66vw !important ; /*24px !important ;*/
 	color: #001239 !important ;
 	margin-bottom: 10px !important ;
@@ -932,7 +932,7 @@ export default {
 	width: 160px !important ;
 	height: 44px !important ;
 	background: #ff7f51  ;
-	font-size: 1.11vw !important ; /*16px !important ;*/
+	font-size: 1.01vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
@@ -957,7 +957,7 @@ export default {
 .web_acc_box .hidden h2 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.11vw !important ; /*16px !important ;*/
+	font-size: 1.01vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	text-transform: uppercase !important ;
 	color: #021011 !important ;
@@ -980,7 +980,7 @@ export default {
 .web_acc_box .hidden .additional_counter__single h3 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.11vw !important ; /*16px !important ;*/
+	font-size: 1.01vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	color: #021011 !important ;
 	margin: 0 !important ;
@@ -989,7 +989,7 @@ export default {
 .web_acc_box .hidden .additional_counter__single .people_age p:first-of-type {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /*16px !important ;*/
+	font-size: 1.01vw !important ; /*16px !important ;*/
 	line-height: 1.3194vw !important ; /*19px !important ;*/
 	color: #021011 !important ;
 	margin-bottom: 6px !important ;
@@ -998,7 +998,7 @@ export default {
 .web_acc_box .hidden .additional_counter__single .people_age h5 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 0.833vw !important ; /*12px !important ;*/
+	font-size: 0.733vw !important ; /*12px !important ;*/
 	line-height: 0.97vw !important ; /*14px !important ;*/
 	color: #cfd7e3 !important ;
 	margin: 0 !important ;
@@ -1016,7 +1016,7 @@ export default {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
 	margin: 0  !important ;
-	font-size: 0.97vw !important ; /*14px !important ;*/
+	font-size: 0.87vw !important ; /*14px !important ;*/
 	line-height: 1.11vw !important ; /*16px !important ;*/
 	color: #021011 !important ;
 }
@@ -1451,7 +1451,7 @@ export default {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
 	width: 95px !important ;
-	font-size: 1.11vw  ; /* 16px */
+	font-size: 1.01vw  ; /* 16px */
 	line-height: 19px  ; /* 19px !important ; */
 	text-align: center !important ;
 	color: #001239  ;
@@ -1485,7 +1485,7 @@ export default {
 .single_service h5 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 0.902vw !important ; /* 13px */
+	font-size: 0.802vw !important ; /* 13px */
 	line-height: 1.11vw !important ; /* 16px !important ; */
 	color: #BAB8B8 !important ;
 	margin: 0  !important ;
@@ -1497,7 +1497,7 @@ export default {
 .single_service h3 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.180vw !important ; /* 17px */
+	font-size: 1.080vw !important ; /* 17px */
 	line-height: 1.388vw !important ; /* 20px !important ; */
 	color: #FF7F51  ;
 	margin-bottom: 2px  !important ;
@@ -1505,14 +1505,14 @@ export default {
 .single_service .price h1 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.180vw !important ; /* 17px */
+	font-size: 1.080vw !important ; /* 17px */
 	line-height: 1.388vw !important ; /* 20px !important ; */
 	color: #FF7F51  ;
 	margin-bottom: 2px  !important ;
 }
 
 .single_service .title h2 {
-	font-size: 1.041vw !important ; /* 15px */
+	font-size: 0.941vw !important ; /* 15px */
 	line-height: 1.25vw !important ; /* 18px !important ; */
 	color: #001239  ;
 	margin-bottom: 2px  !important ;
@@ -1655,7 +1655,7 @@ export default {
 	border-radius: 4px !important ;
 }
 .v-list-item__title{
-	font-size: 1.11vw;
+	font-size: 1.01vw;
 }
 .mobile_acc_box .visible .avatar__count {
 	padding: 4px 7px !important ;
@@ -2309,7 +2309,7 @@ export default {
 .main_form h1 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.227vw !important ; /*22px !important ;*/
+	font-size: 1.127vw !important ; /*22px !important ;*/
 	line-height: 1.805vw !important ; /* 26px !important ; */
 	text-transform: uppercase !important ;
 	color: #001239 !important ;
@@ -2329,7 +2329,7 @@ export default {
 .main_form h5 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: rgba(0, 18, 57, 0.5) !important ;
 	margin-bottom: 30px !important ;
@@ -2338,7 +2338,7 @@ export default {
 .main_form h2 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 32px !important ;
@@ -2362,7 +2362,7 @@ export default {
 label {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 6px !important ;
@@ -2382,7 +2382,7 @@ input {
 	border-radius: 4px  ;
 	font-family: "Roboto", sans-serif  ;
 	font-weight: 400  ;
-	font-size: 1.11vw  ; /* 16px */
+	font-size: 1.01vw  ; /* 16px */
 	line-height: 1.31vw  ; /* 19px !important ; */
 	color: #001239  ;
 }
@@ -2390,7 +2390,7 @@ input {
 ::placeholder {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #e9e9e9 !important ;
 }
@@ -2568,7 +2568,7 @@ input {
 .box__title {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	text-transform: uppercase !important ;
 	color: #001239 !important ;
@@ -2602,7 +2602,7 @@ input {
 .box__header .descr__type {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: rgba(0, 18, 57, 0.5) !important ;
 	margin-bottom: 6px  !important ;
@@ -2611,7 +2611,7 @@ input {
 .box__header .descr__title {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 10px  !important ;
@@ -2623,7 +2623,7 @@ input {
 	justify-content: flex-start !important ;
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 9px  !important ;
@@ -2648,7 +2648,7 @@ input {
 	width: 100% !important ;
 	border: 1px solid #ff7f51 !important ;
 	border-radius: 4px !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #fff !important ;
 	letter-spacing: normal !important ;
@@ -2668,7 +2668,7 @@ input {
 	grid-column-gap: 10px !important ;
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 11px  !important ;
@@ -2690,7 +2690,7 @@ input {
 	justify-content: flex-start !important ;
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #ff7f51 !important ;
 	margin-bottom: 12px  !important ;
@@ -2720,7 +2720,7 @@ input {
 }
 
 .additional_service h2 {
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	text-transform: uppercase !important ;
 	color: #001239 !important ;
@@ -2732,7 +2732,7 @@ input {
 .additional_service p {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 12px !important ;
@@ -2755,7 +2755,7 @@ input {
 .price div p {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239  ;
 	margin: 0 !important ;
@@ -2771,7 +2771,7 @@ input {
 .sum_up__value h4 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	text-transform: uppercase !important ;
 	color: #ff7f51 !important ;
@@ -2781,7 +2781,7 @@ input {
 .sum_up__short {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 0.833vw !important ; /* 12px */
+	font-size: 0.733vw !important ; /* 12px */
 	line-height: 0.972vw !important ; /* 14px !important ; */
 	color: rgba(0, 18, 57, 0.5) !important ;
 	margin-bottom: 20px  !important ;
@@ -2805,7 +2805,7 @@ input {
 	height: 56px !important ;
 	background: #ff7f51 !important ;
 	border-radius: 4px !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
@@ -2840,7 +2840,7 @@ input {
 .services_pop h2 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.805vw !important ; /* 26px */
+	font-size: 1.705vw !important ; /* 26px */
 	line-height: 2.083vw !important ; /* 30px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 28px !important ;
@@ -2862,7 +2862,7 @@ input {
 .services_pop__title h3 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.388vw !important ; /* 20px */
+	font-size: 1.288vw !important ; /* 20px */
 	line-height: 1.59vw !important ; /* 23px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 6px !important ;
@@ -2871,7 +2871,7 @@ input {
 .services_pop__title p {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 0.972vw !important ; /* 14px */
+	font-size: 0.872vw !important ; /* 14px */
 	line-height: 1.11vw !important ; /* 16px !important ; */
 	color: rgba(0, 18, 57, 0.3) !important ;
 }
@@ -2887,7 +2887,7 @@ input {
 .services_pop .actions__price h1 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 700 !important ;
-	font-size: 1.388vw !important ; /* 20px */
+	font-size: 1.288vw !important ; /* 20px */
 	line-height: 1.59vw !important ; /* 23px !important ; */
 	text-align: right !important ;
 	color: #ff7f51 !important ;
@@ -2897,7 +2897,7 @@ input {
 .services_pop .actions__price h5 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 700 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #bab8b8 !important ;
 	margin: 0 !important ;
@@ -2916,7 +2916,7 @@ input {
 .services_pop .actions__count p {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 700 !important ;
-	font-size: 1.388vw !important ; /* 20px */
+	font-size: 1.288vw !important ; /* 20px */
 	line-height: 1.59vw !important ; /* 23px !important ; */
 	color: #001239 !important ;
 	margin: 0  !important ;
@@ -2931,7 +2931,7 @@ input {
 	width: 100% !important ;
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 700 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #fff !important ;
 	text-transform: none !important ;
@@ -2948,7 +2948,7 @@ input {
 .change_time h1 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.805vw !important ; /* 26px */
+	font-size: 1.705vw !important ; /* 26px */
 	line-height: 2.083vw !important ; /* 30px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 20px !important ;
@@ -2957,7 +2957,7 @@ input {
 .change_time p {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239 !important ;
 	opacity: 0.5 !important ;
@@ -2967,7 +2967,7 @@ input {
 .change_time label {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 6px !important ;
@@ -2981,7 +2981,7 @@ input {
 	padding-left: 20px !important ;
 	border: 1px solid #bbc2d0 !important ;
 	border-radius: 4px !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 20px !important ;
@@ -2995,7 +2995,7 @@ input {
 	margin-top: 30px !important ;
 	background: #ff7f51 !important ;
 	border-radius: 4px !important ;
-	font-size: 1.11vw !important ; /* 16px */
+	font-size: 1.01vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #ffffff !important ;
 	font-family: "Roboto", sans-serif !important ;
@@ -3013,7 +3013,7 @@ input {
 .partial_payment h2 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.6666vw !important ; /* 24px */
+	font-size: 1.5666vw !important ; /* 24px */
 	line-height: 1.944vw !important ; /* 28px !important ; */
 	color: #ff7f51 !important ;
 }
@@ -3021,7 +3021,7 @@ input {
 .partial_payment p {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 0.833vw !important ; /* 12px */
+	font-size: 0.733vw !important ; /* 12px */
 	line-height: 0.972vw !important ; /* 14px !important ; */
 	color: #001239 !important ;
 	margin-top: 6px  !important ;
