@@ -3,7 +3,7 @@
     <v-app class="app_1" v-if="width > 768" style="background: #e7ecef !important ; border-radius: 10px !important ; padding: 5vw 10% !important ; width: 80% !important ;height: 40vh !important ; overflow-y: scroll !important ; display: inline-block !important ; box-sizing: content-box;" :style="[ resultCheck || checkForm ? { 'height': '80vh', 'background-color': background }: { 'height': '40vh', 'background-color': background }]">
 
       <div style="display: flex !important ;position: relative !important ;transition:0.5s all ease !important ;" :style="[ width > 768 && resultCheck || checkForm ? { 'left': '-3%' }: { 'left': '0%' }]">
-        <div style="width: 35vw !important ; display: flex !important ;transition: 0.5s all ease !important ;" :style="[ width > 768 && resultCheck || checkForm ? { 'width': '30vw' }: { 'width': '35vw' }]">
+        <div style="width: 48% !important ; display: flex !important ;transition: 0.5s all ease !important ;" :style="[ width > 768 && resultCheck || checkForm ? { 'width': '48%' }: { 'width': '48%' }]">
       
           <v-main style="width: 100% !important ;">
             <v-menu
@@ -63,7 +63,7 @@
         </div>
 
 
-        <div id="widget_form" class="widget_form" :style="[ width > 768 && resultCheck || checkForm ? { 'width': '30vw', 'marginLeft': '0.5vw' }: { 'width': '35vw', 'marginLeft': '1vw' }]">
+        <div id="widget_form" class="widget_form" :style="[ width > 768 && resultCheck || checkForm ? { 'width': '52%', 'marginLeft': '2%' }: { 'width': '52%', 'marginLeft': '2%' }]">
           <img id="widget_form_img" style="margin-left: 1.5vw !important ;vertical-align: inherit;" src="https://marketbot.abelsharman.kz/widget_go2trip/assets/user.png" alt="user"> 
           <span id="widget_form_span" style="margin-left: 0.5vw !important ;" :style="pTextColor">{{ adult_count }} взрослых, {{ children_count }} детей</span>
         </div>
