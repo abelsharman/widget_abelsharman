@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="widget" @click="clickWidget">
-    <v-app class="app_1" v-if="width > 768" style="background: #e7ecef !important ; border-radius: 10px !important ; padding: 5vw 10% !important ; width: 80% !important ;height: 40vh !important ; overflow-y: scroll !important ; display: inline-block !important ;" :style="[ resultCheck || checkForm ? { 'height': '80vh', 'background-color': background }: { 'height': '40vh', 'background-color': background }]">
+    <v-app class="app_1" v-if="width > 768" style="background: #e7ecef !important ; border-radius: 10px !important ; padding: 5vw 10% !important ; width: 80% !important ;height: 40vh !important ; overflow-y: scroll !important ; display: inline-block !important ; box-sizing: content-box;" :style="[ resultCheck || checkForm ? { 'height': '80vh', 'background-color': background }: { 'height': '40vh', 'background-color': background }]">
 
       <div style="display: flex !important ;position: relative !important ;transition:0.5s all ease !important ;" :style="[ width > 768 && resultCheck || checkForm ? { 'left': '-3%' }: { 'left': '0%' }]">
         <div style="width: 35vw !important ; display: flex !important ;transition: 0.5s all ease !important ;" :style="[ width > 768 && resultCheck || checkForm ? { 'width': '30vw' }: { 'width': '35vw' }]">
@@ -100,18 +100,6 @@
       </div>
 
 
-      <div class="text-center" v-show="width <= 768" style="margin-top: 13vh !important ; position: relative !important ; transition: 0.5s all ease !important ;left: 94% !important ; width: 10vw !important ;" :style="[ resultCheck || checkForm ? { 'marginTop': '0vh', 'top': '-50px', 'left': '75%' }: { 'marginTop': '13vh', 'top': '0px', 'left': '35%'  }]">
-        <v-btn
-          class="widget_button_primary_color"
-          style="width: 25vw !important ;"
-          color="primary"
-          @click="goFromWidget"
-          dark>
-          Искать
-        </v-btn>
-      </div>
-
-
 
 
 
@@ -147,7 +135,7 @@
 
 
 
-      <v-container class="main_card" v-show="checkForm" style="background-color: white !important ;width: 110% !important ;position: relative !important ;left: -5% !important ;padding: 2% 5% !important ;">
+      <v-container class="main_card" v-show="checkForm" style="background-color: white !important ;width: 100% !important ;position: relative !important ;left: -5% !important ;padding: 2% 5% !important ;">
         <AccForm
           ref="accform"
           :submitaccbtnloading="submitAccBtnloading"
@@ -788,7 +776,7 @@ export default {
 
 .web_acc_box .visible .description {
 	display: grid !important ;
-	grid-template-columns: 49% 25% 25% !important ;
+	grid-template-columns: 49% 25% 27% !important ;
 	grid-column-gap: 1% !important ;
 }
 
@@ -2312,7 +2300,7 @@ export default {
 
 .main_form {
 	width: 100% !important ;
-  max-width: 27vw !important ;
+  max-width: 45% !important ;
   display: inline-block !important ;
   vertical-align: top !important ;
   margin-top: 2vh !important ;
@@ -2321,7 +2309,7 @@ export default {
 .main_form h1 {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 500 !important ;
-	font-size: 1.527vw !important ; /*22px !important ;*/
+	font-size: 1.227vw !important ; /*22px !important ;*/
 	line-height: 1.805vw !important ; /* 26px !important ; */
 	text-transform: uppercase !important ;
 	color: #001239 !important ;
@@ -2330,7 +2318,7 @@ export default {
 .main_form_img{
   width: 20px !important ;
   position: relative !important ;
-  top: 2px !important ;
+  top: 0px !important ;
   margin-right: 10px !important ;
   background-color: lightgrey !important ;
   border-radius: 25px !important ;
@@ -2555,10 +2543,10 @@ input {
   width: 100% !important ;
 }
 .main_box_2{
-  width: 34vw !important ;
-  margin-left: 1vw !important ;
+  width: 48% !important ;
+  margin-left: 1% !important ;
   display: inline-block !important ;
-  padding: 1.5vw !important ;
+  padding: 1.5% !important ;
   margin-top: 2vh !important ;
   background-color: white !important ;
 }

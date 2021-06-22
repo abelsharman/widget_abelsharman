@@ -108,7 +108,7 @@
             hide-details
           ></v-text-field>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="9" md="9" lg="9" s="9" xs="9">
           <label for="additional" :style="pTextColor">Дополнительные пожелания</label>
           <v-textarea
             v-model="comment"

@@ -175,7 +175,7 @@
           Забронировать
         </v-btn>
       </div>
-      <v-dialog v-model="dialog" width="789">
+      <v-dialog v-model="dialog">
         <v-card class="services_pop">
           <img
             @click="dialog = false"
