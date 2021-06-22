@@ -135,7 +135,7 @@
 
 
 
-      <v-container class="main_card" v-show="checkForm" style="background-color: white !important ;width: 100% !important ;position: relative !important ;left: -5% !important ;padding: 2% 5% !important ;">
+      <v-container class="main_card" v-show="checkForm" style="background-color: white !important ;width: 100% !important ;position: relative !important ;left: 0% !important ;padding: 2% 5% !important ;">
         <AccForm
           ref="accform"
           :submitaccbtnloading="submitAccBtnloading"
@@ -2515,9 +2515,9 @@ input {
 
 .main_card{
   background-color: white !important ;
-  width: 110% !important ;
+  width: 100% !important ;
   position: relative !important ;
-  left: -5% !important ;
+  left: -1% !important ;
   padding: 2% 5% !important ;
 }
 
