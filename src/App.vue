@@ -750,8 +750,8 @@ export default {
 
 .web_acc_box .visible {
 	display: grid !important ;
-	grid-template-columns: 10vw 1fr !important ;
-	grid-column-gap: 1vw !important ;
+	grid-template-columns: 19% 1fr !important ;
+	grid-column-gap: 1.5% !important ;
 	align-items: start !important ;
 }
 
@@ -788,8 +788,8 @@ export default {
 
 .web_acc_box .visible .description {
 	display: grid !important ;
-	grid-template-columns: 24vw 11vw 11vw !important ;
-	grid-column-gap: 1vw !important ;
+	grid-template-columns: 49% 25% 25% !important ;
+	grid-column-gap: 1% !important ;
 }
 
 .web_acc_box .visible .description .titles .tags_list {
