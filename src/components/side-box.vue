@@ -146,7 +146,7 @@
               fill="white"
             />
           </svg>
-          Забронировать
+          Купить
         </v-btn>
         <v-btn
           v-else
@@ -172,7 +172,7 @@
               fill="white"
             />
           </svg>
-          Забронировать
+          Купить
         </v-btn>
       </div>
       <v-dialog v-model="dialog" width="1089">
@@ -227,6 +227,57 @@
           </v-overlay>
         </v-card>
       </v-dialog>
+
+
+
+      <form
+        v-show="context"
+        ref="paymentForm"
+        class="payment__passenger__form"
+        name="SendOrder"
+        method="post"
+        action="https://testpay.kkb.kz/jsp/process/logon.jsp"
+      >
+        <input
+          v-if="context"
+          type="hidden"
+          name="Signed_Order_B64"
+          id="Signed_Order_B64"
+          :value="context"
+        />
+
+        <input
+          class="v-payment__passenger__form__group--input mgt-12px"
+          type="text"
+          placeholder="email@email.com"
+          id="formSurname"
+          name="email"
+          :value="email"
+          required
+        />
+
+        <input type="hidden" name="Language" value="rus" />
+        <input type="hidden" name="BackLink" :value="domain" />
+        <input
+          type="hidden"
+          name="PostLink"
+          value="http://185.121.81.239/api/complete_order/ "
+        />
+
+        <div class="agrrement d-flex align-center mt-4">
+          <label class="m-0" for="checkbox">Со счетом согласен (-а) </label>
+          <input class="ml-2" type="checkbox" id="checkbox" v-model="checked_for_pay" />
+        </div>
+        <button
+          v-if="checked_for_pay"
+          class="submit-btn mt-4"
+          type="submit"
+          name="GotoPay"
+          value="Да, перейти к оплате"
+        >
+          отправить
+        </button>
+      </form>
     </div>
 </template>
 
@@ -245,8 +296,12 @@ export default {
       accomodationsubmit: Function,
       submitaccbtnloading: Object
     },
+    mounted(){
+      this.domain = document.domain
+    },
     data: () => ({
       test: 0,
+      context: null,
       currentItem: {},
       serviceData: {},
       servicesList: [],
@@ -256,6 +311,8 @@ export default {
       dialog: false,
       isTime: false,
       checked: false,
+      checked_for_pay: true,
+      domain: "",
       services: [],
       width: window.innerWidth,
       primary: localStorage.getItem("primary"),
@@ -293,19 +350,19 @@ export default {
   
   
         if(this.$store.state.person.first_name.length > 0 && this.$store.state.person.last_name.length > 0 && this.$store.state.person.email.length > 0){
-            axios.post("https://app.easybook.kz/api/booking-module/book/", data)
+            axios.post("http://185.121.81.239/api/booking-module/book/", data)
             .then(res => {
-              if(res.status == 200){
-                alert("Вы успешно забронировали номер. С вами свяжется менеджер")
+              if(res.data.context != null){
                 localStorage.setItem("orders", [])
+                this.context = res.context
+                this.$refs.paymentForm.submit();
               }
               else{
-                console.log(res)
+                alert("Вы успешно забронировали номер. С вами свяжется менеджер")
               }
             })
             .catch(error => {
                 console.log(error)
-              alert("Что-то пошло не так")
             });
         }
         else{
@@ -352,13 +409,13 @@ export default {
           price: service.price,
           name: service.name
         }
-        axios.post("https://app.easybook.kz/api/booking-module/add/services/", data).then(resp => {
+        axios.post("http://185.121.81.239/api/booking-module/add/services/", data).then(resp => {
             console.log(resp)
           this.selectedServicesList.push(dataWithPrice)
           this.servicePostLoading = false;
   
   
-          axios.get("https://app.easybook.kz/api/booking-module/order/detail/", { 
+          axios.get("http://185.121.81.239/api/booking-module/order/detail/", { 
           params: 
             { 
               bookings_id: bookings_id 
@@ -387,7 +444,7 @@ export default {
         this.currentItem = item;
         this.openServicesLoading = true;
         let id = localStorage.getItem("id_company")
-        axios.get(`https://app.easybook.kz/api/booking-module/service/list/${id}/`)
+        axios.get(`http://185.121.81.239/api/booking-module/service/list/${id}/`)
           .then(res => {
             this.servicesList = res.data;
             [...this.servicesList].forEach(item => {
@@ -436,6 +493,9 @@ export default {
       }
     },
     computed:{
+      email(){
+        return this.$store.state.person.email
+      },
       updatedordercard(){
         return this.ordercard
       },

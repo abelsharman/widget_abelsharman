@@ -152,12 +152,12 @@
       <input
         type="hidden"
         name="BackLink"
-        value="https://app.easybook.kz/go2trip/#/"
+        value="http://185.121.81.239/go2trip/#/"
       >
       <input
         type="hidden"
         name="PostLink"
-        value="https://app.easybook.kz/api/go2trip/v2/booking-complete/"
+        value="http://185.121.81.239/api/go2trip/v2/booking-complete/"
       >
   
       <div class="agrrement d-flex align-center mt-4">
@@ -348,7 +348,7 @@ export default {
           order_id: this.$route.query.id
         };
   
-        axios.post("https://app.easybook.kz/api/go2trip/v2/accommodation/book/", data)
+        axios.post("http://185.121.81.239/api/go2trip/v2/accommodation/book/", data)
           .then(res => {
             this.submitaccbtnloading.ready = false;
             //this.$store.commit("setPaymentContext", res.context);

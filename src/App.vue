@@ -469,8 +469,28 @@ export default {
             location.reload()  ;
           },
           changeForm(){
-            this.checkForm = !this.checkForm
-            this.resultCheck = !this.resultCheck
+
+			let id = localStorage.getItem("id_company")
+			
+			axios.get("http://185.121.81.239/api/booking-module/categories/"+id+"/?start="+this.filter.dates[0]+"&end="+this.filter.dates[1]+"&count="+this.adult_count+"&child_count="+this.children_count+"&page[number]=1&page[size]=10&type=2&id=NA&directions=2")
+            .then(res => {
+              if(res){
+				if(res.data.length > 0){
+					this.results = res.data  ;
+					this.checkForm = !this.checkForm
+					this.resultCheck = !this.resultCheck
+
+				}
+				else{
+					alert("Нет свободных номеров. Пожалуйста выберите другие даты.")
+				}
+              }
+              else{
+                console.log("error on fetching lists of rooms")
+              }
+			})  ;
+			
+
           },
           success() {
             this.dialog = true  ;
@@ -488,8 +508,8 @@ export default {
             localStorage.setItem("date_to", this.filter.dates[1])
             let id = localStorage.getItem("id_company")
             //console.log(localStorage.adult_count, localStorage.children_count, localStorage.date_form, localStorage.date_to)
-            // https://app.easybook.kz/api/go2trip/v2/accommodation/zone/categories/4/?start=2021-06-10&end=2021-06-11&count=1&child_count=0&type=2&id=4&directions=2&page[number]=1&page[size]=5/api/go2trip/v2/accommodation/zone/categories/4/?start=2021-06-10&end=2021-06-11&count=1&child_count=0&type=2&id=4&directions=2&page[number]=1&page[size]=5
-            axios.get("https://app.easybook.kz/api/booking-module/categories/"+id+"/?start="+this.filter.dates[0]+"&end="+this.filter.dates[1]+"&count="+this.adult_count+"&child_count="+this.children_count+"&page[number]=1&page[size]=10&type=2&id=NA&directions=2")
+            // http://185.121.81.239/api/go2trip/v2/accommodation/zone/categories/4/?start=2021-06-10&end=2021-06-11&count=1&child_count=0&type=2&id=4&directions=2&page[number]=1&page[size]=5/api/go2trip/v2/accommodation/zone/categories/4/?start=2021-06-10&end=2021-06-11&count=1&child_count=0&type=2&id=4&directions=2&page[number]=1&page[size]=5
+            axios.get("http://185.121.81.239/api/booking-module/categories/"+id+"/?start="+this.filter.dates[0]+"&end="+this.filter.dates[1]+"&count="+this.adult_count+"&child_count="+this.children_count+"&page[number]=1&page[size]=10&type=2&id=NA&directions=2")
             .then(res => {
               if(res){
 				if(res.data.length > 0){
