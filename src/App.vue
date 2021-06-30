@@ -2381,7 +2381,7 @@ export default {
 label {
 	font-family: "Roboto", sans-serif !important ;
 	font-weight: 400 !important ;
-	font-size: 1.01vw !important ; /* 16px */
+	font-size: 0.81vw !important ; /* 16px */
 	line-height: 1.31vw !important ; /* 19px !important ; */
 	color: #001239 !important ;
 	margin-bottom: 6px !important ;
