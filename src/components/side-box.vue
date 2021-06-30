@@ -261,7 +261,7 @@
         <input
           type="hidden"
           name="PostLink"
-          value="http://185.121.81.239/api/complete_order/ "
+          :value="api_url+'/api/complete_order/'"
         />
 
         <div class="agrrement d-flex align-center mt-4">
@@ -298,9 +298,11 @@ export default {
     },
     mounted(){
       this.domain = document.domain
+      this.api_url = localStorage.getItem("api_url")
     },
     data: () => ({
       test: 0,
+      api_url: "",
       context: null,
       currentItem: {},
       serviceData: {},
