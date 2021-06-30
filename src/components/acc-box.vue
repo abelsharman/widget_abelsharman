@@ -279,6 +279,7 @@ export default {
     },
     data: function () {
       return {
+        api_url: "",
         currentSlide: 0,
         bookingsArray: {},
         updateKey: 1,
@@ -295,6 +296,9 @@ export default {
         primary: localStorage.getItem("primary"),
         text_color: localStorage.getItem("text")
       }
+    },
+    mounted(){
+      this.api_url = localStorage.getItem("api_url")
     },
     watch: {
       bookCount() {
@@ -382,7 +386,7 @@ export default {
             el.order_id = this.bookingsArray.order_id
           })
         }
-        axios.post(`http://185.121.81.239/api/booking-module/add/services/`, booking_service).then(() => {
+        axios.post(`${this.api_url}/api/booking-module/add/services/`, booking_service).then(() => {
           alert("We are gonna to card")
         })
       },
@@ -430,7 +434,7 @@ export default {
       getServices() {
         this.loading = true
         let id = localStorage.getItem("id_company")
-        axios.get(`http://185.121.81.239/api/booking-module/service/list/${id}/`).then(res => {
+        axios.get(`${this.api_url}/api/booking-module/service/list/${id}/`).then(res => {
           let arr = res
           this.servicesList = []
           arr.map(el => {
@@ -459,7 +463,7 @@ export default {
           additional_counts: this.additional_counts,
           // tour_operator: this.item.tour_operator
         };
-        axios.post("http://185.121.81.239/api/booking-module/reserve/", reserve)
+        axios.post(this.api_url+"/api/booking-module/reserve/", reserve)
         .then(res => {
           this.order_id = res.data.bookings[0]
           for(let i = 0; i < res.data.bookings.length; i++){
@@ -473,7 +477,7 @@ export default {
           var size = localStorage.getItem("orders").length
           var bookings_id = localStorage.getItem("orders").substring(1, size-1)
           console.log(bookings_id.length, bookings_id)
-          axios.get("http://185.121.81.239/api/booking-module/order/detail/", { 
+          axios.get(this.api_url+"/api/booking-module/order/detail/", { 
             params: 
               { 
                 bookings_id: bookings_id 

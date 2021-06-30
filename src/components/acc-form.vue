@@ -122,58 +122,7 @@
   
   
     </v-form>
-    <form
-      v-show="context"
-      ref="paymentForm"
-      class="payment__passenger__form"
-      name="SendOrder"
-      method="post"
-      action="https://epay.kkb.kz/jsp/process/logon.jsp"
-    >
-      <input
-        v-show="context"
-        type="hidden"
-        name="Signed_Order_B64"
-        id="Signed_Order_B64"
-        :value="context"
-      >
-  
-      <input
-        class="v-payment__passenger__form__group--input mgt-12px"
-        type="text"
-        placeholder="email@email.com"
-        id="formSurname"
-        name="email"
-        :value="person.email"
-        required
-      >
-  
-      <input type="hidden" name="Language" value="rus" >
-      <input
-        type="hidden"
-        name="BackLink"
-        value="http://185.121.81.239/go2trip/#/"
-      >
-      <input
-        type="hidden"
-        name="PostLink"
-        value="http://185.121.81.239/api/go2trip/v2/booking-complete/"
-      >
-  
-      <div class="agrrement d-flex align-center mt-4">
-        <label class="m-0" for="checkbox">Со счетом согласен (-а) </label>
-        <input class="ml-2" type="checkbox" id="checkbox" v-model="checked" >
-      </div>
-      <button
-        v-show="checked"
-        class="submit-btn mt-4"
-        type="submit"
-        name="GotoPay"
-        value="Да, перейти к оплате"
-      >
-        отправить
-      </button>
-    </form>
+
   </div>
 </template>
   
@@ -192,6 +141,7 @@ export default {
       return{
         mobileCard: false,
         selectedUser: {},
+        api_url: "",
         availableUsers: [],
         person: {},
         items: [
@@ -219,6 +169,9 @@ export default {
         text_button: localStorage.getItem("text_button"),
         accent_color: localStorage.getItem("accent")
       }
+    },
+    mounted(){
+      this.api_url = localStorage.getItem("api_url")
     },
     computed: {
       pTextColor:{
@@ -348,7 +301,7 @@ export default {
           order_id: this.$route.query.id
         };
   
-        axios.post("http://185.121.81.239/api/go2trip/v2/accommodation/book/", data)
+        axios.post(this.api_url+"/api/go2trip/v2/accommodation/book/", data)
           .then(res => {
             this.submitaccbtnloading.ready = false;
             //this.$store.commit("setPaymentContext", res.context);

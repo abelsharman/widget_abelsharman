@@ -344,7 +344,8 @@ export default {
   vuetify: new Vuetify(),
   data() {
     return{
-          menu: false,
+		menu: false,
+		api_url: "",
           filter: {
               dates: [
                 new Date().toISOString().substr(0, 10),
@@ -381,7 +382,7 @@ export default {
           }
         },
         mounted(){
-		
+			this.api_url = localStorage.getItem("api_url")
             this.$vuetify.lang.current = 'ru'
             let datas = []  ;
 			localStorage.setItem("orders", JSON.stringify(datas))  ;
@@ -470,7 +471,7 @@ export default {
 
 			let id = localStorage.getItem("id_company")
 
-			axios.get("http://185.121.81.239/api/booking-module/categories/"+id+"/?start="+this.filter.dates[0]+"&end="+this.filter.dates[1]+"&count="+this.adult_count+"&child_count="+this.children_count+"&page[number]=1&page[size]=10&type=2&id=NA&directions=2")
+			axios.get(this.api_url+"/api/booking-module/categories/"+id+"/?start="+this.filter.dates[0]+"&end="+this.filter.dates[1]+"&count="+this.adult_count+"&child_count="+this.children_count+"&page[number]=1&page[size]=10&type=2&id=NA&directions=2")
             .then(res => {
               if(res){
 				if(res.data.length > 0){
@@ -507,7 +508,7 @@ export default {
             let id = localStorage.getItem("id_company")
             //console.log(localStorage.adult_count, localStorage.children_count, localStorage.date_form, localStorage.date_to)
             // http://185.121.81.239/api/go2trip/v2/accommodation/zone/categories/4/?start=2021-06-10&end=2021-06-11&count=1&child_count=0&type=2&id=4&directions=2&page[number]=1&page[size]=5/api/go2trip/v2/accommodation/zone/categories/4/?start=2021-06-10&end=2021-06-11&count=1&child_count=0&type=2&id=4&directions=2&page[number]=1&page[size]=5
-            axios.get("http://185.121.81.239/api/booking-module/categories/"+id+"/?start="+this.filter.dates[0]+"&end="+this.filter.dates[1]+"&count="+this.adult_count+"&child_count="+this.children_count+"&page[number]=1&page[size]=10&type=2&id=NA&directions=2")
+            axios.get(this.api_url+"/api/booking-module/categories/"+id+"/?start="+this.filter.dates[0]+"&end="+this.filter.dates[1]+"&count="+this.adult_count+"&child_count="+this.children_count+"&page[number]=1&page[size]=10&type=2&id=NA&directions=2")
             .then(res => {
               if(res){
 				if(res.data.length > 0){

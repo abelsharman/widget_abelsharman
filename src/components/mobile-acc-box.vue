@@ -287,6 +287,7 @@ export default {
     data() {
       return {
         currentSlide: 0,
+        api_url: "",
         bookingsArray: [],
         updateKey: 1,
         order_id: 0,
@@ -381,12 +382,15 @@ export default {
         }
       },
     },
+    mounted(){
+      this.api_url = localStorage.getItem("api_url")
+    },
     methods: {
       scipServices() {
         var size = localStorage.getItem("orders").length
         var bookings_id = localStorage.getItem("orders").substring(1, size-1)
         console.log(bookings_id.length, bookings_id)
-        axios.get("http://185.121.81.239/api/booking-module/order/detail/", { 
+        axios.get(this.api_url+"/api/booking-module/order/detail/", { 
           params: 
             { 
               bookings_id: bookings_id 
@@ -439,14 +443,14 @@ export default {
         }
       
         console.log(selected_services)
-        axios.post(`http://185.121.81.239/api/booking-module/bulk/add/services/`, booking_service).then(() => {
+        axios.post(`${this.api_url}/api/booking-module/bulk/add/services/`, booking_service).then(() => {
           // this.$emit('toggle', res.data);
           this.selectServices = false
           this.$emit("change-form")
   
           var size = localStorage.getItem("orders").length
           var bookings_id = localStorage.getItem("orders").substring(1, size-1)
-          axios.get("http://185.121.81.239/api/booking-module/order/detail/", { 
+          axios.get(this.api_url+"/api/booking-module/order/detail/", { 
             params: 
               { 
                 bookings_id: bookings_id 
@@ -513,7 +517,7 @@ export default {
       getServices() {
         this.loading = true
         let id = localStorage.getItem("id_company")
-        axios.get(`http://185.121.81.239/api/booking-module/service/list/${id}/`).then(res => {
+        axios.get(`${this.api_url}/api/booking-module/service/list/${id}/`).then(res => {
           let arr = res.data
           this.servicesList = []
           arr.map(el => {
@@ -543,7 +547,7 @@ export default {
               additional_counts: this.additional_counts,
               // tour_operator: this.item.tour_operator
             };
-            axios.post("http://185.121.81.239/api/booking-module/reserve/", reserve).then(res => {
+            axios.post(this.api_url+"/api/booking-module/reserve/", reserve).then(res => {
                 console.log(res)
                 if(res.status > 399){
                   alert("В выбранной категории не достаточно номеров")
@@ -565,7 +569,7 @@ export default {
                   var size = localStorage.getItem("orders").length
                   var bookings_id = localStorage.getItem("orders").substring(1, size-1)
                   console.log(bookings_id.length, bookings_id)
-                  axios.get("http://185.121.81.239/api/booking-module/order/detail/", { 
+                  axios.get(this.api_url+"/api/booking-module/order/detail/", { 
                     params: 
                       { 
                         bookings_id: bookings_id 
