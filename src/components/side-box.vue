@@ -19,7 +19,7 @@
                 {{ item.place.name }}
               </p>
               <p :style="pTextColor" class="descr__name">{{ item.room.name }}</p>
-              <v-btn
+              <!-- <v-btn
                 v-if="width > 768"
                 color="primary"
                 style="margin-top: 1vw;"
@@ -27,7 +27,7 @@
                 @click="openServices(item)"
                 :loading="openServicesLoading"
                 >Дополнительная услуга +</v-btn
-              >
+              > -->
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@
           <a class="box_links" target="_blank" to="/offer">договором оферты</a>
           и
           <a class="box_links" target="_blank" to="/policy">политикой конфиденциальности</a>
-          <input class="ml-2" type="checkbox" id="checkbox" v-model="checked" >
+          <input class="ml-2" type="checkbox" id="checkbox" style="width:10px !important" v-model="checked" >
         </h5>
         <v-btn
           v-if="!checked"

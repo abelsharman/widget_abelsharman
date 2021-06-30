@@ -550,8 +550,8 @@ export default {
                 }
                 else{
                   this.order_id = res.data.bookings[0]
-                  this.getServices()
-                  this.selectServices = true
+                  // this.getServices()
+                  // this.selectServices = true
   
                   for(let i = 0; i < res.data.bookings.length; i++){
                     let stored_datas = JSON.parse(localStorage["orders"]);
@@ -559,12 +559,33 @@ export default {
                     localStorage.setItem("orders", JSON.stringify(stored_datas))
                     this.bookingsArray.push(res.data.bookings[i])
                   }
-  
+
+
+
+                  var size = localStorage.getItem("orders").length
+                  var bookings_id = localStorage.getItem("orders").substring(1, size-1)
+                  console.log(bookings_id.length, bookings_id)
+                  axios.get("http://185.121.81.239/api/booking-module/order/detail/", { 
+                    params: 
+                      { 
+                        bookings_id: bookings_id 
+                      },
+                  })
+                  .then(res => {
+                    if(res){
+                      this.selectServices = false
+                      this.$emit('toggle', res.data);
+                      this.$emit('change-form')
+                    }
+                    else{
+                      console.log("error on fetching order card")
+                    }
+                  });
                 }    
               })
               .catch(error => {
                   console.log(error)
-                alert("В выбранной категории не достаточно номеров")
+                  alert("В выбранной категории не достаточно номеров")
               });
             return
           }

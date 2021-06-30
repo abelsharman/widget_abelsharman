@@ -383,10 +383,8 @@ export default {
         mounted(){
 		
             this.$vuetify.lang.current = 'ru'
-            if(!localStorage.getItem("orders")){
-              let datas = []  ;
-              localStorage.setItem("orders", JSON.stringify(datas))  ;
-            }
+            let datas = []  ;
+			localStorage.setItem("orders", JSON.stringify(datas))  ;
 
             
             
@@ -471,7 +469,7 @@ export default {
           changeForm(){
 
 			let id = localStorage.getItem("id_company")
-			
+
 			axios.get("http://185.121.81.239/api/booking-module/categories/"+id+"/?start="+this.filter.dates[0]+"&end="+this.filter.dates[1]+"&count="+this.adult_count+"&child_count="+this.children_count+"&page[number]=1&page[size]=10&type=2&id=NA&directions=2")
             .then(res => {
               if(res){
