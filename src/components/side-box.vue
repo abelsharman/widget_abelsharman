@@ -236,7 +236,7 @@
         class="payment__passenger__form"
         name="SendOrder"
         method="post"
-        action="https://testpay.kkb.kz/jsp/process/logon.jsp"
+        action="https://epay.kkb.kz/jsp/process/logon.jsp"
       >
         <input
           v-if="context"
