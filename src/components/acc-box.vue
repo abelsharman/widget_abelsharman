@@ -495,8 +495,8 @@ export default {
   
         })
         .catch(error=>{
-            console.log(error)
-          alert("В выбранной категории не достаточно номеров")
+            console.log(error.detail, res, res.datail)
+            alert(error)
         });
   
   

@@ -230,7 +230,7 @@
 
 
 
-      <form
+      <!-- <form
         v-show="context"
         ref="paymentForm"
         class="payment__passenger__form"
@@ -239,7 +239,6 @@
         action="https://epay.kkb.kz/jsp/process/logon.jsp"
       >
         <input
-          v-if="context"
           type="hidden"
           name="Signed_Order_B64"
           id="Signed_Order_B64"
@@ -257,11 +256,12 @@
         />
 
         <input type="hidden" name="Language" value="rus" />
-        <input type="hidden" name="BackLink" :value="domain" />
+        <input type="hidden" name="BackLink" value="http://185.121.81.239/easybook/#/booking-module" />
         <input
           type="hidden"
           name="PostLink"
-          :value="api_url+'/api/complete_order/'"
+          value="https://go2trip.kz/api/go2trip/v2/booking-complete/"
+         
         />
 
         <div class="agrrement d-flex align-center mt-4">
@@ -277,7 +277,56 @@
         >
           отправить
         </button>
-      </form>
+      </form> -->
+
+      <form
+      v-if="context"
+      ref="paymentForm"
+      class="payment__passenger__form"
+      name="SendOrder"
+      method="post"
+      action="https://testpay.kkb.kz/jsp/process/logon.jsp"
+    >
+      <input
+        v-if="context"
+        type="hidden"
+        name="Signed_Order_B64"
+        id="Signed_Order_B64"
+        :value="context"
+      />
+
+      <input
+        class="v-payment__passenger__form__group--input mgt-12px"
+        type="text"
+        placeholder="email@email.com"
+        id="formSurname"
+        name="email"
+        :value="email"
+        required
+      />
+
+      <input type="hidden" name="Language" value="rus" />
+      <input type="hidden" name="BackLink" :value="domain" />
+      <input
+        type="hidden"
+        name="PostLink"
+        :value="api_url+'/api/complete_order/'"
+      />
+
+      <div class="agrrement d-flex align-center mt-4">
+        <label class="m-0" for="checkbox">Со счетом согласен (-а) </label>
+        <input class="ml-2" type="checkbox" id="checkbox" v-model="checked_for_pay" />
+      </div>
+      <button
+        v-if="checked_for_pay"
+        class="submit-btn mt-4"
+        type="submit"
+        name="GotoPay"
+        value="Да, перейти к оплате"
+      >
+        отправить
+      </button>
+    </form>
     </div>
 </template>
 
@@ -297,7 +346,7 @@ export default {
       submitaccbtnloading: Object
     },
     mounted(){
-      this.domain = document.domain
+      this.domain = document.URL
       this.api_url = localStorage.getItem("api_url")
     },
     data: () => ({
@@ -346,7 +395,6 @@ export default {
           comment: this.$store.state.person.comment,
           is_child: false
         }]
-        console.log(localStorage.getItem("orders"))
         let bookings_id = JSON.parse(localStorage.getItem("orders"))
         let data = {clients: clients, bookings_id: bookings_id}
   
@@ -356,10 +404,16 @@ export default {
             .then(res => {
               if(res.data.context != null){
                 localStorage.setItem("orders", [])
-                this.context = res.context
-                this.$refs.paymentForm.submit();
+                this.context = res.data.context
+                setTimeout(() => {
+                  if (res.data.context) this.$refs.paymentForm.submit();
+                }, 1000);
+                // setTimeout(()=>{
+                //   this.$refs.paymentForm.submit();
+                // },1000)
               }
               else{
+                localStorage.setItem("orders", [])
                 alert("Вы успешно забронировали номер. С вами свяжется менеджер")
               }
             })
