@@ -474,15 +474,19 @@ export default {
 			axios.get(this.api_url+"/api/booking-module/categories/"+id+"/?start="+this.filter.dates[0]+"&end="+this.filter.dates[1]+"&count="+this.adult_count+"&child_count="+this.children_count+"&page[number]=1&page[size]=10&type=2&id=NA&directions=2")
             .then(res => {
               if(res){
-				if(res.data.length > 0){
-					this.results = res.data  ;
-					this.checkForm = !this.checkForm
-					this.resultCheck = !this.resultCheck
+				// if(res.data.length > 0){
+				// 	this.results = res.data  ;
+				// 	this.checkForm = !this.checkForm
+				// 	this.resultCheck = !this.resultCheck
 
-				}
-				else{
-					alert("Нет свободных номеров. Пожалуйста выберите другие даты.")
-				}
+				// }
+				// else{
+				// 	alert("Нет свободных номеров. Пожалуйста выберите другие даты1.")
+				// }
+				this.results = res.data  ;
+				this.checkForm = !this.checkForm
+				this.resultCheck = !this.resultCheck
+
               }
               else{
                 console.log("error on fetching lists of rooms")
