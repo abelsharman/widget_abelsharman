@@ -483,7 +483,7 @@ export default {
                 bookings_id: bookings_id 
               },
           })
-          .then((res) => {
+          .then(res => {
             if(res){
               this.$emit('toggle', res.data);
               this.$emit('change-form')
@@ -495,7 +495,7 @@ export default {
   
         })
         .catch(error=>{
-            console.log(error.detail, res, res.datail)
+            console.log(error.detail)
             alert(error)
         });
   
