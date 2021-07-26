@@ -309,7 +309,7 @@
       <input
         type="hidden"
         name="PostLink"
-        :value="api_url+'/api/booking-module/complete_order/'"
+        :value="api_url+'/api/booking-module/complete_order/'+comp_id+'/'"
       />
 
       <div class="agrrement d-flex align-center mt-4">
@@ -347,10 +347,12 @@ export default {
     mounted(){
       this.domain = document.URL
       this.api_url = localStorage.getItem("api_url")
+      this.comp_id = localStorage.getItem("id_company")
     },
     data: () => ({
       test: 0,
       api_url: "",
+      comp_id: "",
       context: null,
       currentItem: {},
       serviceData: {},
