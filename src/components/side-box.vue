@@ -280,7 +280,7 @@
       </form> -->
 
       <form
-      v-if="context"
+      style="display: none;"
       ref="paymentForm"
       class="payment__passenger__form"
       name="SendOrder"
@@ -288,7 +288,6 @@
       action="https://epay.kkb.kz/jsp/process/logon.jsp"
     >
       <input
-        v-if="context"
         type="hidden"
         name="Signed_Order_B64"
         id="Signed_Order_B64"
@@ -406,7 +405,7 @@ export default {
                 localStorage.setItem("orders", [])
                 this.context = res.data.context
                 setTimeout(() => {
-                  if (res.data.context) this.$refs.paymentForm.submit();
+                  if (this.context) this.$refs.paymentForm.submit();
                 }, 1000);
                 // setTimeout(()=>{
                 //   this.$refs.paymentForm.submit();
