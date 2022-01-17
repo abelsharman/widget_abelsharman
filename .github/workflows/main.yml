@@ -26,6 +26,12 @@ jobs:
       - name: List files
         run : ls -la
         
+      - name: Go to dist
+        run : cd dist/
+        
+      - name: List files
+        run : ls -la
+        
       - name: Retrive build files app.js
         run : cp dist/app.js .
       
