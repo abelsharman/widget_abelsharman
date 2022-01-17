@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="widget" @click="clickWidget">
+  <div id="app_widget" class="widget" @click="clickWidget">
     <v-app
       class="app_1"
       v-if="width > 768"
@@ -753,7 +753,7 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 
-#app th,
+#app_widget th,
 td {
   border: 0px;
 }
@@ -793,7 +793,7 @@ button {
   border: 0px !important;
   padding: 0px !important;
 }
-#app .v-application .primary {
+#app_widget .v-application .primary {
   background-color: transparent !important ;
   border-color: transparent !important ;
 }
@@ -828,7 +828,7 @@ button {
   color: #001239 !important ;
 }
 
-#app .v-application p {
+#app_widget .v-application p {
   margin-bottom: 0px !important ;
 }
 
@@ -836,7 +836,7 @@ button {
   margin-bottom: 0px !important ;
 }
 
-#app {
+#app_widget {
   text-align: left !important ;
 }
 
@@ -1027,7 +1027,7 @@ button {
   box-shadow: 0px 10px 30px rgba(255, 127, 81, 0.1);
   border-radius: 4px !important ;
   transition: 0.22s !important ;
-  font-size: 1.01vw !important ; /*16px !important ;*/
+  font-size: 0.71vw !important ; /*16px !important ;*/
   line-height: 1.3194vw !important ; /*19px !important ;*/
   color: #ffffff;
   font-family: "Roboto", sans-serif !important ;
