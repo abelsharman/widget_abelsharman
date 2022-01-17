@@ -1,5 +1,4 @@
 const webpack = require("webpack");
-const prefixer = require("postcss-prefixer");
 
 module.exports = {
   runtimeCompiler: true,
@@ -10,17 +9,6 @@ module.exports = {
         maxChunks: 1,
       }),
     ],
-  },
-  css: {
-    loaderOptions: {
-      postcss: {
-        plugins: [
-          prefixer({
-            prefix: "b-",
-          }),
-        ],
-      },
-    },
   },
   devServer: {
     proxy: "https://equipmetry.abelsharman.kz/",
