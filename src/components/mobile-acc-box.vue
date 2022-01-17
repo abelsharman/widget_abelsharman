@@ -3,7 +3,7 @@
     <div class="main_box" :class="{ mainActive: index == currentindex }">
       <div class="visible">
         <div
-          @click="dialog = true"
+          @click="openImages"
           class="avatar"
           :style="[
             getMainimage()
@@ -14,7 +14,9 @@
           ]"
         >
           <div v-show="item.images.length > 0" class="avatar__count">
-            <p :style="pTextColor">1/{{ item.images.length }}</p>
+            <p :style="pTextColor">
+              {{ item.images.length > 0 ? "1" : "0" }}/{{ item.images.length }}
+            </p>
           </div>
           <div class="room_left" :style="divPrimary">
             <h4 :style="h4TextButton">{{ roomCounter(item.room_count) }}</h4>
@@ -301,113 +303,6 @@
         </v-carousel>
       </v-dialog>
     </div>
-    <v-dialog v-model="selectServices" fullscreen hide-overlay>
-      <div class="mobile_services">
-        <div class="mobile_header">
-          <img
-            @click="selectServices = false"
-            src="https://marketbot.abelsharman.kz/widget_go2trip/assets/backmobile.svg"
-          />
-          <p :style="pTextColor">Выбрать номер</p>
-        </div>
-
-        <div class="swiper_container" ref="mySwiper">
-          <div class="swiper_slide" v-for="(i, idx) in bookCount" :key="i">
-            <div
-              class="slider_content"
-              @click="selectRoom(idx)"
-              :style="pSliderTextColor"
-              style="font-size: 14px;"
-              v-bind:class="{ slider_content_active: currentSlide == idx }"
-            >
-              {{ i }} номер
-            </div>
-          </div>
-        </div>
-
-        <div class="service_wrapper" style="margin-top:8vw;">
-          <div
-            class="single_service"
-            v-for="(service, index) in servicesList[currentSlide]"
-            :key="service.id"
-          >
-            <div class="title">
-              <h2 :style="pTextColor">{{ service.name }}</h2>
-              <p :style="h5TextColor" class="single_service_p">
-                {{
-                  service.service_type == "once" ? "Единоразовая" : "Суточная"
-                }}
-              </p>
-            </div>
-            <div class="price">
-              <h1 :style="pAccentColor">
-                {{ service.price.toLocaleString("ru-RU") }} KZT
-              </h1>
-              <p :style="pTextColor">за 1 гостя</p>
-            </div>
-            <div class="actions" :key="updateKey" :style="pTextColor">
-              <svg
-                @click="serviceMath(-1, index)"
-                :style="svgAccentColor"
-                style="cursor: pointer;"
-                width="24"
-                height="24"
-                xmlns="http://www.w3.org/2000/svg"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-              >
-                <path
-                  d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"
-                />
-              </svg>
-              {{ service.quantity }}
-              <svg
-                @click="serviceMath(+1, index)"
-                :style="svgAccentColor"
-                style="cursor: pointer;"
-                width="24"
-                height="24"
-                xmlns="http://www.w3.org/2000/svg"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-              >
-                <path
-                  d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="mobile_services__footer">
-          <v-col cols="12">
-            <v-row justify="center" align="center">
-              <v-btn
-                @click="addServices"
-                color="primary"
-                :style="btnAccentColor"
-                >Добавить</v-btn
-              >
-              <v-btn
-                @click="scipServices"
-                class="ml-2"
-                color="primary"
-                :style="btnAccentColor2"
-                outlined
-                >Пропустить</v-btn
-              >
-            </v-row>
-          </v-col>
-        </div>
-      </div>
-      <v-overlay :value="loading">
-        <v-progress-circular
-          :size="70"
-          :width="7"
-          color="#FF7F51"
-          indeterminate
-        ></v-progress-circular>
-      </v-overlay>
-    </v-dialog>
   </div>
 </template>
 
@@ -422,14 +317,8 @@ export default {
   },
   data() {
     return {
-      currentSlide: 0,
       api_url: "",
-      bookingsArray: [],
-      updateKey: 1,
-      order_id: 0,
       loading: false,
-      servicesList: [],
-      selectServices: false,
       dialog: false,
       bookCount: 1,
       additional_counts: [this.item.additional_adult_count],
@@ -522,89 +411,10 @@ export default {
     this.api_url = localStorage.getItem("api_url");
   },
   methods: {
-    scipServices() {
-      var size = localStorage.getItem("orders").length;
-      var bookings_id = localStorage.getItem("orders").substring(1, size - 1);
-      console.log(bookings_id.length, bookings_id);
-      axios
-        .get(this.api_url + "/api/booking-module/order/detail/", {
-          params: {
-            bookings_id: bookings_id,
-          },
-        })
-        .then((res) => {
-          if (res) {
-            this.selectServices = false;
-            this.$emit("toggle", res.data);
-            this.$emit("change-form");
-          } else {
-            console.log("error on fetching order card");
-          }
-        });
-    },
-    addServices() {
-      let selected_services = [...this.servicesList];
-      selected_services.map((list) => {
-        list.map((el, index) => {
-          if (!el.quantity) {
-            list.splice(index, 1);
-          }
-        });
-      });
-      console.log(selected_services, selected_services.length);
-      let booking_service = {
-        services: [],
-      };
-      for (let j = 0; j < this.servicesList.length; j++) {
-        for (let i = 0; i < selected_services[j].length; i++) {
-          if (selected_services[j][i].quantity > 0) {
-            booking_service.services.push({
-              quantity: selected_services[j][i].quantity,
-              booking: this.bookingsArray[j],
-              service: selected_services[j][i].id,
-            });
-          }
-        }
-      }
-
-      console.log(selected_services);
-      axios
-        .post(
-          `${this.api_url}/api/booking-module/bulk/add/services/`,
-          booking_service
-        )
-        .then(() => {
-          // this.$emit('toggle', res.data);
-          this.selectServices = false;
-          this.$emit("change-form");
-
-          var size = localStorage.getItem("orders").length;
-          var bookings_id = localStorage
-            .getItem("orders")
-            .substring(1, size - 1);
-          axios
-            .get(this.api_url + "/api/booking-module/order/detail/", {
-              params: {
-                bookings_id: bookings_id,
-              },
-            })
-            .then((res) => {
-              if (res) {
-                console.log(res.data);
-                this.$emit("toggle", res.data);
-              } else {
-                console.log("error on fetching order card");
-              }
-            });
-        });
-    },
-    selectRoom(idx) {
-      this.currentSlide = idx;
-    },
-    serviceMath(num, idx) {
-      this.servicesList[this.currentSlide][idx].quantity += num;
-      console.log(this.servicesList);
-      this.updateKey++;
+    openImages() {
+      // открыть попап с картинками
+      if (this.item.images.length > 0) this.dialog = true;
+      else alert("Нет картинок!");
     },
     addBookCount(num) {
       let check = this.bookCount + num;
@@ -637,24 +447,6 @@ export default {
       }
       this.$emit("set-active", this.index);
     },
-    getServices() {
-      this.loading = true;
-      let id = localStorage.getItem("id_company");
-      axios
-        .get(`${this.api_url}/api/booking-module/service/list/${id}/`)
-        .then((res) => {
-          let arr = res.data;
-          this.servicesList = [];
-          arr.map((el) => {
-            el.quantity = 0;
-          });
-          for (let i = 0; i < this.bookCount; i++) {
-            this.servicesList.push(JSON.parse(JSON.stringify(arr)));
-          }
-          console.log(this.servicesList);
-          this.loading = false;
-        });
-    },
     goBooking() {
       if (window.innerWidth < 768) {
         let check_in = `${localStorage.getItem(
@@ -670,7 +462,6 @@ export default {
           check_out,
           child_counts: this.child_counts,
           additional_counts: this.additional_counts,
-          // tour_operator: this.item.tour_operator
         };
         axios
           .post(this.api_url + "/api/booking-module/reserve/", reserve)
@@ -679,13 +470,10 @@ export default {
             if (res.status > 399) {
               alert("В выбранной категории не достаточно номеров");
             } else {
-              this.order_id = res.data.bookings[0];
-
               for (let i = 0; i < res.data.bookings.length; i++) {
                 let stored_datas = JSON.parse(localStorage["orders"]);
                 stored_datas.push(res.data.bookings[i]);
                 localStorage.setItem("orders", JSON.stringify(stored_datas));
-                this.bookingsArray.push(res.data.bookings[i]);
               }
 
               var size = localStorage.getItem("orders").length;
@@ -701,7 +489,6 @@ export default {
                 })
                 .then((res) => {
                   if (res) {
-                    this.selectServices = false;
                     this.$emit("toggle", res.data);
                     this.$emit("change-form");
                   } else {

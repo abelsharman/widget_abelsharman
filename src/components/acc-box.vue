@@ -3,7 +3,7 @@
     <div class="main_box" :class="{ mainActive: index == currentindex }">
       <div class="visible">
         <div
-          @click="dialog = true"
+          @click="openImages"
           class="avatar"
           :style="[
             getMainimage()
@@ -14,7 +14,9 @@
           ]"
         >
           <div v-show="item.images.length > 0" class="avatar__count">
-            <p>1/{{ item.images.length }}</p>
+            <p>
+              {{ item.images.length > 0 ? "1" : "0" }}/{{ item.images.length }}
+            </p>
           </div>
         </div>
         <div class="description">
@@ -305,79 +307,6 @@
         </v-carousel>
       </v-dialog>
     </div>
-    <v-dialog v-model="selectServices" fullscreen hide-overlay>
-      <div class="mobile_services">
-        <div class="mobile_header">
-          <img
-            @click="selectServices = false"
-            src="https://marketbot.abelsharman.kz/widget_go2trip/assets/backmobile.svg"
-          />
-          <p>Выбрать номер</p>
-        </div>
-        <client-only>
-          <div
-            class="swiper-container swiper_container"
-            ref="mySwiper"
-            @slideChange="slideChanged($event)"
-          >
-            <div class="swiper-slide" v-for="(i, idx) in bookCount" :key="i">
-              <div class="slider_content" @click="selectRoom(idx)">
-                {{ i }} номер
-              </div>
-            </div>
-          </div>
-        </client-only>
-        <div class="service_wrapper">
-          <div
-            class="single_service"
-            v-for="(service, index) in servicesList[currentSlide]"
-            :key="service.id"
-          >
-            <div class="title">
-              <h2>{{ service.name }}</h2>
-              <p>
-                {{
-                  service.service_type == "once" ? "Единоразовая" : "Суточная"
-                }}
-              </p>
-            </div>
-            <div class="price">
-              <h1>{{ service.price.toLocaleString("ru-RU") }} KZT</h1>
-              <p>за 1 гостя</p>
-            </div>
-            <div class="actions" :key="updateKey">
-              <img
-                @click="serviceMath(-1, index)"
-                src="https://marketbot.abelsharman.kz/widget_go2trip/assets/details/minus.png"
-              />
-              {{ service.quantity }}
-              <img
-                @click="serviceMath(+1, index)"
-                src="https://marketbot.abelsharman.kz/widget_go2trip/assets/details/plus.png"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="mobile_services__footer">
-          <v-col cols="12">
-            <v-row justify="center" align="center">
-              <v-btn @click="addServices" color="primary">Добавить</v-btn>
-              <v-btn @click="scipServices" class="ml-2" color="primary" outlined
-                >Пропустить</v-btn
-              >
-            </v-row>
-          </v-col>
-        </div>
-      </div>
-      <v-overlay :value="loading">
-        <v-progress-circular
-          :size="70"
-          :width="7"
-          color="#FF7F51"
-          indeterminate
-        ></v-progress-circular>
-      </v-overlay>
-    </v-dialog>
   </div>
 </template>
 
@@ -393,17 +322,11 @@ export default {
   data: function() {
     return {
       api_url: "",
-      currentSlide: 0,
-      bookingsArray: {},
-      updateKey: 1,
       loading: false,
-      servicesList: [],
-      selectServices: false,
       dialog: false,
       bookCount: 1,
       additional_counts: [this.item.additional_adult_count], // [this.item.adult_count],
       child_counts: [this.item.additional_child_count], // [this.item.adult_count + this.item.child_count]
-      order_id: 0,
       text_button: localStorage.getItem("text_button"),
       accent_color: localStorage.getItem("accent"),
       primary: localStorage.getItem("primary"),
@@ -470,50 +393,10 @@ export default {
     },
   },
   methods: {
-    scipServices() {
-      alert("We are gonna to card!");
-    },
-    addServices() {
-      let selected_services = [...this.servicesList];
-      selected_services.map((list) => {
-        list.map((el, index) => {
-          if (!el.quantity) {
-            list.splice(index, 1);
-          }
-        });
-      });
-      let booking_service = {};
-      this.bookingsArray.bookings.map((elem, index) => {
-        booking_service[elem.id] = selected_services[index];
-      });
-      for (const [key, value] of Object.entries(booking_service)) {
-        value.map((el) => {
-          el.booking = Number(key);
-          el.service = el.id;
-          el.order_id = this.bookingsArray.order_id;
-        });
-      }
-      axios
-        .post(
-          `${this.api_url}/api/booking-module/add/services/`,
-          booking_service
-        )
-        .then(() => {
-          alert("We are gonna to card");
-        });
-    },
-    slideChanged(e) {
-      // swiper для картинок
-      this.currentSlide = e.activeIndex;
-    },
-    selectRoom(idx) {
-      // swiper для картинок
-      this.currentSlide = idx;
-    },
-    serviceMath(num, idx) {
-      // для swipera
-      this.servicesList[this.currentSlide][idx].quantity += num;
-      this.updateKey++;
+    openImages() {
+      // открыть попап с картинками
+      if (this.item.images.length > 0) this.dialog = true;
+      else alert("Нет картинок!");
     },
     addBookCount(num) {
       // для увел/уменьшения кол-ва номеров для брони
@@ -565,16 +448,13 @@ export default {
         check_out,
         child_counts: this.child_counts,
         additional_counts: this.additional_counts,
-        // tour_operator: this.item.tour_operator
       };
       axios
         .post(this.api_url + "/api/booking-module/reserve/", reserve)
         .then((res) => {
-          this.order_id = res.data.bookings[0];
           for (let i = 0; i < res.data.bookings.length; i++) {
-            this.order_id = res.data.bookings[i];
             let stored_datas = JSON.parse(localStorage["orders"]);
-            stored_datas.push(this.order_id);
+            stored_datas.push(res.data.bookings[i]);
             localStorage.setItem("orders", JSON.stringify(stored_datas));
           }
 
