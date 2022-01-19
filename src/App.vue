@@ -18,7 +18,6 @@
             : { left: '0%' },
         ]"
       >
-        <a href="/fun">Go to fun</a>
         <div
           style="width: 48% !important ; display: flex !important ;transition: 0.5s all ease !important ;"
           :style="[
