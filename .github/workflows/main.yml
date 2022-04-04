@@ -54,23 +54,3 @@ jobs:
           port: "22"
           source: "app.js,app.css"
           target: "/var/www"
-        
-      - name: Send all materials to new test server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.IP_NEW_TEST_SERVER }}
-          username: 'root'
-          password: ${{ secrets.PASSWORD_NEW_TEST_SERVER }}
-          port: "22"
-          source: "app.js,app.css"
-          target: "/var/www"
-          
-      - name: Send all materials to new prod server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.IP_NEW_PROD_SERVER }}
-          username: 'root'
-          password: ${{ secrets.PASSWORD_NEW_PROD_SERVER }}
-          port: "22"
-          source: "app.js,app.css"
-          target: "/var/www"
