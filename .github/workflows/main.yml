@@ -3,7 +3,7 @@ name: WidgetGo2Trip
 on:
   push:
     branches: 
-      - 'main'
+      - 'new'
     
 
 jobs:
@@ -34,26 +34,6 @@ jobs:
       
       - name: List files
         run : ls -la
-        
-      - name: Send all materials to real server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.IP_OF_REAL_SERVER }}
-          username: ${{ secrets.USER_OF_REAL_SERVER }}
-          password: ${{ secrets.PASSWORD_OF_REAL_SERVER }}
-          port: "22"
-          source: "app.js,app.css"
-          target: "/var/www"
-      
-      - name: Send all materials to test server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.IP_OF_TEST_SERVER }}
-          username: ${{ secrets.USER_OF_TEST_SERVER }}
-          password: ${{ secrets.PASSWORD_OF_TEST_SERVER }}
-          port: "22"
-          source: "app.js,app.css"
-          target: "/var/www"
         
       - name: Send all materials to new test server
         uses: appleboy/scp-action@master
