@@ -12,10 +12,17 @@ export default new Vuex.Store({
       document_number: '',
       phone_number: "+7",
       email: '',
-      comment: ''
+      comment: '',
     },
+    notification: {}
   },
   mutations: {
+    SET_NOTIFICATION(state, payload) {
+        state.notification = payload
+    },
+    SET_PERSON(state, payload){
+      state.person = { ...payload }
+    },
     updateFirstName (state, message) {
       state.person.first_name = message
     },
@@ -41,5 +48,10 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
+  },
+  getters: {
+    getNotification(state) {
+      return state.notification
+    }
   }
 })

@@ -13,7 +13,7 @@ let config = {
   // timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
 };
-
+import store from '@/store'
 const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
@@ -23,6 +23,7 @@ _axios.interceptors.request.use(
   },
   function(error) {
     // Do something with request error
+    console.log(error);
     return Promise.reject(error);
   }
 );
@@ -35,6 +36,16 @@ _axios.interceptors.response.use(
   },
   function(error) {
     // Do something with response error
+    console.log(error.response.data);
+    let arr = []
+    if(error.response.data.error_messages) arr = error.response.data.error_messages
+    arr.forEach(e => {
+      store.commit("SET_NOTIFICATION", {
+        show: true,
+        message: e.message,
+        color: "#c54949",
+      });
+    })
     return Promise.reject(error);
   }
 );

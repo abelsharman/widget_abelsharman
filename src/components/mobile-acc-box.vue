@@ -1,13 +1,14 @@
 <template>
-  <div>
-    <div class="main_box" :class="{ mainActive: index == currentindex }">
-      <div class="visible">
+  <v-expansion-panels v-model="panel">
+    <v-expansion-panel class="mb-5" readonly>
+      <v-expansion-panel-header class="panel_header" hide-actions style="padding: 3% !important">
+        <div class="visible">
         <div
           @click="openImages"
           class="avatar"
           :style="[
-            getMainimage()
-              ? { backgroundImage: 'url(' + getMainimage() + ')' }
+            item.main_image
+              ? { backgroundImage: 'url(' + item.main_image + ')' }
               : {
                   backgroundImage: `url('https://marketbot.abelsharman.kz/widget_go2trip/assets/placeholder.png')`,
                 },
@@ -52,8 +53,7 @@
                 Есть {{ item.adult_count + item.child_count }} доп. места
               </h4>
               <button
-                @click="showAdditional()"
-                :class="{ activeBtn: index == currentindex }"
+                @click="onToggle"
                 :style="btnAccentColor"
               >
                 <svg
@@ -90,8 +90,8 @@
             <div class="actions">
               <p>
                 <svg
-                  :style="svgAccentColor"
-                  @click="addBookCount(-1)"
+                  :style="[ item.count == 1 || !item.room_count ? {svgAccentColor, pointerEvents: 'none'} : { svgAccentColor } ]"
+                  @click="changeCount(-1)"
                   style="cursor: pointer;"
                   width="24"
                   height="24"
@@ -103,10 +103,10 @@
                     d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"
                   />
                 </svg>
-                {{ bookCount }}
+                {{ item.count }}
                 <svg
-                  :style="svgAccentColor"
-                  @click="addBookCount(1)"
+                  :style="[ item.count == item.room_count || !item.room_count ? {svgAccentColor, pointerEvents: 'none'} : { svgAccentColor } ]"
+                  @click="changeCount(1)"
                   style="cursor: pointer;"
                   width="24"
                   height="24"
@@ -123,36 +123,22 @@
           </div>
           <div class="price">
             <div>
-              <h2 :style="pTextColor">
-                {{
-                  (
-                    item.price * bookCount +
-                    (additional_counts.reduce((a, b) => a + b) *
-                      item.adult_price +
-                      child_counts.reduce((a, b) => a + b) * item.child_price) -
-                    item.additional_adult_count * item.adult_price -
-                    item.additional_child_count * item.child_price
-                  ).toLocaleString("ru-RU")
-                }}
-                KZT
+              <h2 :style="pTextColor">{{ getPrice }} KZT
               </h2>
               <p :style="pTextColor">Цена за всех</p>
             </div>
-            <button @click="goBooking" :style="btnAccentColor">Выбрать</button>
+            <button @click="onClick" :style="btnAccentColor">Выбрать</button>
           </div>
         </div>
       </div>
-      <transition name="hidden">
-        <div
-          class="hidden"
-          v-show="
-            index == currentindex && item.adult_count + item.child_count > 0
-          "
-        >
+      </v-expansion-panel-header>
+      <v-expansion-panel-content class="panel_content">
+        <div class="hidden">
           <div
-            v-for="idx in bookCount"
-            :key="idx"
+            v-for="(itemCount, index) in item.counts"
+            :key="index"
             style="width100%;height:100%"
+            class="mb-5"
           >
             <h2 style="margin-left: 12px;" :style="pTextColor">
               Добавить доп. место
@@ -170,14 +156,8 @@
                   <v-btn
                     style="background-color: transparent !important; margin-right: 0px"
                     icon
-                    @click="
-                      additional_counts.splice(
-                        idx - 1,
-                        1,
-                        additional_counts[idx - 1] - 1
-                      )
-                    "
-                    :disabled="additional_counts[idx - 1] === 0"
+                    :disabled="itemCount.adult == 0"
+                    @click="changeAdditional(-1, 'adult', index)"
                   >
                     <svg
                       :style="svgAccentColor"
@@ -194,24 +174,11 @@
                     </svg>
                   </v-btn>
 
-                  <p :style="pTextColor">{{ additional_counts[idx - 1] }}</p>
+                  <p :style="pTextColor">{{ itemCount.adult }}</p>
                   <v-btn
                     style="background-color: transparent !important; margin-right: 0px"
                     icon
-                    @click="
-                      additional_counts.splice(
-                        idx - 1,
-                        1,
-                        additional_counts[idx - 1] + 1
-                      )
-                    "
-                    :disabled="
-                      item.child_count - child_counts[idx - 1] >= 0
-                        ? additional_counts[idx - 1] === item.adult_count
-                        : additional_counts[idx - 1] ===
-                          item.adult_count -
-                            (child_counts[idx - 1] - item.child_count)
-                    "
+                    @click="changeAdditional(1, 'adult', index)"
                   >
                     <svg
                       :style="svgAccentColor"
@@ -241,10 +208,8 @@
                   <v-btn
                     style="background-color: transparent !important; margin-right: 0px"
                     icon
-                    @click="
-                      child_counts.splice(idx - 1, 1, child_counts[idx - 1] - 1)
-                    "
-                    :disabled="child_counts[idx - 1] === 0"
+                    :disabled="itemCount.child == 0"
+                    @click="changeAdditional(-1, 'child', index)"
                   >
                     <svg
                       :style="svgAccentColor"
@@ -260,18 +225,11 @@
                       />
                     </svg>
                   </v-btn>
-                  <p :style="pTextColor">{{ child_counts[idx - 1] }}</p>
+                  <p :style="pTextColor">{{ itemCount.child }}</p>
                   <v-btn
                     style="background-color: transparent !important; margin-right: 0px"
                     icon
-                    @click="
-                      child_counts.splice(idx - 1, 1, child_counts[idx - 1] + 1)
-                    "
-                    :disabled="
-                      child_counts[idx - 1] ===
-                        item.child_count +
-                          (item.adult_count - additional_counts[idx - 1])
-                    "
+                    @click="changeAdditional(1, 'child', index)"
                   >
                     <svg
                       :style="svgAccentColor"
@@ -292,8 +250,9 @@
             </div>
           </div>
         </div>
-      </transition>
-      <v-dialog width="700" v-model="dialog">
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+    <v-dialog width="700" v-model="dialog">
         <v-carousel>
           <v-carousel-item
             v-for="(image, idx) in item.images"
@@ -302,37 +261,41 @@
           ></v-carousel-item>
         </v-carousel>
       </v-dialog>
-    </div>
-  </div>
+  </v-expansion-panels>
 </template>
 
 <script>
 import axios from "axios";
 export default {
-  name: "MobileAccBox",
+  name: "AccBox",
   props: {
-    currentindex: Number,
-    index: Number,
     item: Object,
   },
-  data() {
+  data: function() {
     return {
+      panel: 0,
+      limitDesc: false, 
+
       api_url: "",
       loading: false,
       dialog: false,
       bookCount: 1,
-      additional_counts: [this.item.additional_adult_count],
-      child_counts: [this.item.additional_child_count],
-      text_color: localStorage.getItem("text"),
-      primary: localStorage.getItem("primary"),
+      additional_counts: [this.item.additional_adult_count || 1], // [this.item.adult_count],
+      child_counts: [this.item.additional_child_count || 1], // [this.item.adult_count + this.item.child_count]
       text_button: localStorage.getItem("text_button"),
       accent_color: localStorage.getItem("accent"),
+      primary: localStorage.getItem("primary"),
+      text_color: localStorage.getItem("text"),
     };
+  },
+  mounted() {
+    this.api_url = localStorage.getItem("api_url");
   },
   watch: {
     bookCount() {
       this.additional_counts = [];
       this.child_counts = [];
+
       for (let i = 0; i < this.bookCount; i++) {
         this.additional_counts.push(this.item.additional_adult_count);
         this.child_counts.push(this.item.additional_child_count);
@@ -340,17 +303,6 @@ export default {
     },
   },
   computed: {
-    pSliderTextColor() {
-      return {
-        color: this.text_color + " !important",
-        "border-color": this.text_color + " !important",
-      };
-    },
-    pTextColor() {
-      return {
-        color: this.text_color + " !important",
-      };
-    },
     h4TextButton() {
       return {
         color: this.text_button + " !important",
@@ -361,24 +313,30 @@ export default {
         "background-color": this.primary + " !important",
       };
     },
-    h5TextColor() {
+    getPrice() {
+      let price = this.item.accommodation_price * this.item.count;
+      this.item.counts.forEach((element) => {
+        price += element.adult * this.item.adult_price;
+        price += element.child * this.item.child_price;
+      });
+      return price.toLocaleString("KZ-kz");
+    },
+    checkHeight(){
+      if(this.item.description) { 
+        return this.item.description.length > 170
+      }
+      return false
+    },
+    pTextColor() {
       return {
         color: this.text_color + " !important",
-        opacity: "0.5",
       };
     },
     btnAccentColor() {
       return {
         "background-color": this.accent_color + " !important",
         color: this.text_button + " !important",
-        "border-color": this.accent_color,
-      };
-    },
-    btnAccentColor2() {
-      return {
-        "background-color": this.text_button + " !important",
-        color: this.accent_color + " !important",
-        "border-color": this.accent_color,
+        border: this.accent_color + " 1px solid",
       };
     },
     pAccentColor() {
@@ -406,104 +364,409 @@ export default {
         color: this.primary + " !important",
       };
     },
-  },
-  mounted() {
-    this.api_url = localStorage.getItem("api_url");
+    h5TextColor() {
+      return {
+        color: this.text_color + " !important",
+        opacity: "0.5",
+      };
+    },
   },
   methods: {
     openImages() {
       // открыть попап с картинками
       if (this.item.images.length > 0) this.dialog = true;
-      else alert("Нет картинок!");
-    },
-    addBookCount(num) {
-      let check = this.bookCount + num;
-      if (check > 0 && check <= this.item.room_count) {
-        this.bookCount += num;
-      }
-    },
-    getMainimage() {
-      let image = "";
-      if (this.item.images.length) {
-        this.item.images.map((el) => {
-          if (el.is_main) {
-            image = el.image;
-            return;
-          }
+      else this.$store.commit("SET_NOTIFICATION", {
+          show: true,
+          message: "Нет картинок!",
+          color: "#c54949",
         });
+    },
+    changeAdditional(numb, type, index) {
+      if (!this.item.room_count) return;
+      if (numb < 0) {
+        this.$set(
+          this.item.counts[index],
+          type,
+          this.item.counts[index][type] + numb
+        );
+      } else {
+        if (type == "adult") {
+          if (
+            this.item.counts[index].child + this.item.counts[index].adult ==
+              this.item.adult_count + this.item.child_count ||
+            this.item.counts[index].adult == this.item.adult_count
+          )
+            return;
+          else {
+            this.$set(
+              this.item.counts[index],
+              "adult",
+              this.item.counts[index].adult + numb
+            );
+          }
+        } else {
+          if (
+            this.item.counts[index].child < this.item.child_count ||
+            (this.item.counts[index].adult != this.item.adult_count &&
+              this.item.counts[index].child + this.item.counts[index].adult <
+                this.item.adult_count + this.item.child_count)
+          ) {
+            this.$set(
+              this.item.counts[index],
+              "child",
+              this.item.counts[index].child + numb
+            );
+          }
+        }
       }
-      return image;
+    },
+    changeCount(numb) {
+      if (!this.item.room_count) return;
+      if (numb > 0) {
+        this.item.counts.push({
+          adult: 0,
+          child: 0,
+        });
+      } else {
+        this.item.counts.pop();
+      }
+      this.item.count += numb;
+    },
+    onToggle() {
+      if (this.panel) {
+        this.panel = 0;
+        return;
+      }
+      this.panel = 1;
     },
     roomCounter(room) {
+      if (!room) return `Не осталось номеров`;
       if (room == 1) return `остался ${room} номер`;
       if ((room >= 21 && room <= 24) || (room >= 2 && room <= 4))
         return `осталось ${room} номера`;
       return `осталось ${room} номеров`;
     },
-    showAdditional() {
-      if (this.currentindex == this.index) {
-        this.$emit("set-active", null);
+    async onClick() {
+      console.log(this.item);
+      if (this.item.room_count < 1) {
+        this.$store.commit("SET_NOTIFICATION", {
+          show: true,
+          message: "Нельзя зарезвировать!",
+          color: "#c54949",
+        });
         return;
       }
-      this.$emit("set-active", this.index);
+      if (!this.item.room_count) return;
+      this.item.is_added = true;
+      this.$store.commit("SET_NOTIFICATION", {
+        show: true,
+        message: "Добавлено!",
+        color: "#22bb33",
+      });
     },
     goBooking() {
-      if (window.innerWidth < 768) {
-        let check_in = `${localStorage.getItem(
-          "date_form"
-        )} ${this.item.check_in_time.substring(0, 5)}`;
-        let check_out = `${localStorage.getItem(
-          "date_to"
-        )} ${this.item.check_out_time.substring(0, 5)}`;
-        let reserve = {
-          category: this.item.id,
-          room_count: this.bookCount,
-          check_in,
-          check_out,
-          child_counts: this.child_counts,
-          additional_counts: this.additional_counts,
-        };
-        axios
-          .post(this.api_url + "/api/booking-module/reserve/", reserve)
-          .then((res) => {
-            console.log(res);
-            if (res.status > 399) {
-              alert("В выбранной категории не достаточно номеров");
-            } else {
-              for (let i = 0; i < res.data.bookings.length; i++) {
-                let stored_datas = JSON.parse(localStorage["orders"]);
-                stored_datas.push(res.data.bookings[i]);
-                localStorage.setItem("orders", JSON.stringify(stored_datas));
-              }
+      let check_in = `${localStorage.getItem(
+        "date_form"
+      )} ${this.item.check_in_time.substring(0, 5)}`;
+      let check_out = `${localStorage.getItem(
+        "date_to"
+      )} ${this.item.check_out_time.substring(0, 5)}`;
 
-              var size = localStorage.getItem("orders").length;
-              var bookings_id = localStorage
-                .getItem("orders")
-                .substring(1, size - 1);
-              console.log(bookings_id.length, bookings_id);
-              axios
-                .get(this.api_url + "/api/booking-module/order/detail/", {
-                  params: {
-                    bookings_id: bookings_id,
-                  },
-                })
-                .then((res) => {
-                  if (res) {
-                    this.$emit("toggle", res.data);
-                    this.$emit("change-form");
-                  } else {
-                    console.log("error on fetching order card");
-                  }
-                });
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-            alert("В выбранной категории не достаточно номеров");
-          });
-        return;
-      }
+      let body = {
+        category: this.item.id,
+        room_count: this.bookCount,
+        check_in,
+        check_out,
+        child_counts: this.child_counts,
+        additional_counts: this.additional_counts,
+      };
+      axios
+        .post(`${this.api_url}/api/v2/widget/reserve/`, body)
+        .then((res) => {
+          for (let i = 0; i < res.data.bookings.length; i++) {
+            let stored_datas = JSON.parse(localStorage["orders"]);
+            stored_datas.push(res.data.bookings[i]);
+            localStorage.setItem("orders", JSON.stringify(stored_datas));
+          }
+
+          var size = localStorage.getItem("orders").length;
+          var bookings_id = localStorage
+            .getItem("orders")
+            .substring(1, size - 1);
+          console.log(bookings_id.length, bookings_id);
+          axios
+            .get(this.api_url + "/api/booking-module/order/detail/", {
+              params: {
+                bookings_id: bookings_id,
+              },
+            })
+            .then((res) => {
+              if (res) {
+                this.$emit("toggle", res.data);
+                this.$emit("change-form");
+              } else {
+                console.log("error on fetching order card");
+              }
+            });
+        })
+        .catch((error) => {
+          console.log(error.detail);
+          alert(error);
+        });
     },
   },
 };
 </script>
+
+
+<style scoped lang="scss">
+.discount_info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  p {
+    font-family: 'Gilroy', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #021011;
+    margin-bottom: 3px;
+  }
+  p:nth-child(2){
+    color: #06B04A;
+  }
+}
+.discount_actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  p{
+    font-family: 'Gilroy', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+    margin: 0 10px;
+  }
+}
+.desctiprion_button{
+  background: white;
+  color: #0071c2;
+  display: block;
+  margin-bottom: 2vw;
+  padding-bottom: 1vw;
+  cursor: pointer;
+}
+.panel_header {
+  display: grid;
+  grid-template-columns: 175px 1fr;
+  grid-column-gap: 30px;
+  align-items: start;
+  width: 95%;
+  cursor: default;
+  p {
+    margin-bottom: 0;
+  }
+  .avatar {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 193px;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 10px;
+    cursor: pointer;
+    &__count {
+      padding: 4px 7px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        font-size: 12px;
+        line-height: 14px;
+        color: #ffffff;
+        margin: 0;
+      }
+    }
+  }
+  .description {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    &__text {
+      &__title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        color: #001239;
+      }
+      &__descr {
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+        margin-top: 12px;
+        max-width: 85%;
+        display: block; /* Fallback for non-webkit */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .tags,
+      .extra {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+      .tags {
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+        margin-top: 12px;
+        margin-bottom: 30px;
+        p {
+          position: relative;
+          margin-right: 30px;
+          &:first-of-type {
+            &::before {
+              display: none;
+            }
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: -17px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #ff8413;
+          }
+        }
+      }
+      .extra {
+        p {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 19px;
+          color: #ff8413;
+          margin-right: 20px;
+        }
+      }
+    }
+    &__actions {
+      text-align: center;
+      &__price {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        color: #001239;
+      }
+      &__count {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        color: #ff8413;
+        margin-top: 10px;
+      }
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 6px;
+        margin-bottom: 10px;
+        p {
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 24px;
+          color: #000000;
+          margin: 0 6px;
+        }
+      }
+    }
+  }
+}
+.people_count {
+  border-top: 1px solid #e9e9e9;
+  padding: 30px 14px 20px;
+  margin: 0 10px;
+  p {
+    margin-bottom: 0;
+  }
+  &__title {
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: uppercase;
+    color: #021011;
+  }
+  &__wrapper {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    &__single {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      &__title {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        color: #021011;
+      }
+      div {
+        margin-left: 20px;
+        &:first-of-type {
+          p {
+            &:first-of-type {
+              font-size: 16px;
+              line-height: 19px;
+              color: #021011;
+              margin-bottom: 6px;
+            }
+            &:last-of-type {
+              font-size: 10px;
+              line-height: 12px;
+              color: #cfd7e3;
+            }
+          }
+        }
+        &:last-of-type {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          margin-left: 20px;
+          p {
+            margin: 0 6px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+            text-align: center;
+            color: #021011;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .panel_header {
+    display: inline-block;
+    width: 100%;
+    cursor: default;
+  }
+  ::v-deep .v-expansion-panel-content__wrap{
+    padding: 5% 3%;
+  }
+}
+</style>

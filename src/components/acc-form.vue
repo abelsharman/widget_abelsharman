@@ -3,7 +3,7 @@
     <h1 :style="pTextColor">
       <img
         class="main_form_img"
-        @click="back"
+        @click="$emit('back')"
         src="https://img.icons8.com/ios/452/back--v1.png"
         :style="pTextColor"
       />Оформление бронирования
@@ -16,7 +16,7 @@
     <h2 :style="pTextColor">Контактная информация</h2>
     <v-form ref="form">
       <v-row>
-        <v-col cols="12" md="8">
+        <v-col cols="12" md="6">
           <label for="name" :style="pTextColor">Имя <span>*</span></label>
           <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
@@ -28,6 +28,7 @@
                 class="mt-2"
                 v-bind="attrs"
                 v-on="on"
+                dense
                 outlined
                 :rules="[(v) => !!v]"
                 hide-details
@@ -49,19 +50,20 @@
           </v-menu>
         </v-col>
 
-        <v-col cols="12" md="8">
+        <v-col cols="12" md="6">
           <label for="name" :style="pTextColor">Фамилия <span>*</span></label>
           <v-text-field
             class="mt-2"
             v-model="last_name"
             placeholder="Фамилия"
             outlined
+            dense
             hide-details
             :rules="[(v) => !!v]"
           ></v-text-field>
         </v-col>
 
-        <v-col cols="12" md="8">
+        <v-col cols="12" md="6">
           <label for="name" :style="pTextColor"
             >Вид документа <span>*</span></label
           >
@@ -70,6 +72,7 @@
             item-text="name"
             item-value="id"
             class="mt-2"
+            dense
             hide-details
             :items="items"
             :rules="[(v) => !!v]"
@@ -77,20 +80,21 @@
             :style="pTextColor"
           ></v-select>
         </v-col>
-        <v-col cols="12" md="8">
+        <v-col cols="12" md="6">
           <label for="name" :style="pTextColor"
             >Номер документа <span>*</span></label
           >
           <v-text-field
             v-model="document_number"
             class="mt-2"
+            dense
             placeholder="Номер документа"
             outlined
             :rules="[(v) => !!v]"
             hide-details
           ></v-text-field>
         </v-col>
-        <v-col cols="12" md="8">
+        <v-col cols="12" md="6">
           <label for="name" :style="pTextColor"
             >Ваш номер телефона <span>*</span></label
           >
@@ -100,10 +104,11 @@
             placeholder="Тел"
             outlined
             :rules="[(v) => !!v]"
+            dense
             hide-details
           ></v-text-field>
         </v-col>
-        <v-col cols="12" md="8">
+        <v-col cols="12" md="6">
           <label for="name" :style="pTextColor"
             >Ваш e-mail <span>*</span></label
           >
@@ -111,12 +116,13 @@
             v-model="email"
             class="mt-2"
             placeholder="E-mail"
+            dense
             outlined
             :rules="[(v) => !!v]"
             hide-details
           ></v-text-field>
         </v-col>
-        <v-col cols="9" md="9">
+        <v-col cols="12">
           <label for="additional" :style="pTextColor"
             >Дополнительные пожелания</label
           >
@@ -129,7 +135,7 @@
         </v-col>
       </v-row>
       <v-btn
-        @click="showCard"
+        @click="showCardCheck = true"
         v-show="width < 768"
         color="primary"
         class="mb-8 showCardBtn"
@@ -139,17 +145,23 @@
         >Показать карточку</v-btn
       >
     </v-form>
+    <v-dialog v-model="showCardCheck" fullscreen hide-overlay>
+      <SideBox :orders="orders" @close="showCardCheck = false" />
+    </v-dialog>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import SideBox  from "@/components/side-box"
 export default {
   name: "AccForm",
   props: {
     ordercard: Array,
     submitaccbtnloading: Object,
-    accomodationsubmit: Function,
+    orders: Array
+  },
+  components: {
+    SideBox
   },
   data() {
     return {
@@ -157,6 +169,7 @@ export default {
       api_url: "",
       availableUsers: [],
       person: {},
+      showCardCheck: false, 
       items: [
         {
           id: "IC",
@@ -301,33 +314,6 @@ export default {
       let tmp = {};
       Object.assign(tmp, e);
       this.person = tmp;
-    },
-    sendData() {
-      if (!this.$refs.form.validate()) return;
-      this.submitaccbtnloading.ready = true;
-      this.person["id_card"] = this.person.document_number;
-      let data = {
-        clients: [this.person],
-        order_id: this.$route.query.id,
-      };
-
-      axios
-        .post(this.api_url + "/api/go2trip/v2/accommodation/book/", data)
-        .then((res) => {
-          this.submitaccbtnloading.ready = false;
-          this.context = res.context;
-          setTimeout(() => {
-            if (res.context) this.$refs.paymentForm.submit();
-          }, 1000);
-        })
-        .catch(() => {
-          this.submitaccbtnloading.ready = false;
-        });
-    },
-    back() {
-      this.$emit("change-form");
-      let datas = [];
-      localStorage.setItem("orders", JSON.stringify(datas));
     },
   },
 };

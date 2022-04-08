@@ -1,32 +1,8 @@
 <template>
-  <div id="app_widget" class="widget" @click="clickWidget">
-    <v-app
-      class="app_1"
-      v-if="width > 768"
-      style="background: #e7ecef !important ; border-radius: 10px !important ; padding: 5vw 10% !important ; width: 80% !important ;height: 40vh !important ; overflow-y: scroll !important ; display: inline-block !important ; box-sizing: content-box;"
-      :style="[
-        resultCheck || checkForm
-          ? { height: '80vh', 'background-color': background }
-          : { height: '40vh', 'background-color': background },
-      ]"
-    >
-      <div
-        style="display: flex !important ;position: relative !important ;transition:0.5s all ease !important ;"
-        :style="[
-          (width > 768 && resultCheck) || checkForm
-            ? { left: '-3%' }
-            : { left: '0%' },
-        ]"
-      >
-        <div
-          style="width: 48% !important ; display: flex !important ;transition: 0.5s all ease !important ;"
-          :style="[
-            (width > 768 && resultCheck) || checkForm
-              ? { width: '48%' }
-              : { width: '48%' },
-          ]"
-        >
-          <v-main style="width: 100% !important ;">
+  <div id="app_widget" class="widget">
+    <v-app class="ma-4 pa-4" :style="{ backgroundColor: background }" style="background: #e7ecef !important ; max-height: 90vh; border-radius: 5px !important ; padding: 5vw ; width: 100% !important;overflow-y: scroll !important ; display: inline-block !important ;">
+        <v-row v-if="status != 'reserved'" class="mb-4">
+          <v-col :cols="12" :md="5">
             <v-menu
               ref="menu"
               v-model="menu"
@@ -39,7 +15,6 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field
                   hide-details
-                  background-color="white"
                   v-model="dateRangeText"
                   prepend-inner-icon="mdi-calendar"
                   readonly
@@ -47,8 +22,7 @@
                   v-on="on"
                   dense
                   solo
-                  class="widget_datepicker"
-                  style="border-left: 1px solid #d1d1d1 !important ; width: 100% !important ;"
+                  height="44"
                 >
                 </v-text-field>
               </template>
@@ -59,467 +33,64 @@
                 v-model="filter.dates"
                 no-title
                 scrollable
-                class="widget_date_picker"
-                style="margin: 0 !important ;"
                 @input="closeModal"
               >
               </v-date-picker>
             </v-menu>
-          </v-main>
-        </div>
-
-        <div
-          id="widget_form"
-          class="widget_form"
-          :style="[
-            (width > 768 && resultCheck) || checkForm
-              ? { width: '52%', marginLeft: '2%' }
-              : { width: '52%', marginLeft: '2%' },
-          ]"
-        >
-          <img
-            id="widget_form_img"
-            style="margin-left: 1.5vw !important ;vertical-align: inherit;"
-            src="https://marketbot.abelsharman.kz/widget_go2trip/assets/user.png"
-            alt="user"
-          />
-          <span
-            id="widget_form_span"
-            style="margin-left: 0.5vw !important ;"
-            :style="pTextColor"
-            >{{ adult_count }} взрослых, {{ children_count }} детей</span
-          >
-        </div>
-      </div>
-
-      <div
-        id="widget_people"
-        class="widget_people"
-        style="width: 40% !important ;position: absolute !important ;background-color: white !important ;left: 51% !important ;top:45px !important ;animation: appearBlock 0.5s !important ; border-radius: 5px !important ; padding-left: 20px !important ; padding-top: 10px !important ; display: none !important ;"
-        :style="[
-          resultCheck || (checkForm && width > 768)
-            ? { left: '47%' }
-            : { left: '49%' },
-        ]"
-      >
-        <p :style="pTextColor">
-          Взрослых
-          <svg
-            :style="svgAccentColor"
-            @click="parentMinus"
-            id="widget_people_1"
-            style="cursor: pointer !important ;margin-left: 11px !important ;vertical-align: top !important ;width: 24px !important ;"
-            width="24"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-          >
-            <path
-              d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"
-            />
-          </svg>
-          <span style="margin-left: 11px !important ;">{{ adult_count }} </span>
-          <svg
-            :style="svgAccentColor"
-            @click="parentPlus"
-            id="widget_people_2"
-            style="margin-left: 10px !important ;vertical-align: top !important ;width: 24px !important ; cursor: pointer !important ;"
-            width="24"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-          >
-            <path
-              d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"
-            />
-          </svg>
-        </p>
-        <p :style="pTextColor">
-          Детей
-          <svg
-            :style="svgAccentColor"
-            @click="childMinus"
-            id="widget_people_3"
-            style="cursor: pointer !important ;margin-left: 11px !important ;vertical-align: top !important ;width: 24px !important ;"
-            width="24"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-          >
-            <path
-              d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"
-            />
-          </svg>
-          <span style="margin-left: 11px !important ;">{{
-            children_count
-          }}</span>
-          <svg
-            :style="svgAccentColor"
-            @click="childPlus"
-            id="widget_people_4"
-            style="margin-left: 10px !important ;vertical-align: top !important ;width: 24px !important ; cursor: pointer !important ;"
-            width="24"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-          >
-            <path
-              d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"
-            />
-          </svg>
-        </p>
-      </div>
-
-      <div
-        class="text-center"
-        v-show="width > 768"
-        style="margin-top: 13vh !important ; position: relative !important ; transition: 0.5s all ease !important ;left: 94% !important ; width: 10vw !important ;"
-        :style="[
-          resultCheck || (checkForm && width > 768)
-            ? { marginTop: '0vh', top: '-50px', left: '88% !important' }
-            : { marginTop: '13vh', top: '0px', left: '42% !important' },
-        ]"
-      >
-        <v-btn
-          class="widget_button_primary_color"
-          x-large
-          color="primary"
-          @click="goFromWidget"
-          :style="btnPrimary"
-          dark
-        >
-          Искать
-        </v-btn>
-      </div>
-
-      <div v-show="resultCheck">
-        <div
-          v-for="(item, index) in results"
-          :key="index"
-          id="categories"
-          class="boxes"
-        >
-          <AccBox
-            v-show="item.room_count"
-            class="web_acc_box"
-            :item="item"
-            :index="index"
-            :currentindex="currentIndex"
-            @change-form="changeForm"
-            @toggle="toggleOrderCard($event)"
-            @set-active="setActive"
-          />
-
-          <MobileAccBox
-            style="background-color: black !important ;"
-            class="mobile_acc_box"
-            v-show="item.room_count"
-            :item="item"
-            :index="index"
-            :currentindex="currentIndex"
-            @change-form="changeForm"
-            @toggle="toggleOrderCard($event)"
-            @set-active="setActive"
-          />
-        </div>
-      </div>
-
-      <v-container
-        class="main_card"
-        v-show="checkForm"
-        style="background-color: white !important ;width: 100% !important ;position: relative !important ;left: 0% !important ;padding: 2% 5% !important ;"
-      >
-        <AccForm
-          ref="accform"
-          :submitaccbtnloading="submitAccBtnloading"
-          :accomodationsubmit="accomodationSubmit"
-          :ordercard="orderCard"
-          @change-form="changeForm"
-          @success="success"
-        />
-
-        <SideBox
-          :accomodationsubmit="accomodationSubmit"
-          @refresh-page="refreshPage"
-          @toggle="toggleOrderCard($event)"
-          :ordercard="orderCard"
-          :submitaccbtnloading="submitAccBtnloading"
-        />
-      </v-container>
-    </v-app>
-
-    <v-app
-      class="app_1"
-      v-if="width <= 768"
-      style="transition: all 0.5s ease !important ;background: #e7ecef !important ; border-radius: 10px !important ; padding: 5vw 10% !important ; width: 100% !important ;height: 40vh !important ; overflow-y: scroll !important ; display: inline-block !important ;"
-      :style="[
-        resultCheck || checkForm
-          ? {
-              height: '90vh',
-              padding: '5vw 2%',
-              'background-color': background,
-            }
-          : {
-              height: '40vh',
-              padding: '5vw 10%',
-              'background-color': background,
-            },
-      ]"
-    >
-      <div style="display: flex !important ;position: relative !important ;">
-        <div
-          style="width: 35vw !important ; display: flex !important ;transition: 0.5s all ease !important ;"
-          :style="[
-            (width > 768 && resultCheck) || checkForm
-              ? { width: '37vw' }
-              : { width: '37vw' },
-          ]"
-        >
-          <v-main style="width: 100% !important ;">
-            <v-menu
-              ref="menu"
-              v-model="menu"
-              :close-on-content-click="false"
-              transition="scale-transition"
-              offset-y
-              min-width="auto"
-              :nudge-top="22"
+          </v-col>
+          <v-col :cols="12" :md="5">
+            <peopleCount :model="filter" />
+          </v-col>
+          <v-col :cols="12" :md="2" style="display:flex;justify-content:center"><v-btn height="44" style="width:90%;" :loading="loading" @click="goFromWidget" :style="btnPrimary">Искать</v-btn></v-col>
+        </v-row>
+        <v-row v-if="status == 'searched' && results.length > 0">
+          <v-col cols="9"></v-col>
+          <v-col cols="12" md="3">
+            <v-btn style="float: right;position:sticky;top: 70px;right: 0px;z-index:4;width:100%" :style="btnPrimary" :loading="loading" @click="reserve"
+              >Забронировать</v-btn
             >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  hide-details
-                  background-color="white"
-                  v-model="dateRangeText"
-                  readonly
-                  v-bind="attrs"
-                  v-on="on"
-                  dense
-                  solo
-                  class="widget_datepicker"
-                  style="border-left: 1px solid #d1d1d1 !important ; width: 100% !important ; font-size: 2.61vw  !important ;"
-                >
-                </v-text-field>
-              </template>
-              <v-date-picker
-                :first-day-of-week="1"
-                :allowed-dates="allowedDates"
-                range
-                v-model="filter.dates"
-                no-title
-                scrollable
-                style="margin: 0 !important ;"
-                @input="closeModal"
-              >
-              </v-date-picker>
-            </v-menu>
-          </v-main>
+          </v-col>
+        </v-row>
+        <div v-if="status == 'searched'">
+          <div
+            v-for="(item, index) in results"
+            :key="index"
+            id="categories"
+            class="boxes"
+          >
+            <AccBox
+              v-show="item.room_count"
+              class="web_acc_box"
+              :item="item"
+            />
+
+            <MobileAccBox
+              style="background-color: black !important ;"
+              class="mobile_acc_box"
+              v-show="item.room_count"
+              :item="item"
+            />
+          </div>
         </div>
-
-        <div
-          id="widget_form"
-          class="widget_form"
-          :style="[
-            (width > 768 && resultCheck) || checkForm
-              ? { width: '33vw', marginLeft: '0.5vw' }
-              : { width: '33vw', marginLeft: '1vw' },
-          ]"
-        >
-          <img
-            id="widget_form_img"
-            style="margin-left: 1.5vw !important ;vertical-align: inherit;;width: 3.5vw !important ;"
-            src="https://marketbot.abelsharman.kz/widget_go2trip/assets/user.png"
-            alt="user"
-          />
-          <span
-            id="widget_form_span"
-            style="margin-left: 0.5vw !important ;"
-            :style="pTextColor"
-            >{{ adult_count }} взрослых, {{ children_count }} детей</span
-          >
+        <div v-if="status == 'reserved'">
+          <AccForm v-if="!mobileCheck || (mobileCheck && mobileShowCardCheck == 'form')" :orders="orders" @back="backToSearch" @open="mobileShowCardCheck = 'card'" />
+          <SideBox v-if="!mobileCheck" :orders="orders" />
         </div>
-      </div>
-
-      <div
-        id="widget_people"
-        class="widget_people"
-        style="display: none !important ;width: 50vw !important ;position: absolute !important ;background-color: white !important ;left: 45% !important ;top: 39px !important ;animation: appearBlock 0.5s !important ; border-radius: 5px !important ; padding-left: 20px !important ; padding-top: 10px !important ; font-size: 2.9vw !important ;"
-      >
-        <p :style="pTextColor">
-          Взрослых
-          <svg
-            :style="svgAccentColor"
-            @click="parentMinus"
-            id="widget_people_1"
-            style="cursor: pointer !important ;margin-left: 11px !important ;vertical-align: top !important ;width: 24px !important ;"
-            width="24"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-          >
-            <path
-              d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"
-            />
-          </svg>
-          <span style="margin-left: 11px !important ;">{{ adult_count }} </span>
-          <svg
-            :style="svgAccentColor"
-            @click="parentPlus"
-            id="widget_people_2"
-            style="margin-left: 10px !important ;vertical-align: top !important ;width: 24px !important ; cursor: pointer !important ;"
-            width="24"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-          >
-            <path
-              d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"
-            />
-          </svg>
-        </p>
-        <p :style="pTextColor">
-          Детей
-          <svg
-            :style="svgAccentColor"
-            @click="childMinus"
-            id="widget_people_3"
-            style="cursor: pointer !important ;margin-left: 11px !important ;vertical-align: top !important ;width: 24px !important ;"
-            width="24"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-          >
-            <path
-              d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"
-            />
-          </svg>
-          <span style="margin-left: 11px !important ;">{{
-            children_count
-          }}</span>
-          <svg
-            :style="svgAccentColor"
-            @click="childPlus"
-            id="widget_people_4"
-            style="margin-left: 10px !important ;vertical-align: top !important ;width: 24px !important ; cursor: pointer !important ;"
-            width="24"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-          >
-            <path
-              d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"
-            />
-          </svg>
-        </p>
-      </div>
-
-      <div
-        class="text-center"
-        style="margin-top: 13vh !important ; position: relative !important ; transition: 0.5s all ease !important ;left: 94% !important ; width: 10vw !important ;"
-        :style="[
-          resultCheck || checkForm
-            ? { marginTop: '0vh', top: '-39px', left: '75% !important' }
-            : { marginTop: '13vh', top: '0px', left: '35% !important' },
-        ]"
-      >
-        <v-btn
-          class="widget_button_primary_color"
-          style="width: 25vw !important ;"
-          color="primary"
-          :style="btnPrimary"
-          @click="goFromWidget"
-          dark
-        >
-          Искать
-        </v-btn>
-      </div>
-
-      <div v-show="resultCheck">
-        <div
-          v-for="(item, index) in results"
-          :key="index"
-          id="categories"
-          class="boxes"
-        >
-          <AccBox
-            v-show="item.room_count"
-            class="web_acc_box"
-            :item="item"
-            :index="index"
-            :currentindex="currentIndex"
-            @change-form="changeForm"
-            @toggle="toggleOrderCard($event)"
-            @set-active="setActive"
-          />
-
-          <MobileAccBox
-            style="background-color: black !important ;"
-            class="mobile_acc_box"
-            v-show="item.room_count"
-            :item="item"
-            :index="index"
-            :currentindex="currentIndex"
-            @change-form="changeForm"
-            @toggle="toggleOrderCard($event)"
-            @set-active="setActive"
-          />
-        </div>
-      </div>
-
-      <v-container
-        class="main_card"
-        v-show="checkForm"
-        style="background-color: rgb(231, 236, 239) !important ;width: 110% !important ;position: relative !important ;left: -5% !important ;padding: 2% 5% !important ;"
-        :style="divBackground"
-      >
-        <AccForm
-          ref="accform"
-          :style="divBackground"
-          :submitaccbtnloading="submitAccBtnloading"
-          :accomodationsubmit="accomodationSubmit"
-          :ordercard="orderCard"
-          @change-form="changeForm"
-          @change-detail="toggleDetailCard"
-          @success="success"
-        />
-
-        <v-dialog v-model="detailCard" fullscreen hide-overlay>
-          <img
-            src="https://marketbot.abelsharman.kz/widget_go2trip/assets/close.png"
-            @click="toggleDetailCard"
-            class="closeMobileCard"
-          />
-          <SideBox
-            :accomodationsubmit="accomodationSubmit"
-            @refresh-page="refreshPage"
-            :ordercard="orderCard"
-            :submitaccbtnloading="submitAccBtnloading"
-          />
-        </v-dialog>
-      </v-container>
     </v-app>
-
     <router-view />
+    <VueNotification />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import moment from "moment";
-import axios from "axios";
 import Vuetify from "vuetify";
 import AccBox from "@/components/acc-box.vue";
 import AccForm from "@/components/acc-form.vue";
 import SideBox from "@/components/side-box.vue";
 import MobileAccBox from "@/components/mobile-acc-box.vue";
-
+import peopleCount from "@/components/peopleCount"
+import VueNotification from "@/components/vueNotification.vue";
 export default {
   name: "App",
   components: {
@@ -527,48 +98,75 @@ export default {
     AccForm,
     SideBox,
     MobileAccBox,
+    peopleCount,
+    VueNotification
   },
-  vuetify: new Vuetify(),
+  vuetify: new Vuetify({
+    theme: {
+    themes: {
+      light: {
+        primary: localStorage.getItem("primary"),
+        secondary: localStorage.getItem("accent"),
+        accent: '#8c9eff',
+        error: '#b71c1c',
+      },
+    },
+  },
+  }),
   data() {
     return {
       menu: false,
+      mobileShowCardCheck: '', 
+      mobileCheck: false, 
       api_url: "",
       filter: {
         dates: [
           new Date().toISOString().substr(0, 10),
           new Date().toISOString().substr(0, 10),
         ],
-        checkout_time: new Date().toISOString().substr(0, 10),
+        adult: 1,
+        child: 0,
+      },
+      status: '',
+      orders: [{
+        calculated_by: {
+          adult_price: 500,
+          advance_booking: 150,
+          calculation_type: "Тариф",
+          child_price: 0,
+          child_without_place: 0,
+          days: 1,
+          early_check_in: 0,
+          first_day_price: 1500,
+          last_day_price: 1500,
+          late_check_out: 0,
+          price: 1500,
+          services: [],
+          total: 1350,
+        },
+        accommodation_type: "rest_zone",
         adult_count: 1,
-        children_count: 0,
-      },
-      luckyDate: new Date().toISOString().substr(0, 10),
-      tabModel: 0,
-      directionState: "twoway",
-      adult_count: 1,
-      children_count: 0,
-      currentIndex: 0,
+        booking_id: 877,
+        category_name: "2х местный",
+        check_in: "1651219200",
+        check_out: "1651298400",
+        child_count: 0,
+        city: "Алматы",
+        hotel: "test@test.kz",
+        location: "Капшагай",
+        main_adult_count: 2,
+        main_child_count: 0,
+        main_image: null,
+        room_name: "Room1_ 4",
+      }], 
       results: [],
-      resultCheck: false,
-      submitAccBtnloading: {
-        ready: false,
-      },
-      checkForm: false,
-      orderCard: [],
-      width: window.innerWidth,
-      detailCard: false,
+      loading: false, 
       accent_color: localStorage.getItem("accent"),
       background: localStorage.getItem("background"),
       primary_1: localStorage.getItem("primary"),
       text_button: localStorage.getItem("text_button"),
       text: localStorage.getItem("text"),
     };
-  },
-  mounted() {
-    this.api_url = localStorage.getItem("api_url");
-    this.$vuetify.lang.current = "ru";
-    let datas = [];
-    localStorage.setItem("orders", JSON.stringify(datas));
   },
   computed: {
     pTextColor() {
@@ -603,128 +201,120 @@ export default {
       ).format("DD.MM.YYYY")}`;
     },
   },
+  watch: {
+    menu() {
+      if (this.filter.dates[0] > this.filter.dates[1]) {
+        this.filter.dates.reverse();
+      }
+    },
+  },
+  mounted() {
+    this.api_url = localStorage.getItem("api_url");
+    this.$vuetify.lang.current = "ru";
+    let datas = [];
+    localStorage.setItem("orders", JSON.stringify(datas));
+    if(window.innerWidth < 500) {
+      this.mobileShowCardCheck = 'form'
+      this.mobileCheck = true
+    }
+  },
   methods: {
-    toggleDetailCard() {
-      this.detailCard = !this.detailCard;
+    backToSearch(){
+      this.orders = []
+      this.goFromWidget()
+      this.status = 'searched'
     },
-    toggleOrderCard(x) {
-      this.orderCard = x;
-      console.log(this.orderCard, this.orderCard.length);
-    },
-    refreshPage() {
-      location.reload();
-    },
-    changeForm() {
-      let id = localStorage.getItem("id_company");
-      axios
-        .get(
-          this.api_url +
-            "/api/booking-module/categories/" +
-            id +
-            "/?start=" +
-            this.filter.dates[0] +
-            "&end=" +
-            this.filter.dates[1] +
-            "&count=" +
-            this.adult_count +
-            "&child_count=" +
-            this.children_count +
-            "&page[number]=1&page[size]=10&type=2&id=NA&directions=2"
-        )
-        .then((res) => {
-          if (res) {
-            this.results = res.data;
-            this.checkForm = !this.checkForm;
-            this.resultCheck = !this.resultCheck;
-          } else {
-            console.log("error on fetching lists of rooms");
-          }
+    async reserve(){
+      let body = {
+        check_in: this.filter.dates[0] + " " + this.results[0].check_in_time,
+        check_out: this.filter.dates[1] + " " + this.results[0].check_out_time,
+        tour_operator: null, 
+        chosen_rooms: [],
+        discounts: []
+      };
+      this.results.forEach((e) => {
+        if (e.is_added) {
+          e.counts.forEach((j) => {
+            body.chosen_rooms.push({
+              category: e.id,
+              rooms: 1,
+              adult_count: j.adult,
+              child_count: j.child,
+            });
+          });
+        }
+      });
+      if(body.chosen_rooms.length == 0) {
+        this.$store.commit("SET_NOTIFICATION", {
+          show: true,
+          message: "Выберите номер!",
+          color: "#c54949",
         });
+        return
+      }
+      this.loading = true
+      try{
+        let res = await window.axios.post(`${this.api_url}/api/v2/widget/reserve/`, body)
+        this.orders = res.data.orders
+        this.status = 'reserved'
+      }
+      finally{
+        this.loading = false
+      }
     },
-    success() {
-      this.dialog = true;
-    },
-    accomodationSubmit() {
-      this.$refs.accform.sendData();
-    },
-    setActive(idx) {
-      this.currentIndex = idx;
-    },
-    goFromWidget() {
+    async goFromWidget() {
+      if(this.filter.dates.length < 2) {
+        this.$store.commit("SET_NOTIFICATION", {
+          show: true,
+          message: "Выберите даты!",
+          color: "#c54949",
+        });
+        return
+      }
       localStorage.setItem("adult_count", this.adult_count);
-      localStorage.setItem("children_count", this.children_count);
-      localStorage.setItem("date_form", this.filter.dates[0]);
-      localStorage.setItem("date_to", this.filter.dates[1]);
+      localStorage.setItem("child_count", this.children_count);
+      localStorage.setItem("start", this.filter.dates[0]);
+      localStorage.setItem("end", this.filter.dates[1]);
       let id = localStorage.getItem("id_company");
-      //console.log(localStorage.adult_count, localStorage.children_count, localStorage.date_form, localStorage.date_to)
-      // http://185.121.81.239/api/go2trip/v2/accommodation/zone/categories/4/?start=2021-06-10&end=2021-06-11&count=1&child_count=0&type=2&id=4&directions=2&page[number]=1&page[size]=5/api/go2trip/v2/accommodation/zone/categories/4/?start=2021-06-10&end=2021-06-11&count=1&child_count=0&type=2&id=4&directions=2&page[number]=1&page[size]=5
-      axios
-        .get(
-          this.api_url +
-            "/api/booking-module/categories/" +
-            id +
-            "/?start=" +
-            this.filter.dates[0] +
-            "&end=" +
-            this.filter.dates[1] +
-            "&count=" +
-            this.adult_count +
-            "&child_count=" +
-            this.children_count +
-            "&page[number]=1&page[size]=10&type=2&id=NA&directions=2"
-        )
-        .then((res) => {
-          if (res) {
-            if (res.data.length > 0) {
-              this.results = res.data;
-              this.resultCheck = true;
-              this.checkForm = false;
-            } else {
-              alert("Нет свободных номеров. Пожалуйста выберите другие даты.");
-            }
-          } else {
-            console.log("error on fetching lists of rooms");
-          }
-        });
-    },
-    clickWidget(event) {
-      let widget = document.querySelector("#widget_people").style.display;
-      if (
-        event.target.id == "widget_form" ||
-        event.target.id == "widget_form_span" ||
-        event.target.id == "widget_form_img"
-      ) {
-        if (widget == "block") {
-          document.querySelector("#widget_people").style.display = "none";
+      let params = {
+        start: this.filter.dates[0],
+        end: this.filter.dates[1],
+        adult_count: this.filter.adult, 
+        child_count: this.filter.child,
+        'page[number]': 1, 
+        'page[size]': 10
+      }      
+      this.loading = true
+      try{
+        let res = await window.axios.get(`${this.api_url}/api/v2/widget/category-list/${id}/`, {params})
+        if (res && res.data && res.data.results.length > 0) {
+          res.data.results.forEach((e) => {
+            e.count = 1;
+            if (!e.room_count) e.count = 0;
+            e.adult = 0;
+            e.child = 0;
+            e.counts = [
+              {
+                adult: 0,
+                child: 0,
+              },
+            ];
+          });
+          this.results = res.data.results;
+          this.status = 'searched'
+          this.loading = false
         } else {
-          document.querySelector("#widget_people").style.display = "block";
-        }
-      } else if (
-        event.target.id != "widget_people_2" &&
-        event.target.id != "widget_people_3" &&
-        event.target.id != "widget_people_4" &&
-        event.target.id != "widget_people_1"
-      ) {
-        if (widget == "block") {
-          document.querySelector("#widget_people").style.display = "none";
+          this.$store.commit("SET_NOTIFICATION", {
+            show: true,
+            message: "Нет свободных номеров. Пожалуйста выберите другие даты!",
+            color: "#c54949",
+          });
+          this.loading = false
         }
       }
-    },
-    parentMinus() {
-      if (this.adult_count != 1) {
-        this.adult_count--;
+      finally {
+        this.loading = false
       }
-    },
-    parentPlus() {
-      this.adult_count++;
-    },
-    childMinus() {
-      if (this.children_count != 0) {
-        this.children_count--;
-      }
-    },
-    childPlus() {
-      this.children_count++;
     },
     closeModal() {
       if (this.filter.dates.length == 2) {
@@ -733,44 +323,45 @@ export default {
     },
     allowedDates: (val) => val >= new Date().toISOString().substr(0, 10),
   },
-  watch: {
-    tabModel() {
-      if (this.tabModel) {
-        this.luckyDate &&= this.luckyDate[0];
-      } else {
-        this.luckyDate = "";
-      }
-    },
-    menu() {
-      if (this.filter.dates[0] > this.filter.dates[1]) {
-        this.filter.dates.reverse();
-      }
-    },
-  },
 };
 </script>
 
-<style>
+<style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 
 #app_widget th,
 td {
   border: 0px;
 }
-.widget input {
-  margin-bottom: 0px !important;
-  padding: 0px !important;
-  transition: none !important;
-  box-shadow: none !important;
+
+#app_widget .row {
+  flex: none;
 }
-.widget .hidden {
-  display: block !important;
+#app_widget {
+  .v-application--wrap{
+    min-height: 20vh !important;
+  }
 }
-.widget .v-btn.v-size--x-large {
-  font-size: 15px !important;
+#app_widget ::-webkit-scrollbar-track
+{
+  box-shadow: inset 0 0 6px red;
+	-webkit-box-shadow: inset 0 0 6px red;
+	border-radius: 10px;
+	background-color: #F5F5F5;
 }
-.widget .v-card {
-  max-width: 91% !important;
+
+#app_widget ::-webkit-scrollbar
+{
+    height: 2px;
+	width: 2px;
+	background-color: #F5F5F5;
+}
+#app_widget ::-webkit-scrollbar-track
+{
+  box-shadow: inset 0 0 6px lightgray;
+	-webkit-box-shadow: inset 0 0 6px lightgray;
+	border-radius: 10px;
+	background-color: #F5F5F5;
 }
 .widget h1 {
   padding-bottom: 0px !important;
@@ -783,9 +374,6 @@ td {
 .widget th,
 td,
 button {
-  padding: 0px !important;
-}
-.v-date-picker-table .v-btn {
   padding: 0px !important;
 }
 .v-date-picker-table td,
@@ -806,6 +394,7 @@ button {
   display: inline-block !important ;
   font-family: "Roboto", sans-serif !important ;
   text-align: left !important ;
+  border-radius: 5px !important ;
 }
 .widget_form {
   transition: 0.5s all ease !important ;
@@ -859,10 +448,6 @@ button {
   to {
     opacity: 1 !important ;
   }
-}
-
-.widget_datepicker div div {
-  display: flex !important ;
 }
 
 .boxes {
@@ -1263,8 +848,8 @@ button {
   }
 
   .widget {
-    margin: 5vw 0vw !important ;
-    width: 100vw !important ;
+    margin: 5vw !important ;
+    width: 85vw !important ;
   }
   .mobile_acc_box {
     display: unset !important ;
@@ -2402,26 +1987,27 @@ button {
 
 .main_form {
   width: 100% !important ;
-  max-width: 45% !important ;
+  max-width: 47% !important ;
   display: inline-block !important ;
   vertical-align: top !important ;
   margin-top: 2vh !important ;
+  margin-right: 3%;
 }
 
 .main_form h1 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
-  font-size: 1.127vw !important ; /*22px !important ;*/
+  font-size: 1.027vw !important ; /*22px !important ;*/
   line-height: 1.805vw !important ; /* 26px !important ; */
   text-transform: uppercase !important ;
   color: #001239 !important ;
   margin-bottom: 30px !important ;
 }
 .main_form_img {
-  vertical-align: bottom;
+  vertical-align: middle;
   width: 20px !important ;
   position: relative !important ;
-  top: 0px !important ;
+  top: -1px !important ;
   margin-right: 10px !important ;
   background-color: lightgrey !important ;
   border-radius: 25px !important ;
@@ -2475,28 +2061,25 @@ label span {
   color: #ff7f51 !important ;
 }
 
-input {
-  /* width: 100% !important ; */
-  /* height: 50px !important ;
-	padding-left: 20px !important ; */
+/* input {
   outline: none;
   border: 1px solid #bbc2d0;
   box-sizing: border-box;
   border-radius: 4px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 1.01vw; /* 16px */
-  line-height: 1.31vw; /* 19px !important ; */
+  font-size: 1.01vw;
+  line-height: 1.31vw; 
   color: #001239;
-}
+} */
 
-::placeholder {
+/* ::placeholder {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
-  font-size: 1.01vw !important ; /* 16px */
-  line-height: 1.31vw !important ; /* 19px !important ; */
+  font-size: 1.01vw !important ; 
+  line-height: 1.31vw !important ; 
   color: #e9e9e9 !important ;
-}
+} */
 
 .showCardBtn {
   display: none !important ;
@@ -2514,10 +2097,9 @@ input {
   }
 
   .main_form h1 {
-    font-size: 17px !important ; /* 1.180vw */
+    font-size: 3.5vw !important ; /* 1.180vw */
     line-height: 20px !important ; /* 1.388vw !important ; */
     margin-bottom: 18px !important ;
-    text-align: center !important ;
   }
 
   .main_form h5 {
@@ -2534,23 +2116,20 @@ input {
   label {
     font-family: "Roboto", sans-serif !important ;
     font-weight: 400 !important ;
-    font-size: 16px !important ; /* 1.11vw !important ; */
-    line-height: 19px !important ; /* 1.31vw !important ; */
+    font-size: 16px !important ; 
+    line-height: 19px !important ; 
     color: #001239 !important ;
     margin-bottom: 6px !important ;
   }
   input {
-    /* width: 100% !important ; */
-    /* height: 50px !important ;
-		padding-left: 20px !important ; */
     outline: none !important ;
     border: 0px solid #bbc2d0 !important ;
     box-sizing: border-box !important ;
     border-radius: 4px !important ;
     font-family: "Roboto", sans-serif !important ;
     font-weight: 400 !important ;
-    font-size: 2.6vw !important ; /* 1.11vw !important ; */
-    line-height: 19px !important ; /* 1.31vw !important ; !important ; */
+    font-size: 3.6vw !important ; 
+    line-height: 19px !important ;
     color: #001239 !important ;
   }
   input[type="checkbox"] {
@@ -2560,8 +2139,8 @@ input {
   ::placeholder {
     font-family: "Roboto", sans-serif !important ;
     font-weight: 400 !important ;
-    font-size: 16px !important ; /* 1.11vw !important ; */
-    line-height: 19px !important ; /* 1.31vw !important ; !important ; */
+    font-size: 16px !important ; 
+    line-height: 19px !important ; 
     color: #e9e9e9 !important ;
   }
 }
@@ -2587,7 +2166,9 @@ input {
 
 .disabled {
   opacity: 0.5 !important ;
-  cursor: default !important ;
+  cursor: none !important ;
+  pointer-events: none;
+  touch-action: none;
 }
 
 .disabled:hover {
@@ -2615,6 +2196,8 @@ input {
 .box {
   position: relative !important ;
   padding-bottom: 20px !important ;
+
+
   margin-bottom: 20px !important ;
 }
 
@@ -2635,6 +2218,9 @@ input {
   text-transform: uppercase !important ;
   color: #001239 !important ;
   margin-bottom: 20px !important ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .box__header {
@@ -2676,7 +2262,7 @@ input {
   font-size: 1.01vw !important ; /* 16px */
   line-height: 1.31vw !important ; /* 19px !important ; */
   color: #001239 !important ;
-  margin-bottom: 10px !important ;
+  margin: 10px 0;
 }
 
 .box__header .descr__loc {
@@ -2688,7 +2274,7 @@ input {
   font-size: 1.01vw !important ; /* 16px */
   line-height: 1.31vw !important ; /* 19px !important ; */
   color: #001239 !important ;
-  margin-bottom: 9px !important ;
+  margin: 7px 0
 }
 
 .box__header .descr__loc img {
@@ -2734,6 +2320,7 @@ input {
   line-height: 1.31vw !important ; /* 19px !important ; */
   color: #001239 !important ;
   margin-bottom: 11px !important ;
+  margin-top: 5px;
 }
 
 .dates p:last-of-type {
@@ -2775,34 +2362,6 @@ input {
   cursor: pointer !important ;
 }
 
-.additional_service {
-  padding-bottom: 20px !important ;
-  margin-bottom: 20px !important ;
-  border-bottom: 1px solid #e6e6e6 !important ;
-}
-
-.additional_service h2 {
-  font-size: 1.01vw !important ; /* 16px */
-  line-height: 1.31vw !important ; /* 19px !important ; */
-  text-transform: uppercase !important ;
-  color: #001239 !important ;
-  margin-bottom: 20px !important ;
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 500 !important ;
-}
-
-.additional_service p {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  font-size: 1.01vw !important ; /* 16px */
-  line-height: 1.31vw !important ; /* 19px !important ; */
-  color: #001239 !important ;
-  margin-bottom: 12px !important ;
-}
-
-.additional_service p:last-of-type {
-  margin-bottom: 0 !important ;
-}
 
 .price div {
   display: block;
@@ -2873,12 +2432,6 @@ input {
   text-transform: none !important ;
   letter-spacing: normal !important ;
 }
-.v-input__slot {
-  min-height: 45px !important ;
-}
-.v-input__icon {
-  height: 10px !important ;
-}
 .sum_up button svg {
   margin-right: 10px !important ;
 }
@@ -2888,204 +2441,6 @@ input {
   top: 24px !important ;
   right: 24px !important ;
   cursor: pointer !important ;
-}
-
-.services_pop {
-  position: relative !important ;
-  padding: 52px 50px 49px 50px !important ;
-  background: #ffffff !important ;
-  border-radius: 5px !important ;
-}
-
-.services_pop h2 {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 500 !important ;
-  font-size: 1.705vw !important ; /* 26px */
-  line-height: 2.083vw !important ; /* 30px !important ; */
-  color: #001239 !important ;
-  margin-bottom: 28px !important ;
-}
-
-.services_pop .single_service {
-  display: flex !important ;
-  align-items: center !important ;
-  justify-content: space-between !important ;
-  width: 100% !important ;
-  border-bottom: 1px solid #e9e9e9 !important ;
-  margin-bottom: 16px !important ;
-}
-
-.services_pop .single_service:last-of-type {
-  margin-bottom: 0 !important ;
-}
-
-.services_pop__title h3 {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  font-size: 1.288vw !important ; /* 20px */
-  line-height: 1.59vw !important ; /* 23px !important ; */
-  color: #001239 !important ;
-  margin-bottom: 6px !important ;
-}
-
-.services_pop__title p {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  font-size: 0.872vw !important ; /* 14px */
-  line-height: 1.11vw !important ; /* 16px !important ; */
-  color: rgba(0, 18, 57, 0.3) !important ;
-}
-
-.services_pop .actions {
-  display: grid !important ;
-  grid-template-columns: 1fr 90px 140px !important ;
-  grid-column-gap: 20px !important ;
-  align-items: center !important ;
-  justify-content: end !important ;
-}
-
-.services_pop .actions__price h1 {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 700 !important ;
-  font-size: 1.288vw !important ; /* 20px */
-  line-height: 1.59vw !important ; /* 23px !important ; */
-  text-align: right !important ;
-  color: #ff7f51 !important ;
-  margin-bottom: 4px !important ;
-}
-
-.services_pop .actions__price h5 {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 700 !important ;
-  font-size: 1.01vw !important ; /* 16px */
-  line-height: 1.31vw !important ; /* 19px !important ; */
-  color: #bab8b8 !important ;
-  margin: 0 !important ;
-}
-
-.services_pop .actions__count {
-  display: flex !important ;
-  align-items: center !important ;
-  justify-content: space-between !important ;
-}
-
-.services_pop .actions__count img {
-  cursor: pointer !important ;
-}
-
-.services_pop .actions__count p {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 700 !important ;
-  font-size: 1.288vw !important ; /* 20px */
-  line-height: 1.59vw !important ; /* 23px !important ; */
-  color: #001239 !important ;
-  margin: 0 !important ;
-}
-
-.services_pop .actions button {
-  border: 1px solid #ff7f51 !important ;
-  box-sizing: border-box !important ;
-  filter: drop-shadow(0px 10px 20px rgba(82, 177, 186, 0.25)) !important ;
-  border-radius: 5px !important ;
-  height: 44px !important ;
-  width: 100% !important ;
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 700 !important ;
-  font-size: 1.01vw !important ; /* 16px */
-  line-height: 1.31vw !important ; /* 19px !important ; */
-  color: #fff !important ;
-  text-transform: none !important ;
-  letter-spacing: normal !important ;
-}
-
-.change_time {
-  position: relative !important ;
-  padding: 54px 50px 30px 50px !important ;
-  background: #ffffff !important ;
-  border-radius: 5px !important ;
-}
-
-.change_time h1 {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 500 !important ;
-  font-size: 1.705vw !important ; /* 26px */
-  line-height: 2.083vw !important ; /* 30px !important ; */
-  color: #001239 !important ;
-  margin-bottom: 20px !important ;
-}
-
-.change_time p {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  font-size: 1.01vw !important ; /* 16px */
-  line-height: 1.31vw !important ; /* 19px !important ; */
-  color: #001239 !important ;
-  opacity: 0.5 !important ;
-  margin-bottom: 30px !important ;
-}
-
-.change_time label {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  font-size: 1.01vw !important ; /* 16px */
-  line-height: 1.31vw !important ; /* 19px !important ; */
-  color: #001239 !important ;
-  margin-bottom: 6px !important ;
-}
-
-.change_time input {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  width: 100% !important ;
-  height: 50px !important ;
-  padding-left: 20px !important ;
-  border: 1px solid #bbc2d0 !important ;
-  border-radius: 4px !important ;
-  font-size: 1.01vw !important ; /* 16px */
-  line-height: 1.31vw !important ; /* 19px !important ; */
-  color: #001239 !important ;
-  margin-bottom: 20px !important ;
-}
-
-.change_time input:last-of-type {
-  margin-bottom: 0 !important ;
-}
-
-.change_time button {
-  margin-top: 30px !important ;
-  background: #ff7f51 !important ;
-  border-radius: 4px !important ;
-  font-size: 1.01vw !important ; /* 16px */
-  line-height: 1.31vw !important ; /* 19px !important ; */
-  color: #ffffff !important ;
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 500 !important ;
-  transition: 0.22s !important ;
-  width: 100% !important ;
-  height: 56px !important ;
-}
-
-.change_time button:hover {
-  color: #ff7f51 !important ;
-  background: #fff !important ;
-}
-
-.partial_payment h2 {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 500 !important ;
-  font-size: 1.5666vw !important ; /* 24px */
-  line-height: 1.944vw !important ; /* 28px !important ; */
-  color: #ff7f51 !important ;
-}
-
-.partial_payment p {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  font-size: 0.733vw !important ; /* 12px */
-  line-height: 0.972vw !important ; /* 14px !important ; */
-  color: #001239 !important ;
-  margin-top: 6px !important ;
-  margin-bottom: 0 !important ;
 }
 
 .box_links {
@@ -3119,6 +2474,7 @@ input {
     margin-left: 0vw !important ;
     width: 100vw !important ;
     padding: 2.5vw !important ;
+    min-height: 100vh !important;
   }
 
   .text--white {
