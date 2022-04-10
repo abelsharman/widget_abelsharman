@@ -217,6 +217,10 @@ export default {
       this.mobileShowCardCheck = 'form'
       this.mobileCheck = true
     }
+    let link = document.createElement('link')
+    link.href = 'https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css'
+    link.rel = 'stylesheet'
+    document.body.append(link)
   },
   methods: {
     backToSearch(){
@@ -339,7 +343,7 @@ td {
 }
 #app_widget {
   .v-application--wrap{
-    min-height: 20vh !important;
+    min-height: 30vh !important;
   }
 }
 #app_widget ::-webkit-scrollbar-track
