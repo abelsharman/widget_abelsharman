@@ -1,6 +1,6 @@
 <template>
   <div id="app_widget" class="widget">
-    <v-app class="ma-4 pa-4" :style="{ backgroundColor: background }" style="background: #e7ecef !important ; max-height: 90vh; border-radius: 5px !important ; padding: 5vw ; width: 100% !important;overflow-y: scroll !important ; display: inline-block !important ;">
+    <v-app class="ma-4 pa-4 app_widget_main" :style="{ backgroundColor: background }" style="">
         <v-row v-if="status != 'reserved'" class="mb-4">
           <v-col :cols="12" :md="5">
             <v-menu
@@ -333,11 +333,18 @@ export default {
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 
-#app_widget th,
-td {
+#app_widget th, td {
   border: 0px;
 }
-
+#app_widget .app_widget_main{
+  background: #e7ecef; 
+  max-height: 90vh; 
+  border-radius: 5px !important; 
+  padding: 5vw; 
+  width: 100% !important;
+  overflow-y: scroll !important; 
+  display: inline-block !important;
+}
 #app_widget .row {
   flex: none;
 }
@@ -367,21 +374,18 @@ td {
 	border-radius: 10px;
 	background-color: #F5F5F5;
 }
-.widget h1 {
+#app_widget h1 {
   padding-bottom: 0px !important;
 }
-.widget label {
+#app_widget label {
   text-transform: capitalize !important;
   margin-top: 0px !important;
   position: relative !important;
 }
-.widget th,
-td,
-button {
+#app_widget th, td, button {
   padding: 0px !important;
 }
-.v-date-picker-table td,
-.v-date-picker-table th {
+#app_widget .v-date-picker-table td, .v-date-picker-table th {
   border: 0px !important;
   padding: 0px !important;
 }
@@ -389,7 +393,7 @@ button {
   background-color: transparent !important ;
   border-color: transparent !important ;
 }
-.widget {
+#app_widget {
   position: relative !important ;
   background: #e7ecef !important ;
   color: rgba(61, 61, 61, 0.8) !important ;
@@ -400,32 +404,12 @@ button {
   text-align: left !important ;
   border-radius: 5px !important ;
 }
-.widget_form {
-  transition: 0.5s all ease !important ;
-  background-color: white !important ;
-  display: inline-block !important ;
-  cursor: pointer !important ;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12) !important ;
-  border-radius: 3px !important ;
-}
-.widget_form img {
-  margin-top: 11px;
-}
-.widget_form span {
-  position: relative !important ;
-  top: -3px !important ;
-  font-weight: 400 !important ;
-  font-size: 1.01vw !important ; /*16px !important ;*/
-  line-height: 1.3194vw !important ; /*19px !important ;*/
-  color: #001239 !important ;
-}
 
 #app_widget .v-application p {
   margin-bottom: 0px !important ;
 }
 
-.widget p {
+#app_widget p {
   margin-bottom: 0px !important ;
 }
 
@@ -433,66 +417,10 @@ button {
   text-align: left !important ;
 }
 
-.active_tab {
-  background: #ff7f51 !important ;
-}
-
-.luckyDateBtns {
-  width: 100% !important ;
-  display: flex !important ;
-  flex-direction: column !important ;
-  align-items: center !important ;
-  justify-content: flex-start !important ;
-}
-
-@keyframes appearBlock {
-  from {
-    opacity: 0 !important ;
-  }
-  to {
-    opacity: 1 !important ;
-  }
-}
-
-.boxes {
+#app_widget .boxes {
   margin: 10px 0 !important ;
 }
-
-.web_acc_box .mobile_header {
-  display: block !important ;
-  position: fixed !important ;
-  display: flex !important ;
-  align-items: center !important ;
-  justify-content: center !important ;
-  top: 0 !important ;
-  left: 0 !important ;
-  right: 0 !important ;
-  width: 100% !important ;
-  height: 44px !important ;
-  z-index: 1002 !important ;
-  background: #fff !important ;
-}
-
-.web_acc_box .mobile_header img {
-  position: absolute !important ;
-  left: 16px !important ;
-  top: 12px !important ;
-}
-
-.web_acc_box .mobile_header p {
-  font-family: SFsemibold !important ;
-  text-align: center !important ;
-  font-size: 1.08vw !important ; /* 17px */
-  line-height: 1.388vw !important ; /* 20px !important ; */
-  color: #001239 !important ;
-  margin-bottom: 0 !important ;
-}
-
-.web_acc_box .book_room_btn {
-  display: none !important ;
-}
-
-.web_acc_box .main_box {
+#app_widget .web_acc_box .main_box {
   height: auto !important ;
   padding: 25px !important ;
   margin-bottom: 20px !important ;
@@ -501,18 +429,18 @@ button {
   border-radius: 4px !important ;
 }
 
-.web_acc_box .main_box:last-of-type {
+#app_widget .web_acc_box .main_box:last-of-type {
   margin-bottom: 0 !important ;
 }
 
-.web_acc_box .visible {
+#app_widget .web_acc_box .visible {
   display: grid !important ;
   grid-template-columns: 19% 1fr !important ;
   grid-column-gap: 1.5% !important ;
   align-items: start !important ;
 }
 
-.web_acc_box .visible .avatar {
+#app_widget .web_acc_box .visible .avatar {
   background-image: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/placeholder.png");
   cursor: pointer !important ;
   background-size: cover !important ;
@@ -525,7 +453,7 @@ button {
   border-radius: 4px !important ;
 }
 
-.web_acc_box .visible .avatar__count {
+#app_widget .web_acc_box .visible .avatar__count {
   padding: 4px 7px !important ;
   background: rgba(0, 0, 0, 0.5) !important ;
   border-radius: 4px !important ;
@@ -534,7 +462,7 @@ button {
   justify-content: center !important ;
 }
 
-.web_acc_box .visible .avatar__count p {
+#app_widget .web_acc_box .visible .avatar__count p {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 700 !important ;
   font-size: 0.7333vw !important ; /*12px !important ;*/
@@ -543,13 +471,13 @@ button {
   margin: 0 !important ;
 }
 
-.web_acc_box .visible .description {
+#app_widget .web_acc_box .visible .description {
   display: grid !important ;
   grid-template-columns: 49% 25% 27% !important ;
   grid-column-gap: 1% !important ;
 }
 
-.web_acc_box .visible .description .titles .tags_list {
+#app_widget .web_acc_box .visible .description .titles .tags_list {
   display: flex !important ;
   align-items: center !important ;
   flex-wrap: wrap !important ;
@@ -557,7 +485,7 @@ button {
   padding-left: 0px !important ;
 }
 
-.web_acc_box .visible .description .titles .tags_list p {
+#app_widget .web_acc_box .visible .description .titles .tags_list p {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 1.01vw !important ; /*16px !important ;*/
@@ -567,7 +495,7 @@ button {
   position: relative !important ;
 }
 
-.web_acc_box .visible .description .titles h2 {
+#app_widget .web_acc_box .visible .description .titles h2 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 1.42777vw !important ; /* 22px */
@@ -576,7 +504,7 @@ button {
   margin-bottom: 12px !important ;
 }
 
-.web_acc_box .visible .description .titles__main {
+#app_widget .web_acc_box .visible .description .titles__main {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 1.01vw !important ; /*16px !important ;*/
@@ -592,13 +520,13 @@ button {
   text-overflow: ellipsis !important ;
 }
 
-.web_acc_box .visible .description .titles .additional {
+#app_widget .web_acc_box .visible .description .titles .additional {
   display: flex !important ;
   align-items: center !important ;
   justify-content: flex-start !important ;
 }
 
-.web_acc_box .visible .description .titles .additional h4 {
+#app_widget .web_acc_box .visible .description .titles .additional h4 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 1.01vw !important ; /*16px !important ;*/
@@ -608,7 +536,7 @@ button {
   margin-right: 16px !important ;
 }
 
-.web_acc_box .visible .description .titles .additional button {
+#app_widget .web_acc_box .visible .description .titles .additional button {
   width: 149px !important ;
   height: 40px !important ;
   border: 1px solid #ff7f51;
@@ -626,25 +554,25 @@ button {
   justify-content: center !important ;
 }
 
-.web_acc_box .visible .description .titles .additional button svg {
+#app_widget .web_acc_box .visible .description .titles .additional button svg {
   margin-right: 10px !important ;
 }
 
-.web_acc_box .visible .description .titles .additional button:hover {
+#app_widget .web_acc_box .visible .description .titles .additional button:hover {
   background: #fff;
   color: #ff7f51;
 }
 
-.web_acc_box .visible .description .titles .additional button:hover svg path {
+#app_widget .web_acc_box .visible .description .titles .additional button:hover svg path {
   fill: #ff7f51;
 }
 
-.web_acc_box .visible .description .price {
+#app_widget .web_acc_box .visible .description .price {
   text-align: center !important ;
   padding-top: 52px !important ;
 }
 
-.web_acc_box .visible .description .price h2 {
+#app_widget .web_acc_box .visible .description .price h2 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 1.42777vw !important ; /* 22px */
@@ -653,14 +581,14 @@ button {
   margin-bottom: 6px !important ;
 }
 
-.web_acc_box .visible .description .price p {
+#app_widget .web_acc_box .visible .description .price p {
   font-size: 0.7333vw !important ; /*12px !important ;*/
   line-height: 0.97vw !important ; /*14px !important ;*/
   color: #021011 !important ;
   margin: 0 !important ;
 }
 
-.web_acc_box .visible .description .actions {
+#app_widget .web_acc_box .visible .description .actions {
   display: flex !important ;
   flex-direction: column !important ;
   align-items: center !important ;
@@ -668,7 +596,7 @@ button {
   padding-top: 21px !important ;
 }
 
-.web_acc_box .visible .description .actions h4 {
+#app_widget .web_acc_box .visible .description .actions h4 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 0.91vw !important ; /*16px !important ;*/
@@ -676,7 +604,7 @@ button {
   color: #00b1bb !important ;
 }
 
-.web_acc_box .visible .description .actions p {
+#app_widget .web_acc_box .visible .description .actions p {
   display: grid !important ;
   grid-template-columns: 25px 18px 25px !important ;
   grid-column-gap: 10px !important ;
@@ -691,11 +619,11 @@ button {
   padding: 10px 0px !important ;
 }
 
-.web_acc_box .visible .description .actions p img {
+#app_widget .web_acc_box .visible .description .actions p img {
   cursor: pointer !important ;
 }
 
-.web_acc_box .visible .description .actions button {
+#app_widget .web_acc_box .visible .description .actions button {
   width: 160px !important ;
   height: 44px !important ;
   background: #ff7f51;
@@ -710,18 +638,18 @@ button {
   border: 1px solid #ff7f51;
 }
 
-.web_acc_box .visible .description .actions button:hover {
+#app_widget .web_acc_box .visible .description .actions button:hover {
   background: #fff;
   color: #ff7f51;
 }
 
-.web_acc_box .hidden {
+#app_widget .web_acc_box .hidden {
   padding-top: 25px !important ;
   border-top: 1px solid #d7dddd !important ;
   margin-top: 24px !important ;
 }
 
-.web_acc_box .hidden h2 {
+#app_widget .web_acc_box .hidden h2 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 1.01vw !important ; /*16px !important ;*/
@@ -731,20 +659,20 @@ button {
   margin-bottom: 26px !important ;
 }
 
-.web_acc_box .hidden .additional_counter {
+#app_widget .web_acc_box .hidden .additional_counter {
   display: grid !important ;
   grid-template-columns: repeat(2, 1fr) !important ;
   width: 100% !important ;
 }
 
-.web_acc_box .hidden .additional_counter__single {
+#app_widget .web_acc_box .hidden .additional_counter__single {
   display: flex !important ;
   align-items: center !important ;
   justify-content: space-between !important ;
   width: 300px !important ;
 }
 
-.web_acc_box .hidden .additional_counter__single h3 {
+#app_widget .web_acc_box .hidden .additional_counter__single h3 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 1.01vw !important ; /*16px !important ;*/
@@ -753,7 +681,7 @@ button {
   margin: 0 !important ;
 }
 
-.web_acc_box .hidden .additional_counter__single .people_age p:first-of-type {
+#app_widget .web_acc_box .hidden .additional_counter__single .people_age p:first-of-type {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 1.01vw !important ; /*16px !important ;*/
@@ -762,7 +690,7 @@ button {
   margin-bottom: 6px !important ;
 }
 
-.web_acc_box .hidden .additional_counter__single .people_age h5 {
+#app_widget .web_acc_box .hidden .additional_counter__single .people_age h5 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 0.733vw !important ; /*12px !important ;*/
@@ -771,7 +699,7 @@ button {
   margin: 0 !important ;
 }
 
-.web_acc_box .hidden .additional_counter__single .actions {
+#app_widget .web_acc_box .hidden .additional_counter__single .actions {
   display: flex !important ;
   align-items: center !important ;
   justify-content: space-between !important ;
@@ -779,7 +707,7 @@ button {
   width: 80px !important ;
 }
 
-.web_acc_box .hidden .additional_counter__single .actions p {
+#app_widget .web_acc_box .hidden .additional_counter__single .actions p {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   margin: 0 !important ;
@@ -788,25 +716,16 @@ button {
   color: #021011 !important ;
 }
 
-.web_acc_box .hidden .additional_counter__single .actions img {
+#app_widget .web_acc_box .hidden .additional_counter__single .actions img {
   cursor: pointer !important ;
 }
 
-.web_acc_box .activeBtn {
-  background: #fff !important ;
-  color: #ff7f51 !important ;
-}
-
-.web_acc_box .activeBtn svg path {
-  fill: #ff7f51 !important ;
-}
-
-.web_acc_box .hidden-leave {
+#app_widget .web_acc_box .hidden-leave {
   position: absolute !important ;
   opacity: 0 !important ;
   display: none !important ;
 }
-.web_acc_box .room_left {
+#app_widget .web_acc_box .room_left {
   position: absolute !important ;
   top: 14px !important ;
   left: 16px !important ;
@@ -814,54 +733,31 @@ button {
   border-radius: 4px !important ;
   padding: 6px !important ;
 }
-.web_acc_box .room_left h3 {
+#app_widget .web_acc_box .room_left h3 {
   font-family: SFsemibold !important ;
   font-size: 10px !important ;
   line-height: 12px !important ;
   color: #ffffff !important ;
 }
 
-.web_acc_box {
+#app_widget .web_acc_box {
   display: unset !important ;
 }
-.mobile_acc_box {
+#app_widget .mobile_acc_box {
   display: none !important ;
 }
 @media all and (max-width: 768px) {
-  .widget_form {
-    width: 35vw !important ;
-    transition: 0.5s all ease !important ;
-    margin-left: 1vw !important ;
-    background-color: white !important ;
-    display: inline-block !important ;
-    cursor: pointer !important ;
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-      0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !important ;
-    border-radius: 3px !important ;
-  }
-  .widget_form img {
-    margin-top: 14px;
-  }
-  .widget_form span {
-    position: relative !important ;
-    top: -3px !important ;
-    font-weight: 400 !important ;
-    font-size: 2.61vw !important ;
-    line-height: 1.3194vw !important ; /*19px !important ;*/
-    color: #001239 !important ;
-  }
-
-  .widget {
+  #app_widget {
     margin: 5vw !important ;
     width: 85vw !important ;
   }
-  .mobile_acc_box {
+  #app_widget .mobile_acc_box {
     display: unset !important ;
   }
-  .web_acc_box {
+  #app_widget .web_acc_box {
     display: none !important ;
   }
-  .web_acc_box .main_box {
+  #app_widget .web_acc_box .main_box {
     width: 100% !important ;
     min-height: 402px !important ;
     overflow-x: hidden !important ;
@@ -872,27 +768,27 @@ button {
     margin-top: 8px !important ;
   }
 
-  .web_acc_box .visible {
+  #app_widget .web_acc_box .visible {
     display: block !important ;
     grid-template-columns: unset !important ;
     grid-column-gap: unset !important ;
     align-items: start !important ;
   }
 
-  .web_acc_box .visible .avatar {
+  #app_widget .web_acc_box .visible .avatar {
     height: 151px !important ;
     padding: 12px !important ;
     border-radius: 4px 4px 0px 0px !important ;
     margin-bottom: 12px !important ;
   }
 
-  .web_acc_box .visible .description {
+  #app_widget .web_acc_box .visible .description {
     display: block !important ;
     grid-template-columns: 464px 139px 1fr !important ;
     grid-column-gap: 32px !important ;
   }
 
-  .web_acc_box .visible .description .titles .tags_list {
+  #app_widget .web_acc_box .visible .description .titles .tags_list {
     display: flex !important ;
     align-items: center !important ;
     flex-wrap: wrap !important ;
@@ -900,71 +796,71 @@ button {
     padding-left: 12px !important ;
   }
 
-  .web_acc_box .visible .description .titles .tags_list p {
+  #app_widget .web_acc_box .visible .description .titles .tags_list p {
     font-size: 1.041vw !important ; /* 15px */
     line-height: 1.25vw !important ; /* 18px !important ; */
     color: rgba(0, 18, 57, 0.5) !important ;
     margin-right: 19px !important ;
   }
 
-  .web_acc_box .visible .description .titles h2 {
+  #app_widget .web_acc_box .visible .description .titles h2 {
     font-size: 1.18vw !important ; /* 17px */
     line-height: 1.388vw !important ; /* 20px !important ; */
     margin-bottom: 12px !important ;
   }
 
-  .web_acc_box .visible .description .titles__main {
+  #app_widget .web_acc_box .visible .description .titles__main {
     font-size: 1.041vw !important ; /* 15px */
     line-height: 1.25vw !important ; /* 18px !important ; */
     -webkit-line-clamp: 4 !important ;
   }
 
-  .web_acc_box .visible .description .titles .additional {
+  #app_widget .web_acc_box .visible .description .titles .additional {
     display: flex !important ;
     align-items: center !important ;
     justify-content: flex-start !important ;
   }
 
-  .web_acc_box .visible .description .titles .additional h4 {
+  #app_widget .web_acc_box .visible .description .titles .additional h4 {
     font-size: 0.833vw !important ; /* 12px */
     line-height: 0.972vw !important ; /* 14px !important ; */
     margin-bottom: 0 !important ;
     margin-right: 16px !important ;
   }
 
-  .web_acc_box .visible .description .titles .additional button {
+  #app_widget .web_acc_box .visible .description .titles .additional button {
     width: 149px !important ;
     font-size: 1.041vw !important ; /* 15px */
     line-height: 1.25vw !important ; /* 18px !important ; */
   }
 
-  .web_acc_box .visible .description .price {
+  #app_widget .web_acc_box .visible .description .price {
     text-align: left !important ;
     padding-top: 12px !important ;
   }
 
-  .web_acc_box .visible .description .price h2 {
+  #app_widget .web_acc_box .visible .description .price h2 {
     font-size: 1.18vw !important ; /* 17px */
     line-height: 1.388vw !important ; /* 20px !important ; */
   }
 
-  .web_acc_box .visible .description .price p {
+  #app_widget .web_acc_box .visible .description .price p {
     font-size: 0.833vw !important ; /* 12px */
     line-height: 0.972vw !important ; /* 14px !important ; */
   }
 
-  .web_acc_box .visible .description .actions {
+  #app_widget .web_acc_box .visible .description .actions {
     flex-direction: row !important ;
     padding-top: 12px !important ;
   }
 
-  .web_acc_box .visible .description .actions h4 {
+  #app_widget .web_acc_box .visible .description .actions h4 {
     font-size: 0.833vw !important ; /* 12px */
     line-height: 0.972vw !important ; /* 14px !important ; */
     width: 78px !important ;
   }
 
-  .web_acc_box .visible .description .actions p {
+  #app_widget .web_acc_box .visible .description .actions p {
     grid-template-columns: 20px 18px 20px !important ;
     grid-column-gap: 6px !important ;
     font-size: 0.833vw !important ; /* 12px */
@@ -972,7 +868,7 @@ button {
     padding: 5px 0px !important ;
   }
 
-  .web_acc_box .visible .description .actions button {
+  #app_widget .web_acc_box .visible .description .actions button {
     margin-left: 12px !important ;
     width: 100px !important ;
     height: 40px !important ;
@@ -980,48 +876,48 @@ button {
     line-height: 1.31vw !important ; /* 19px !important ; */
   }
 
-  .web_acc_box .hidden {
+  #app_widget .web_acc_box .hidden {
     padding-top: 13px !important ;
     margin-top: 12px !important ;
   }
 
-  .web_acc_box .hidden h2 {
+  #app_widget .web_acc_box .hidden h2 {
     font-size: 1.041vw !important ; /* 15px */
     line-height: 1.25vw !important ; /* 18px !important ; */
     text-transform: unset !important ;
     margin-bottom: 10px !important ;
   }
 
-  .web_acc_box .hidden .additional_counter {
+  #app_widget .web_acc_box .hidden .additional_counter {
     display: block !important ;
   }
 
-  .web_acc_box .hidden .additional_counter__single {
+  #app_widget .web_acc_box .hidden .additional_counter__single {
     width: 100% !important ;
   }
 
-  .web_acc_box .hidden .additional_counter__single h3 {
+  #app_widget .web_acc_box .hidden .additional_counter__single h3 {
     font-size: 1.041vw !important ; /* 15px */
     line-height: 1.25vw !important ; /* 18px !important ; */
     color: #ff7f51 !important ;
   }
 
-  .web_acc_box .hidden .additional_counter__single .people_age {
+  #app_widget .web_acc_box .hidden .additional_counter__single .people_age {
     width: 100px !important ;
   }
 
-  .web_acc_box .hidden .additional_counter__single .people_age p:first-of-type {
+  #app_widget .web_acc_box .hidden .additional_counter__single .people_age p:first-of-type {
     font-size: 1.041vw !important ; /* 15px */
     line-height: 1.25vw !important ; /* 18px !important ; */
   }
 
-  .web_acc_box .hidden .additional_counter__single .people_age h5 {
+  #app_widget .web_acc_box .hidden .additional_counter__single .people_age h5 {
     font-size: 0.833vw !important ; /* 12px */
     line-height: 0.972vw !important ; /* 14px !important ; */
     margin: 0 !important ;
   }
 
-  .web_acc_box .hidden .additional_counter__single .actions {
+  #app_widget .web_acc_box .hidden .additional_counter__single .actions {
     display: flex !important ;
     align-items: center !important ;
     justify-content: space-between !important ;
@@ -1031,7 +927,7 @@ button {
 }
 
 @media all and (max-width: 768px) {
-  .main_box {
+  #app_widget .main_box {
     width: 100% !important ;
     min-height: 402px !important ;
     overflow-x: hidden !important ;
@@ -1042,27 +938,27 @@ button {
     margin-top: 8px !important ;
   }
 
-  .visible {
+  #app_widget .visible {
     display: block !important ;
     grid-template-columns: unset !important ;
     grid-column-gap: unset !important ;
     align-items: start !important ;
   }
 
-  .visible .avatar {
+  #app_widget .visible .avatar {
     height: 151px !important ;
     padding: 12px !important ;
     border-radius: 4px 4px 0px 0px !important ;
     margin-bottom: 12px !important ;
   }
 
-  .visible .description {
+  #app_widget .visible .description {
     display: block !important ;
     grid-template-columns: 464px 139px 1fr !important ;
     grid-column-gap: 32px !important ;
   }
 
-  .visible .description .titles .tags_list {
+  #app_widget .visible .description .titles .tags_list {
     display: flex !important ;
     align-items: center !important ;
     flex-wrap: wrap !important ;
@@ -1070,26 +966,26 @@ button {
     padding-left: 12px !important ;
   }
 
-  .visible .description .titles .tags_list p {
+  #app_widget .visible .description .titles .tags_list p {
     font-size: 15px !important ;
     line-height: 18px !important ;
     color: rgba(0, 18, 57, 0.5) !important ;
     margin-right: 19px !important ;
   }
 
-  .visible .description .titles h2 {
+  #app_widget .visible .description .titles h2 {
     font-size: 17px !important ;
     line-height: 20px !important ;
     margin-bottom: 12px !important ;
   }
 
-  .visible .description .titles__main {
+  #app_widget .visible .description .titles__main {
     font-size: 15px !important ;
     line-height: 18px !important ;
     -webkit-line-clamp: 4 !important ;
   }
 
-  .visible .description .additional h3 {
+  #app_widget .visible .description .additional h3 {
     font-family: SFsemibold !important ;
     font-size: 12px !important ;
     line-height: 14px !important ;
@@ -1097,38 +993,38 @@ button {
     margin-right: 16px !important ;
   }
 
-  .visible .description .additional button {
+  #app_widget .visible .description .additional button {
     width: 149px !important ;
     font-size: 15px !important ;
     line-height: 18px !important ;
   }
 
-  .visible .description .price {
+  #app_widget .visible .description .price {
     padding-top: 12px !important ;
   }
 
-  .visible .description .price h2 {
+  #app_widget .visible .description .price h2 {
     font-size: 17px !important ;
     line-height: 20px !important ;
   }
 
-  .visible .description .price p {
+  #app_widget .visible .description .price p {
     font-size: 12px !important ;
     line-height: 14px !important ;
   }
 
-  .visible .description .actions {
+  #app_widget .visible .description .actions {
     flex-direction: row !important ;
     padding-top: 12px !important ;
   }
 
-  .visible .description .actions h2 {
+  #app_widget .visible .description .actions h2 {
     font-size: 12px !important ;
     line-height: 14px !important ;
     width: 78px !important ;
   }
 
-  .visible .description .actions p {
+  #app_widget .visible .description .actions p {
     grid-template-columns: 24px 18px 24px !important ;
     grid-column-gap: 6px !important ;
     font-size: 12px !important ;
@@ -1136,7 +1032,7 @@ button {
     padding: 5px 0px !important ;
   }
 
-  .visible .description .actions button {
+  #app_widget .visible .description .actions button {
     margin-left: 12px !important ;
     width: 100px !important ;
     height: 40px !important ;
@@ -1144,48 +1040,48 @@ button {
     line-height: 19px !important ;
   }
 
-  .hidden {
+  #app_widget .hidden {
     padding-top: 13px !important ;
     margin-top: 12px !important ;
   }
 
-  .hidden h2 {
+  #app_widget .hidden h2 {
     font-size: 15px !important ;
     line-height: 18px !important ;
     text-transform: unset !important ;
     margin-bottom: 10px !important ;
   }
 
-  .hidden .additional_counter {
+  #app_widget .hidden .additional_counter {
     display: block !important ;
   }
 
-  .hidden .additional_counter__single {
+  #app_widget .hidden .additional_counter__single {
     width: 100% !important ;
   }
 
-  .hidden .additional_counter__single h3 {
+  #app_widget .hidden .additional_counter__single h3 {
     font-size: 15px !important ;
     line-height: 18px !important ;
     color: #ff7f51 !important ;
   }
 
-  .hidden .additional_counter__single .people_age {
+  #app_widget .hidden .additional_counter__single .people_age {
     width: 100px !important ;
   }
 
-  .hidden .additional_counter__single .people_age p:first-of-type {
+  #app_widget .hidden .additional_counter__single .people_age p:first-of-type {
     font-size: 15px !important ;
     line-height: 18px !important ;
   }
 
-  .hidden .additional_counter__single .people_age h5 {
+  #app_widget .hidden .additional_counter__single .people_age h5 {
     font-size: 12px !important ;
     line-height: 14px !important ;
     margin: 0 !important ;
   }
 
-  .hidden .additional_counter__single .actions {
+  #app_widget .hidden .additional_counter__single .actions {
     display: flex !important ;
     align-items: center !important ;
     justify-content: space-between !important ;
@@ -1194,111 +1090,9 @@ button {
   }
 }
 
-.swiper_container {
-  padding-top: 54px !important ;
-}
-
-.swiper_container .slider_content {
-  border-bottom: 0px solid #ff7f51;
-  padding-bottom: 6px !important ;
-  color: #ff7f51;
-}
-
-.swiper_container .swiper_slide {
-  width: 25vw !important ;
-  display: inline-block !important ;
-}
-
-.swiper_container .swiper_slide .slider_content {
-  cursor: pointer !important ;
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  width: 95px !important ;
-  font-size: 1.01vw; /* 16px */
-  line-height: 19px; /* 19px !important ; */
-  text-align: center !important ;
-  color: #001239;
-  padding-bottom: 10px !important ;
-}
-
-.mobile_services {
-  background: #fff !important ;
-  width: 100% !important ;
-  height: 100vh !important ;
-  overflow-y: hidden !important ;
-}
-
-.mobile_services__footer {
-  position: fixed !important ;
-  background: #fff !important ;
-  bottom: 0 !important ;
-  padding-bottom: 83px !important ;
-  padding-top: 12px !important ;
-  left: 0 !important ;
-  right: 0 !important ;
-  width: 100% !important ;
-}
-
-.single_service {
-  display: grid !important ;
-  grid-template-columns: 1fr 1fr 88px !important ;
-  align-items: center !important ;
-}
-
-.single_service h5 {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  font-size: 0.802vw !important ; /* 13px */
-  line-height: 1.11vw !important ; /* 16px !important ; */
-  color: #bab8b8 !important ;
-  margin: 0 !important ;
-}
-
-.single_service .price {
-  padding-left: 8px !important ;
-}
-.single_service h3 {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 500 !important ;
-  font-size: 1.08vw !important ; /* 17px */
-  line-height: 1.388vw !important ; /* 20px !important ; */
-  color: #ff7f51;
-  margin-bottom: 2px !important ;
-}
-.single_service .price h1 {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 500 !important ;
-  font-size: 1.08vw !important ; /* 17px */
-  line-height: 1.388vw !important ; /* 20px !important ; */
-  color: #ff7f51;
-  margin-bottom: 2px !important ;
-}
-
-.single_service .title h2 {
-  font-size: 0.941vw !important ; /* 15px */
-  line-height: 1.25vw !important ; /* 18px !important ; */
-  color: #001239;
-  margin-bottom: 2px !important ;
-}
-
-.single_service .actions {
-  display: grid !important ;
-  grid-template-columns: repeat(3, 25px) !important ;
-  align-items: center !important ;
-  text-align: center !important ;
-  min-height: 70px !important ;
-  margin-bottom: 8px !important ;
-}
-
-.service_wrapper {
-  overflow-y: scroll !important ;
-  padding: 0 16px 230px !important ;
-  height: 100vh !important ;
-}
-
 /* mobile list of rooms */
 
-.mobile_acc_box .room_left {
+#app_widget .mobile_acc_box .room_left {
   position: absolute !important ;
   top: 14px !important ;
   left: 16px !important ;
@@ -1307,7 +1101,7 @@ button {
   padding: 6px !important ;
 }
 
-.mobile_acc_box .room_left h4 {
+#app_widget .mobile_acc_box .room_left h4 {
   font-family: SFsemibold !important ;
   font-weight: lighter !important ;
   font-size: 10px !important ;
@@ -1315,40 +1109,7 @@ button {
   color: #ffffff !important ;
 }
 
-.mobile_services .mobile_header {
-  display: block !important ;
-  position: fixed !important ;
-  display: flex !important ;
-  align-items: center !important ;
-  justify-content: center !important ;
-  top: 0 !important ;
-  left: 0 !important ;
-  right: 0 !important ;
-  width: 100% !important ;
-  height: 44px !important ;
-  z-index: 1002 !important ;
-  background: #fff !important ;
-}
-.mobile_services .mobile_header img {
-  position: absolute !important ;
-  left: 16px !important ;
-  top: 12px !important ;
-}
-
-.mobile_services .mobile_header p {
-  font-family: SFsemibold !important ;
-  text-align: center !important ;
-  font-size: 17px !important ;
-  line-height: 20px !important ;
-  color: #001239 !important ;
-  margin-bottom: 0 !important ;
-}
-
-.mobile_acc_box .book_room_btn {
-  display: none !important ;
-}
-
-.mobile_acc_box .main_box {
+#app_widget .mobile_acc_box .main_box {
   height: auto !important ;
   padding: 25px !important ;
   margin-bottom: 20px !important ;
@@ -1357,18 +1118,18 @@ button {
   border-radius: 4px !important ;
 }
 
-.mobile_acc_box .main_box:last-of-type {
+#app_widget .mobile_acc_box .main_box:last-of-type {
   margin-bottom: 0 !important ;
 }
 
-.mobile_acc_box .visible {
+#app_widget .mobile_acc_box .visible {
   display: grid !important ;
   grid-template-columns: 178px 1fr !important ;
   grid-column-gap: 25px !important ;
   align-items: start !important ;
 }
 
-.mobile_acc_box .visible .avatar {
+#app_widget .mobile_acc_box .visible .avatar {
   position: relative !important ;
   background-image: url("https://marketbot.abelsharman.kz/widget_go2trip/assets/placeholder.png");
   cursor: pointer !important ;
@@ -1381,10 +1142,10 @@ button {
   padding: 10px !important ;
   border-radius: 4px !important ;
 }
-.v-list-item__title {
+#app_widget .v-list-item__title {
   font-size: 1.01vw;
 }
-.mobile_acc_box .visible .avatar__count {
+#app_widget .mobile_acc_box .visible .avatar__count {
   padding: 4px 7px !important ;
   background: rgba(0, 0, 0, 0.5) !important ;
   border-radius: 4px !important ;
@@ -1393,7 +1154,7 @@ button {
   justify-content: center !important ;
 }
 
-.mobile_acc_box .visible .avatar__count p {
+#app_widget .mobile_acc_box .visible .avatar__count p {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 700 !important ;
   font-size: 12px !important ;
@@ -1402,17 +1163,17 @@ button {
   margin: 0 !important ;
 }
 
-.mobile_acc_box .visible .description {
+#app_widget .mobile_acc_box .visible .description {
   display: grid !important ;
   grid-template-columns: 464px 139px 1fr !important ;
   grid-column-gap: 32px !important ;
 }
 
-.mobile_acc_box .visible .description .titles {
+#app_widget .mobile_acc_box .visible .description .titles {
   padding: 0 12px !important ;
 }
 
-.mobile_acc_box .visible .description .titles .tags_list {
+#app_widget .mobile_acc_box .visible .description .titles .tags_list {
   display: flex !important ;
   align-items: center !important ;
   flex-wrap: wrap !important ;
@@ -1420,7 +1181,7 @@ button {
   padding-left: 12px !important ;
 }
 
-.mobile_acc_box .visible .description .titles .tags_list p {
+#app_widget .mobile_acc_box .visible .description .titles .tags_list p {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 16px !important ;
@@ -1430,7 +1191,7 @@ button {
   position: relative !important ;
 }
 
-.mobile_acc_box .visible .description .titles h2 {
+#app_widget .mobile_acc_box .visible .description .titles h2 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 22px !important ;
@@ -1439,7 +1200,7 @@ button {
   margin-bottom: 12px !important ;
 }
 
-.mobile_acc_box .visible .description .titles__main {
+#app_widget .mobile_acc_box .visible .description .titles__main {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 16px !important ;
@@ -1455,14 +1216,14 @@ button {
   text-overflow: ellipsis !important ;
 }
 
-.mobile_acc_box .visible .description .additional {
+#app_widget .mobile_acc_box .visible .description .additional {
   display: flex !important ;
   align-items: center !important ;
   justify-content: space-between !important ;
   padding: 0 12px !important ;
 }
 
-.mobile_acc_box .visible .description .additional h3 {
+#app_widget .mobile_acc_box .visible .description .additional h3 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 16px !important ;
@@ -1472,7 +1233,7 @@ button {
   margin-right: 16px !important ;
 }
 
-.mobile_acc_box .visible .description .additional button {
+#app_widget .mobile_acc_box .visible .description .additional button {
   width: 149px !important ;
   height: 40px !important ;
   border: 1px solid #ff7f51;
@@ -1490,20 +1251,20 @@ button {
   justify-content: center !important ;
 }
 
-.mobile_acc_box .visible .description .additional button svg {
+#app_widget .mobile_acc_box .visible .description .additional button svg {
   margin-right: 10px !important ;
 }
 
-.mobile_acc_box .visible .description .additional button:hover {
+#app_widget .mobile_acc_box .visible .description .additional button:hover {
   background: #fff;
   color: #ff7f51;
 }
 
-.mobile_acc_box .visible .description .additional button:hover svg path {
+#app_widget .mobile_acc_box .visible .description .additional button:hover svg path {
   fill: #ff7f51;
 }
 
-.mobile_acc_box .visible .description .price {
+#app_widget .mobile_acc_box .visible .description .price {
   display: flex !important ;
   align-items: flex-start !important ;
   justify-content: space-between !important ;
@@ -1511,7 +1272,7 @@ button {
   padding-top: 52px !important ;
 }
 
-.mobile_acc_box .visible .description .price h2 {
+#app_widget .mobile_acc_box .visible .description .price h2 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 22px !important ;
@@ -1520,14 +1281,14 @@ button {
   margin-bottom: 6px !important ;
 }
 
-.mobile_acc_box .visible .description .price p {
+#app_widget .mobile_acc_box .visible .description .price p {
   font-size: 12px !important ;
   line-height: 14px !important ;
   color: #021011 !important ;
   margin: 0 !important ;
 }
 
-.mobile_acc_box .visible .description .price button {
+#app_widget .mobile_acc_box .visible .description .price button {
   width: 100px !important ;
   height: 40px !important ;
   font-size: 16px !important ;
@@ -1542,12 +1303,12 @@ button {
   border: 1px solid #ff7f51;
 }
 
-.mobile_acc_box .visible .description .price button:hover {
+#app_widget .mobile_acc_box .visible .description .price button:hover {
   background: #fff;
   color: #ff7f51;
 }
 
-.mobile_acc_box .visible .description .actions {
+#app_widget .mobile_acc_box .visible .description .actions {
   display: flex !important ;
   flex-direction: column !important ;
   align-items: center !important ;
@@ -1555,7 +1316,7 @@ button {
   padding-top: 21px !important ;
 }
 
-.mobile_acc_box .visible .description .actions h4 {
+#app_widget .mobile_acc_box .visible .description .actions h4 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 16px !important ;
@@ -1563,7 +1324,7 @@ button {
   color: #00b1bb !important ;
 }
 
-.mobile_acc_box .visible .description .actions p {
+#app_widget .mobile_acc_box .visible .description .actions p {
   display: grid !important ;
   grid-template-columns: 25px 18px 25px !important ;
   grid-column-gap: 10px !important ;
@@ -1578,11 +1339,11 @@ button {
   padding: 10px 0px !important ;
 }
 
-.mobile_acc_box .visible .description .actions p img {
+#app_widget .mobile_acc_box .visible .description .actions p img {
   cursor: pointer !important ;
 }
 
-.mobile_acc_box .visible .description .actions button {
+#app_widget .mobile_acc_box .visible .description .actions button {
   width: 160px !important ;
   height: 44px !important ;
   background: #ff7f51;
@@ -1597,18 +1358,18 @@ button {
   border: 1px solid #ff7f51;
 }
 
-.mobile_acc_box .visible .description .actions button:hover {
+#app_widget .mobile_acc_box .visible .description .actions button:hover {
   background: #fff;
   color: #ff7f51;
 }
 
-.mobile_acc_box .hidden {
+#app_widget .mobile_acc_box .hidden {
   padding-top: 25px !important ;
   border-top: 1px solid #d7dddd !important ;
   margin-top: 24px !important ;
 }
 
-.mobile_acc_box .hidden h2 {
+#app_widget .mobile_acc_box .hidden h2 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 16px !important ;
@@ -1618,21 +1379,21 @@ button {
   margin-bottom: 26px !important ;
 }
 
-.mobile_acc_box .hidden .additional_counter {
+#app_widget .mobile_acc_box .hidden .additional_counter {
   display: grid !important ;
   grid-template-columns: repeat(2, 1fr) !important ;
   width: 100% !important ;
   padding: 0 12px !important ;
 }
 
-.mobile_acc_box .hidden .additional_counter__single {
+#app_widget .mobile_acc_box .hidden .additional_counter__single {
   display: flex !important ;
   align-items: center !important ;
   justify-content: space-between !important ;
   width: 300px !important ;
 }
 
-.mobile_acc_box .hidden .additional_counter__single h3 {
+#app_widget .mobile_acc_box .hidden .additional_counter__single h3 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 16px !important ;
@@ -1641,11 +1402,7 @@ button {
   margin: 0 !important ;
 }
 
-.mobile_acc_box
-  .hidden
-  .additional_counter__single
-  .people_age
-  p:first-of-type {
+#app_widget .mobile_acc_box .hidden .additional_counter__single .people_age p:first-of-type {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 16px !important ;
@@ -1654,7 +1411,7 @@ button {
   margin-bottom: 6px !important ;
 }
 
-.mobile_acc_box .hidden .additional_counter__single .people_age h5 {
+#app_widget .mobile_acc_box .hidden .additional_counter__single .people_age h5 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 12px !important ;
@@ -1671,7 +1428,7 @@ button {
   width: 80px !important ;
 }
 
-.mobile_acc_box .hidden .additional_counter__single .actions p {
+#app_widget .mobile_acc_box .hidden .additional_counter__single .actions p {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   margin: 0 !important ;
@@ -1680,30 +1437,21 @@ button {
   color: #021011 !important ;
 }
 
-.mobile_acc_box .hidden .additional_counter__single .actions img {
+#app_widget .mobile_acc_box .hidden .additional_counter__single .actions img {
   cursor: pointer !important ;
 }
 
-.mobile_acc_box .activeBtn {
-  background: #fff !important ;
-  color: #ff7f51 !important ;
-}
-
-.mobile_acc_box .activeBtn svg path {
-  fill: #ff7f51 !important ;
-}
-
-.mobile_acc_box .hidden-leave {
+#app_widget .mobile_acc_box .hidden-leave {
   position: absolute !important ;
   opacity: 0 !important ;
   display: none !important ;
 }
 
 @media all and (max-width: 768px) {
-  .v-list-item__title {
+  #app_widget .v-list-item__title {
     font-size: 3vw;
   }
-  .mobile_acc_box .main_box {
+  #app_widget .mobile_acc_box .main_box {
     width: 100% !important ;
     min-height: 402px !important ;
     overflow-x: hidden !important ;
@@ -1714,27 +1462,27 @@ button {
     margin-top: 8px !important ;
   }
 
-  .mobile_acc_box .visible {
+  #app_widget .mobile_acc_box .visible {
     display: block !important ;
     grid-template-columns: unset !important ;
     grid-column-gap: unset !important ;
     align-items: start !important ;
   }
 
-  .mobile_acc_box .visible .avatar {
+  #app_widget .mobile_acc_box .visible .avatar {
     height: 151px !important ;
     padding: 12px !important ;
     border-radius: 4px 4px 0px 0px !important ;
     margin-bottom: 12px !important ;
   }
 
-  .mobile_acc_box .visible .description {
+  #app_widget .mobile_acc_box .visible .description {
     display: block !important ;
     grid-template-columns: 464px 139px 1fr !important ;
     grid-column-gap: 32px !important ;
   }
 
-  .mobile_acc_box .visible .description .titles .tags_list {
+  #app_widget .mobile_acc_box .visible .description .titles .tags_list {
     display: flex !important ;
     align-items: center !important ;
     flex-wrap: wrap !important ;
@@ -1742,35 +1490,25 @@ button {
     padding-left: 12px !important ;
   }
 
-  .mobile_acc_box .visible .description .titles .tags_list p {
+  #app_widget .mobile_acc_box .visible .description .titles .tags_list p {
     font-size: 15px !important ;
     line-height: 18px !important ;
     color: rgba(0, 18, 57, 0.5) !important ;
     margin-right: 19px !important ;
   }
-
-  .single_service_p {
-    font-family: "Roboto", sans-serif !important ;
-    font-weight: 400 !important ;
-    font-size: 13px !important ;
-    line-height: 16px !important ;
-    color: #bab8b8;
-    margin: 0 !important ;
-  }
-
-  .mobile_acc_box .visible .description .titles h2 {
+  #app_widget .mobile_acc_box .visible .description .titles h2 {
     font-size: 17px !important ;
     line-height: 20px !important ;
     margin-bottom: 12px !important ;
   }
 
-  .mobile_acc_box .visible .description .titles__main {
+  #app_widget .mobile_acc_box .visible .description .titles__main {
     font-size: 15px !important ;
     line-height: 18px !important ;
     -webkit-line-clamp: 4 !important ;
   }
 
-  .mobile_acc_box .visible .description .additional h4 {
+  #app_widget .mobile_acc_box .visible .description .additional h4 {
     font-family: SFsemibold !important ;
     font-size: 12px !important ;
     line-height: 14px !important ;
@@ -1778,38 +1516,39 @@ button {
     margin-right: 16px !important ;
   }
 
-  .mobile_acc_box .visible .description .additional button {
+  #app_widget .mobile_acc_box .visible .description .additional button {
     width: 149px !important ;
     font-size: 15px !important ;
     line-height: 18px !important ;
   }
 
-  .mobile_acc_box .visible .description .price {
+   
+  #app_widget .mobile_acc_box .visible .description .price {
     padding-top: 12px !important ;
   }
 
-  .mobile_acc_box .visible .description .price h2 {
+  #app_widget .mobile_acc_box .visible .description .price h2 {
     font-size: 17px !important ;
     line-height: 20px !important ;
   }
 
-  .mobile_acc_box .visible .description .price p {
+  #app_widget .mobile_acc_box .visible .description .price p {
     font-size: 12px !important ;
     line-height: 14px !important ;
   }
 
-  .mobile_acc_box .visible .description .actions {
+  #app_widget .mobile_acc_box .visible .description .actions {
     flex-direction: row !important ;
     padding-top: 12px !important ;
   }
 
-  .mobile_acc_box .visible .description .actions h4 {
+  #app_widget .mobile_acc_box .visible .description .actions h4 {
     font-size: 12px !important ;
     line-height: 14px !important ;
     width: 78px !important ;
   }
 
-  .mobile_acc_box .visible .description .actions p {
+  #app_widget .mobile_acc_box .visible .description .actions p {
     grid-template-columns: 24px 18px 24px !important ;
     grid-column-gap: 6px !important ;
     font-size: 12px !important ;
@@ -1817,7 +1556,7 @@ button {
     padding: 5px 0px !important ;
   }
 
-  .mobile_acc_box .visible .description .actions button {
+  #app_widget .mobile_acc_box .visible .description .actions button {
     margin-left: 12px !important ;
     width: 100px !important ;
     height: 40px !important ;
@@ -1825,12 +1564,12 @@ button {
     line-height: 19px !important ;
   }
 
-  .mobile_acc_box .hidden {
+  #app_widget .mobile_acc_box .hidden {
     padding-top: 13px !important ;
     margin-top: 12px !important ;
   }
 
-  .mobile_acc_box .hidden h2 {
+  #app_widget .mobile_acc_box .hidden h2 {
     font-size: 15px !important ;
     line-height: 18px !important ;
     text-transform: unset !important ;
@@ -1838,41 +1577,37 @@ button {
     margin-left: 10px !important ;
   }
 
-  .mobile_acc_box .hidden .additional_counter {
+  #app_widget .mobile_acc_box .hidden .additional_counter {
     display: block !important ;
   }
 
-  .mobile_acc_box .hidden .additional_counter__single {
+  #app_widget .mobile_acc_box .hidden .additional_counter__single {
     margin: 2vw 0 !important ;
     width: 100% !important ;
   }
 
-  .mobile_acc_box .hidden .additional_counter__single h3 {
+  #app_widget .mobile_acc_box .hidden .additional_counter__single h3 {
     font-size: 15px !important ;
     line-height: 18px !important ;
     color: #ff7f51 !important ;
   }
 
-  .mobile_acc_box .hidden .additional_counter__single .people_age {
+  #app_widget .mobile_acc_box .hidden .additional_counter__single .people_age {
     width: 100px !important ;
   }
 
-  .mobile_acc_box
-    .hidden
-    .additional_counter__single
-    .people_age
-    p:first-of-type {
+  #app_widget .mobile_acc_box .hidden .additional_counter__single .people_age p:first-of-type {
     font-size: 15px !important ;
     line-height: 18px !important ;
   }
 
-  .mobile_acc_box .hidden .additional_counter__single .people_age h5 {
+  #app_widget .mobile_acc_box .hidden .additional_counter__single .people_age h5 {
     font-size: 12px !important ;
     line-height: 14px !important ;
     margin: 0 !important ;
   }
 
-  .mobile_acc_box .hidden .additional_counter__single .actions {
+  #app_widget .mobile_acc_box .hidden .additional_counter__single .actions {
     display: flex !important ;
     align-items: center !important ;
     justify-content: space-between !important ;
@@ -1881,115 +1616,10 @@ button {
   }
 }
 
-.mobile_acc_box .swiper_container {
-  overflow-x: scroll !important ;
-  justify-content: center !important ;
-  padding-top: 54px !important ;
-}
-
-.mobile_acc_box .swiper_container .slider_content {
-  border-bottom: 0px solid #ff7f51 !important ;
-  padding-bottom: 6px !important ;
-  color: #ff7f51 !important ;
-  font-size: 14px !important ;
-  transition: 0.5s all ease !important ;
-}
-.slider_content_active {
-  border-bottom: 1px solid #ff7f51 !important ;
-}
-.mobile_acc_box .swiper_container .swiper_slide {
-  display: inline-block !important ;
-  width: auto !important ;
-}
-
-.mobile_acc_box .swiper_container .swiper_slide .slider_content {
-  cursor: pointer !important ;
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  width: 95px !important ;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center !important ;
-  color: #001239;
-  padding-bottom: 10px !important ;
-}
-
-.mobile_acc_box .mobile_services {
-  background: #fff !important ;
-  width: 100% !important ;
-  height: 100vh !important ;
-  overflow-y: hidden !important ;
-}
-
-.mobile_acc_box .mobile_services__footer {
-  position: fixed !important ;
-  background: #fff !important ;
-  bottom: 0 !important ;
-  padding-bottom: 83px !important ;
-  padding-top: 12px !important ;
-  left: 0 !important ;
-  right: 0 !important ;
-  width: 100% !important ;
-}
-
-.mobile_acc_box .single_service {
-  display: grid !important ;
-  grid-template-columns: 1fr 1fr 88px !important ;
-  align-items: center !important ;
-}
-
-.mobile_services .single_service h5 {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  font-size: 13px !important ;
-  line-height: 16px !important ;
-  color: #bab8b8 !important ;
-  margin: 0 !important ;
-}
-
-.mobile_acc_box .single_service .price {
-  padding-left: 8px !important ;
-}
-
-.mobile_services .single_service .price h1 {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 500 !important ;
-  font-size: 17px !important ;
-  line-height: 20px !important ;
-  color: #ff7f51 !important ;
-  margin-bottom: 2px !important ;
-}
-
-.mobile_services .single_service .title h2 {
-  font-size: 15px !important ;
-  line-height: 18px !important ;
-  color: #001239 !important ;
-  margin-bottom: 2px !important ;
-}
-
-.mobile_acc_box .single_service .actions {
-  display: grid !important ;
-  grid-template-columns: repeat(3, 25px) !important ;
-  align-items: center !important ;
-  text-align: center !important ;
-  min-height: 70px !important ;
-  margin-bottom: 8px !important ;
-}
-
-.mobile_acc_box .service_wrapper {
-  overflow-y: scroll !important ;
-  padding: 0 16px 230px !important ;
-  height: 100vh !important ;
-  margin-top: 4vw !important ;
-}
 
 /* форма бронирования */
 
-.payment__passenger__form {
-  display: none !important ;
-}
-
-.main_form {
+#app_widget .main_form {
   width: 100% !important ;
   max-width: 47% !important ;
   display: inline-block !important ;
@@ -1998,7 +1628,7 @@ button {
   margin-right: 3%;
 }
 
-.main_form h1 {
+#app_widget .main_form h1 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 1.027vw !important ; /*22px !important ;*/
@@ -2007,7 +1637,7 @@ button {
   color: #001239 !important ;
   margin-bottom: 30px !important ;
 }
-.main_form_img {
+#app_widget .main_form_img {
   vertical-align: middle;
   width: 20px !important ;
   position: relative !important ;
@@ -2019,7 +1649,7 @@ button {
   cursor: pointer !important ;
 }
 
-.main_form h5 {
+#app_widget .main_form h5 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 0.91vw !important ; /* 16px */
@@ -2028,7 +1658,7 @@ button {
   margin-bottom: 30px !important ;
 }
 
-.main_form h2 {
+#app_widget .main_form h2 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 0.91vw !important ; /* 16px */
@@ -2036,23 +1666,7 @@ button {
   color: #001239 !important ;
   margin-bottom: 32px !important ;
 }
-
-.form_inputs {
-  display: grid !important ;
-  grid-template-columns: repeat(2, 1fr) !important ;
-  grid-column-gap: 25px !important ;
-  grid-row-gap: 20px !important ;
-  margin-bottom: 20px !important ;
-}
-
-.form_inputs__single {
-  display: flex !important ;
-  flex-direction: column !important ;
-  align-items: flex-start !important ;
-  justify-content: flex-start !important ;
-}
-
-label {
+#app_widget label {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 0.81vw !important ; /* 16px */
@@ -2061,63 +1675,43 @@ label {
   margin-bottom: 6px !important ;
 }
 
-label span {
+#app_widget label span {
   color: #ff7f51 !important ;
 }
 
-/* input {
-  outline: none;
-  border: 1px solid #bbc2d0;
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 1.01vw;
-  line-height: 1.31vw; 
-  color: #001239;
-} */
-
-/* ::placeholder {
-  font-family: "Roboto", sans-serif !important ;
-  font-weight: 400 !important ;
-  font-size: 1.01vw !important ; 
-  line-height: 1.31vw !important ; 
-  color: #e9e9e9 !important ;
-} */
-
-.showCardBtn {
+#app_widget .showCardBtn {
   display: none !important ;
 }
 
 @media all and (max-width: 768px) {
-  .showCardBtn {
+  #app_widget .showCardBtn {
     display: unset !important ;
   }
 
-  .main_form {
+  #app_widget .main_form {
     display: block !important ;
     max-width: 96vw !important ;
     padding: 0 2.5vw !important ;
   }
 
-  .main_form h1 {
+  #app_widget .main_form h1 {
     font-size: 3.5vw !important ; /* 1.180vw */
     line-height: 20px !important ; /* 1.388vw !important ; */
     margin-bottom: 18px !important ;
   }
 
-  .main_form h5 {
+  #app_widget .main_form h5 {
     font-size: 10px !important ; /* 0.694vw */
     line-height: 12px !important ; /* 0.83vw !important ; */
     margin-bottom: 32px !important ;
   }
 
-  .main_form h2 {
+  #app_widget .main_form h2 {
     font-size: 15px !important ; /* 1.041vw */
     line-height: 18px !important ; /* 1.25vw !important ; */
     margin-bottom: 12px !important ;
   }
-  label {
+  #app_widget label {
     font-family: "Roboto", sans-serif !important ;
     font-weight: 400 !important ;
     font-size: 16px !important ; 
@@ -2125,7 +1719,7 @@ label span {
     color: #001239 !important ;
     margin-bottom: 6px !important ;
   }
-  input {
+  #app_widget input {
     outline: none !important ;
     border: 0px solid #bbc2d0 !important ;
     box-sizing: border-box !important ;
@@ -2136,11 +1730,11 @@ label span {
     line-height: 19px !important ;
     color: #001239 !important ;
   }
-  input[type="checkbox"] {
+  #app_widget input[type="checkbox"] {
     appearance: auto !important;
     -webkit-appearance: auto !important;
   }
-  ::placeholder {
+  #app_widget ::placeholder {
     font-family: "Roboto", sans-serif !important ;
     font-weight: 400 !important ;
     font-size: 16px !important ; 
@@ -2148,48 +1742,19 @@ label span {
     color: #e9e9e9 !important ;
   }
 }
-
-.closeMobileCard {
-  position: absolute !important ;
-  z-index: 999 !important ;
-  top: 24px !important ;
-  right: 24px !important ;
-  width: 16px !important ;
-  height: 16px !important ;
-}
-
 /* sidebox часть для бронирования */
-
-.main_card {
-  background-color: white !important ;
-  width: 100% !important ;
-  position: relative !important ;
-  left: -1% !important ;
-  padding: 2% 5% !important ;
-}
-
-.disabled {
+#app_widget .disabled {
   opacity: 0.5 !important ;
   cursor: none !important ;
   pointer-events: none;
   touch-action: none;
 }
 
-.disabled:hover {
+#app_widget .disabled:hover {
   background: #ff7f51 !important ;
   color: #fff !important ;
 }
-
-.main_box_1 {
-  width: 100% !important ;
-  max-width: 550px !important ;
-  background: #ffffff !important ;
-  box-shadow: 0px 10px 20px rgba(146, 178, 193, 0.3) !important ;
-  border-radius: 5px !important ;
-  padding: 20px !important ;
-  width: 100% !important ;
-}
-.main_box_2 {
+#app_widget .main_box_2 {
   width: 48% !important ;
   margin-left: 1% !important ;
   display: inline-block !important ;
@@ -2197,15 +1762,13 @@ label span {
   margin-top: 2vh !important ;
   background-color: white !important ;
 }
-.box {
+#app_widget .box {
   position: relative !important ;
   padding-bottom: 20px !important ;
-
-
   margin-bottom: 20px !important ;
 }
 
-.box .custom_border {
+#app_widget .box .custom_border {
   position: absolute !important ;
   bottom: 0 !important ;
   left: -20px !important ;
@@ -2214,7 +1777,7 @@ label span {
   background: #ff7f51 !important ;
 }
 
-.box__title {
+#app_widget .box__title {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 1.01vw !important ; /* 16px */
@@ -2227,7 +1790,7 @@ label span {
   align-items: center;
 }
 
-.box__header {
+#app_widget .box__header {
   display: grid !important ;
   grid-template-columns: 180px 1fr !important ;
   grid-column-gap: 20px !important ;
@@ -2235,7 +1798,7 @@ label span {
   height: 180px !important ;
 }
 
-.box__header .avatar {
+#app_widget .box__header .avatar {
   width: 100% !important ;
   height: 180px !important ;
   background-size: cover !important ;
@@ -2243,7 +1806,7 @@ label span {
   border-radius: 4px !important ;
 }
 
-.box__header .descr {
+#app_widget .box__header .descr {
   display: flex !important ;
   flex-direction: column !important ;
   align-items: flex-start !important ;
@@ -2251,7 +1814,7 @@ label span {
   height: 100% !important ;
 }
 
-.box__header .descr__type {
+#app_widget .box__header .descr__type {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 1.01vw !important ; /* 16px */
@@ -2260,7 +1823,7 @@ label span {
   margin-bottom: 6px !important ;
 }
 
-.box__header .descr__title {
+#app_widget .box__header .descr__title {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 1.01vw !important ; /* 16px */
@@ -2269,7 +1832,7 @@ label span {
   margin: 10px 0;
 }
 
-.box__header .descr__loc {
+#app_widget .box__header .descr__loc {
   display: flex !important ;
   align-items: center !important ;
   justify-content: flex-start !important ;
@@ -2281,11 +1844,11 @@ label span {
   margin: 7px 0
 }
 
-.box__header .descr__loc img {
+#app_widget .box__header .descr__loc img {
   margin-right: 6px !important ;
 }
 
-.box__header .descr__name {
+#app_widget .box__header .descr__name {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 1.11vw !important ; /* 16px */
@@ -2293,7 +1856,7 @@ label span {
   color: #001239 !important ;
 }
 
-.box__header .descr button {
+#app_widget .box__header .descr button {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   height: 50px !important ;
@@ -2307,14 +1870,14 @@ label span {
   text-transform: none !important ;
 }
 
-.dates {
+#app_widget .dates {
   padding-top: 40px !important ;
   padding-bottom: 20px !important ;
   margin-bottom: 19px !important ;
   border-bottom: 1px solid #e6e6e6 !important ;
 }
 
-.dates p {
+#app_widget .dates p {
   display: grid !important ;
   grid-template-columns: 18px 1fr !important ;
   grid-column-gap: 10px !important ;
@@ -2327,17 +1890,17 @@ label span {
   margin-top: 5px;
 }
 
-.dates p:last-of-type {
+#app_widget .dates p:last-of-type {
   margin-bottom: 0 !important ;
 }
 
-.time {
+#app_widget .time {
   padding-bottom: 20px !important ;
   margin-bottom: 20px !important ;
   border-bottom: 1px solid #e6e6e6 !important ;
 }
 
-.time p {
+#app_widget .time p {
   display: flex !important ;
   align-items: center !important ;
   justify-content: flex-start !important ;
@@ -2349,11 +1912,11 @@ label span {
   margin-bottom: 12px !important ;
 }
 
-.time p:last-of-type {
+#app_widget .time p:last-of-type {
   margin-bottom: 0 !important ;
 }
 
-.time p strong {
+#app_widget .time p strong {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   color: #001239 !important ;
@@ -2361,13 +1924,13 @@ label span {
   margin-right: 20px !important ;
 }
 
-.time p img {
+#app_widget .time p img {
   margin-bottom: 1px !important ;
   cursor: pointer !important ;
 }
 
 
-.price div {
+#app_widget .price div {
   display: block;
   align-items: center;
   justify-content: space-between;
@@ -2375,7 +1938,7 @@ label span {
   margin: 2vw 0;
 }
 
-.price div p {
+#app_widget .price div p {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 1.01vw !important ; /* 16px */
@@ -2384,14 +1947,14 @@ label span {
   margin: 0 !important ;
 }
 
-.sum_up__value {
+#app_widget .sum_up__value {
   display: flex !important ;
   align-items: center !important ;
   justify-content: space-between !important ;
   margin-bottom: 40px !important ;
 }
 
-.sum_up__value h4 {
+#app_widget .sum_up__value h4 {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 500 !important ;
   font-size: 1.01vw !important ; /* 16px */
@@ -2401,7 +1964,7 @@ label span {
   margin: 0 !important ;
 }
 
-.sum_up__short {
+#app_widget .sum_up__short {
   font-family: "Roboto", sans-serif !important ;
   font-weight: 400 !important ;
   font-size: 0.733vw !important ; /* 12px */
@@ -2410,17 +1973,17 @@ label span {
   margin-bottom: 20px !important ;
 }
 
-.sum_up__short span {
+#app_widget .sum_up__short span {
   text-decoration: underline !important ;
   color: #00b1bb !important ;
   cursor: pointer !important ;
 }
 
-.sum_up__short input {
+#app_widget .sum_up__short input {
   transform: translateY(4px) !important ;
 }
 
-.sum_up button {
+#app_widget .sum_up button {
   display: flex !important ;
   align-items: center !important ;
   justify-content: center !important ;
@@ -2436,23 +1999,15 @@ label span {
   text-transform: none !important ;
   letter-spacing: normal !important ;
 }
-.sum_up button svg {
+#app_widget .sum_up button svg {
   margin-right: 10px !important ;
 }
-
-.close {
-  position: absolute !important ;
-  top: 24px !important ;
-  right: 24px !important ;
-  cursor: pointer !important ;
-}
-
-.box_links {
+#app_widget .box_links {
   color: #00b1bb !important ;
 }
 
 @media all and (max-width: 768px) {
-  .sum_up button {
+  #app_widget .sum_up button {
     display: flex !important ;
     align-items: center !important ;
     justify-content: center !important ;
@@ -2468,80 +2023,54 @@ label span {
     text-transform: none !important ;
     letter-spacing: normal !important ;
   }
-  .main_card {
-    top: -15vh !important ;
-  }
-  .main_box_1 {
-    padding-bottom: 120px !important ;
-  }
-  .main_box_2 {
+  #app_widget .main_box_2 {
     margin-left: 0vw !important ;
     width: 100vw !important ;
     padding: 2.5vw !important ;
     min-height: 100vh !important;
   }
-
-  .text--white {
-    display: none !important ;
-  }
-  .box__title {
+  #app_widget .box__title {
     font-size: 16px !important ;
     line-height: 19px !important ;
   }
-  .box__header .descr__type {
+  #app_widget .box__header .descr__type {
     font-size: 16px !important ;
     line-height: 19px !important ;
   }
-  .box__header .descr__title {
+  #app_widget .box__header .descr__title {
     font-size: 16px !important ;
     line-height: 19px !important ;
   }
-  .box__header .descr__loc {
+  #app_widget .box__header .descr__loc {
     font-size: 16px !important ;
     line-height: 19px !important ;
   }
-  .box__header .descr__name {
+  #app_widget .box__header .descr__name {
     font-size: 16px !important ;
     line-height: 19px !important ;
   }
-  .dates p {
+  #app_widget .dates p {
     font-size: 16px !important ;
     line-height: 19px !important ;
   }
-  .time p {
+  #app_widget .time p {
     font-size: 16px !important ;
     line-height: 19px !important ;
   }
-  .price div p {
+  #app_widget .price div p {
     font-size: 16px !important ;
     line-height: 19px !important ;
   }
-  .sum_up__value h4 {
+  #app_widget .sum_up__value h4 {
     font-size: 16px !important ;
     line-height: 19px !important ;
   }
-  .partial_payment h2 {
-    font-size: 24px !important ;
-    line-height: 28px !important ;
-  }
-  .partial_payment p {
+  #app_widget .sum_up__short {
     font-size: 12px !important ;
     line-height: 14px !important ;
   }
-  .sum_up__short {
-    font-size: 12px !important ;
-    line-height: 14px !important ;
-  }
-  .main_box_2 .price div {
+  #app_widget .main_box_2 .price div {
     display: flex;
-  }
-  .additional_service h2 {
-    font-size: 16px !important ;
-    line-height: 19px !important ;
-  }
-  .additional_service p {
-    font-size: 16px !important ;
-    line-height: 19px !important ;
   }
 }
 </style>
