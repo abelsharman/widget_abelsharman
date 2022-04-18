@@ -520,47 +520,7 @@ export default {
 
 
 <style scoped lang="scss">
-.discount_info{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  p {
-    font-family: 'Gilroy', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    color: #021011;
-    margin-bottom: 3px;
-  }
-  p:nth-child(2){
-    color: #06B04A;
-  }
-}
-.discount_actions{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  p{
-    font-family: 'Gilroy', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    color: #000000;
-    margin: 0 10px;
-  }
-}
-.desctiprion_button{
-  background: white;
-  color: #0071c2;
-  display: block;
-  margin-bottom: 2vw;
-  padding-bottom: 1vw;
-  cursor: pointer;
-}
-.panel_header {
+#app_widget .panel_header {
   display: grid;
   grid-template-columns: 175px 1fr;
   grid-column-gap: 30px;
@@ -696,71 +656,8 @@ export default {
     }
   }
 }
-.people_count {
-  border-top: 1px solid #e9e9e9;
-  padding: 30px 14px 20px;
-  margin: 0 10px;
-  p {
-    margin-bottom: 0;
-  }
-  &__title {
-    font-size: 16px;
-    line-height: 19px;
-    text-transform: uppercase;
-    color: #021011;
-  }
-  &__wrapper {
-    margin-top: 26px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: start;
-    &__single {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      &__title {
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 19px;
-        color: #021011;
-      }
-      div {
-        margin-left: 20px;
-        &:first-of-type {
-          p {
-            &:first-of-type {
-              font-size: 16px;
-              line-height: 19px;
-              color: #021011;
-              margin-bottom: 6px;
-            }
-            &:last-of-type {
-              font-size: 10px;
-              line-height: 12px;
-              color: #cfd7e3;
-            }
-          }
-        }
-        &:last-of-type {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          margin-left: 20px;
-          p {
-            margin: 0 6px;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 16px;
-            text-align: center;
-            color: #021011;
-          }
-        }
-      }
-    }
-  }
-}
 @media screen and (max-width: 500px) {
-  .panel_header {
+  #app_widget .panel_header {
     display: inline-block;
     width: 100%;
     cursor: default;

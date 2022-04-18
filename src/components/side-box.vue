@@ -3,7 +3,7 @@
     <div class="box" v-for="(item, idx) in updatedordercard" :key="idx">
       <h2 class="box__title" :style="pTextColor">
         {{ item.room_name }}
-        <v-btn icon style="float:right" @click="$emit('close')"><v-icon class="">mdi-close</v-icon></v-btn>
+        <v-btn v-if="width < 550" icon style="float:right" @click="$emit('close')"><v-icon class="">mdi-close</v-icon></v-btn>
       </h2>
       <div class="box__header">
         <div

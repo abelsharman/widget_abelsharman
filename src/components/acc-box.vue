@@ -485,39 +485,7 @@ export default {
 
 
 <style scoped lang="scss">
-.discount_info{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  p {
-    font-family: 'Gilroy', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    color: #021011;
-    margin-bottom: 3px;
-  }
-  p:nth-child(2){
-    color: #06B04A;
-  }
-}
-.discount_actions{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  p{
-    font-family: 'Gilroy', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    color: #000000;
-    margin: 0 10px;
-  }
-}
-.desctiprion_button{
+#app_widget .desctiprion_button{
   background: white;
   color: #0071c2;
   display: block;
@@ -525,7 +493,7 @@ export default {
   padding-bottom: 1vw;
   cursor: pointer;
 }
-.panel_header {
+#app_widget .panel_header {
   display: grid;
   grid-template-columns: 175px 1fr;
   grid-column-gap: 30px;
@@ -661,7 +629,7 @@ export default {
     }
   }
 }
-.people_count {
+#app_widget .people_count {
   border-top: 1px solid #e9e9e9;
   padding: 30px 14px 20px;
   margin: 0 10px;
