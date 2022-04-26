@@ -33,7 +33,7 @@
                 v-model="filter.dates"
                 no-title
                 scrollable
-                width="100%"
+                width="260px"
                 @input="closeModal"
               >
               </v-date-picker>
