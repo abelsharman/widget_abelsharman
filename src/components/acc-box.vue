@@ -4,7 +4,7 @@
       <v-expansion-panel-header class="panel_header" hide-actions style="padding: 20px !important">
         <div
           class="avatar"
-          @click="dialog = true"
+          @click="openImagesDialog"
           :style="{ backgroundImage: `url(${item.main_image || 'https://marketbot.abelsharman.kz/widget_go2trip/assets/placeholder.png'})` }"
         >
           <div v-if="item.images.length > 0" class="avatar__count">
@@ -249,7 +249,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "AccBox",
   props: {
@@ -429,54 +428,12 @@ export default {
         color: "#22bb33",
       });
     },
-    goBooking() {
-      let check_in = `${localStorage.getItem(
-        "date_form"
-      )} ${this.item.check_in_time.substring(0, 5)}`;
-      let check_out = `${localStorage.getItem(
-        "date_to"
-      )} ${this.item.check_out_time.substring(0, 5)}`;
-
-      let body = {
-        category: this.item.id,
-        room_count: this.bookCount,
-        check_in,
-        check_out,
-        child_counts: this.child_counts,
-        additional_counts: this.additional_counts,
-      };
-      axios
-        .post(`${this.api_url}/api/v2/widget/reserve/`, body)
-        .then((res) => {
-          for (let i = 0; i < res.data.bookings.length; i++) {
-            let stored_datas = JSON.parse(localStorage["orders"]);
-            stored_datas.push(res.data.bookings[i]);
-            localStorage.setItem("orders", JSON.stringify(stored_datas));
-          }
-
-          var size = localStorage.getItem("orders").length;
-          var bookings_id = localStorage
-            .getItem("orders")
-            .substring(1, size - 1);
-          console.log(bookings_id.length, bookings_id);
-          axios
-            .get(this.api_url + "/api/booking-module/order/detail/", {
-              params: {
-                bookings_id: bookings_id,
-              },
-            })
-            .then((res) => {
-              if (res) {
-                this.$emit("toggle", res.data);
-                this.$emit("change-form");
-              } else {
-                console.log("error on fetching order card");
-              }
-            });
-        })
-        .catch((error) => {
-          console.log(error.detail);
-          alert(error);
+    openImagesDialog(){
+      if (this.item.images.length > 0) this.dialog = true;
+      else this.$store.commit("SET_NOTIFICATION", {
+          show: true,
+          message: "Нет картинок!",
+          color: "#c54949",
         });
     },
   },

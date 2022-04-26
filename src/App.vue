@@ -100,19 +100,15 @@ export default {
     SideBox,
     MobileAccBox,
     peopleCount,
-    VueNotification
+    VueNotification,
   },
   vuetify: new Vuetify({
     theme: {
-    themes: {
-      light: {
-        primary: localStorage.getItem("primary"),
-        secondary: localStorage.getItem("accent"),
-        accent: '#8c9eff',
-        error: '#b71c1c',
-      },
+      theme: { disable: true },
     },
-  },
+    lang: {
+      current: 'ru',
+    },
   }),
   data() {
     return {
@@ -211,7 +207,6 @@ export default {
   },
   mounted() {
     this.api_url = localStorage.getItem("api_url");
-    this.$vuetify.lang.current = "ru";
     let datas = [];
     localStorage.setItem("orders", JSON.stringify(datas));
     if(window.innerWidth < 500) {
@@ -262,6 +257,11 @@ export default {
         let res = await window.axios.post(`${this.api_url}/api/v2/widget/reserve/`, body)
         this.orders = res.data.orders
         this.status = 'reserved'
+      }
+      catch(e) {
+        this.results.forEach((e) => {
+          e.is_added = false
+        });
       }
       finally{
         this.loading = false

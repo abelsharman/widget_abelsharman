@@ -265,7 +265,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "AccBox",
   props: {
@@ -463,56 +462,6 @@ export default {
         message: "Добавлено!",
         color: "#22bb33",
       });
-    },
-    goBooking() {
-      let check_in = `${localStorage.getItem(
-        "date_form"
-      )} ${this.item.check_in_time.substring(0, 5)}`;
-      let check_out = `${localStorage.getItem(
-        "date_to"
-      )} ${this.item.check_out_time.substring(0, 5)}`;
-
-      let body = {
-        category: this.item.id,
-        room_count: this.bookCount,
-        check_in,
-        check_out,
-        child_counts: this.child_counts,
-        additional_counts: this.additional_counts,
-      };
-      axios
-        .post(`${this.api_url}/api/v2/widget/reserve/`, body)
-        .then((res) => {
-          for (let i = 0; i < res.data.bookings.length; i++) {
-            let stored_datas = JSON.parse(localStorage["orders"]);
-            stored_datas.push(res.data.bookings[i]);
-            localStorage.setItem("orders", JSON.stringify(stored_datas));
-          }
-
-          var size = localStorage.getItem("orders").length;
-          var bookings_id = localStorage
-            .getItem("orders")
-            .substring(1, size - 1);
-          console.log(bookings_id.length, bookings_id);
-          axios
-            .get(this.api_url + "/api/booking-module/order/detail/", {
-              params: {
-                bookings_id: bookings_id,
-              },
-            })
-            .then((res) => {
-              if (res) {
-                this.$emit("toggle", res.data);
-                this.$emit("change-form");
-              } else {
-                console.log("error on fetching order card");
-              }
-            });
-        })
-        .catch((error) => {
-          console.log(error.detail);
-          alert(error);
-        });
     },
   },
 };
