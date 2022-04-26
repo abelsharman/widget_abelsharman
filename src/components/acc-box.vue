@@ -491,6 +491,7 @@ export default {
   display: block;
   margin-bottom: 2vw;
   padding-bottom: 1vw;
+  font-size: .9375rem !important;
   cursor: pointer;
 }
 #app_widget .panel_header {

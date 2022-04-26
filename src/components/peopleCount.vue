@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#app_widget .count_card {
+.count_card {
     width: 264px;
     padding: 20px 0px;
     background: #FFFFFF;

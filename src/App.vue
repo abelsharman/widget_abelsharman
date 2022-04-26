@@ -33,6 +33,7 @@
                 v-model="filter.dates"
                 no-title
                 scrollable
+                width="100%"
                 @input="closeModal"
               >
               </v-date-picker>
@@ -420,7 +421,7 @@ export default {
 #app_widget .boxes {
   margin: 10px 0 !important ;
 }
-#app_widget .web_acc_box .main_box {
+.web_acc_box .main_box {
   height: auto !important ;
   padding: 25px !important ;
   margin-bottom: 20px !important ;
@@ -757,7 +758,7 @@ export default {
   #app_widget .web_acc_box {
     display: none !important ;
   }
-  #app_widget .web_acc_box .main_box {
+  .web_acc_box .main_box {
     width: 100% !important ;
     min-height: 402px !important ;
     overflow-x: hidden !important ;
@@ -927,7 +928,7 @@ export default {
 }
 
 @media all and (max-width: 768px) {
-  #app_widget .main_box {
+  .main_box {
     width: 100% !important ;
     min-height: 402px !important ;
     overflow-x: hidden !important ;
@@ -1109,7 +1110,7 @@ export default {
   color: #ffffff !important ;
 }
 
-#app_widget .mobile_acc_box .main_box {
+.mobile_acc_box .main_box {
   height: auto !important ;
   padding: 25px !important ;
   margin-bottom: 20px !important ;
@@ -1451,7 +1452,7 @@ export default {
   #app_widget .v-list-item__title {
     font-size: 3vw;
   }
-  #app_widget .mobile_acc_box .main_box {
+  .mobile_acc_box .main_box {
     width: 100% !important ;
     min-height: 402px !important ;
     overflow-x: hidden !important ;
@@ -1754,7 +1755,7 @@ export default {
   background: #ff7f51 !important ;
   color: #fff !important ;
 }
-#app_widget .main_box_2 {
+.main_box_2 {
   width: 48% !important ;
   margin-left: 1% !important ;
   display: inline-block !important ;
@@ -2023,7 +2024,7 @@ export default {
     text-transform: none !important ;
     letter-spacing: normal !important ;
   }
-  #app_widget .main_box_2 {
+  .main_box_2 {
     margin-left: 0vw !important ;
     width: 100vw !important ;
     padding: 2.5vw !important ;
@@ -2069,7 +2070,7 @@ export default {
     font-size: 12px !important ;
     line-height: 14px !important ;
   }
-  #app_widget .main_box_2 .price div {
+  .main_box_2 .price div {
     display: flex;
   }
 }

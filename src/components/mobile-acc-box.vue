@@ -40,7 +40,7 @@
                     :style="svgPrimaryColor"
                   />
                 </svg>
-                {{ tag }}
+                {{ tag.text }}
               </p>
             </div>
           </div>
