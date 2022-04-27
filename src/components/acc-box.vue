@@ -117,6 +117,7 @@
             <div style="flex-direction:column">
               <v-btn
                 color="primary"
+                :disabled="!item.is_work || !item.has_room"
                 class="mt-3"
                 outlined
                 :style="btnAccentColor"
@@ -124,7 +125,11 @@
                 height="44"
                 @click="onClick"
               >
-                Выбрать
+                {{ !item.is_work
+              ? "Не работает"
+              : !item.has_room
+              ? "Нет мест"
+              : `Выбрать` }}
               </v-btn>
             </div>
           </div>
@@ -412,7 +417,7 @@ export default {
     },
     async onClick() {
       console.log(this.item);
-      if (this.item.room_count < 1) {
+      if (this.item.room_count < 1 || !this.item.is_work || !this.item.has_room) {
         this.$store.commit("SET_NOTIFICATION", {
           show: true,
           message: "Нельзя зарезвировать!",
