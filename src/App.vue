@@ -2,7 +2,7 @@
   <div id="app_widget" class="widget">
     <v-app class="ma-4 pa-4 app_widget_main" :style="{ backgroundColor: background }" style="">
         <v-row v-if="status != 'reserved'" class="mb-4">
-          <v-col :cols="12" :md="5">
+          <v-col :cols="12" :md="3">
             <v-menu
               ref="menu"
               v-model="menu"
@@ -39,10 +39,22 @@
               </v-date-picker>
             </v-menu>
           </v-col>
-          <v-col :cols="12" :md="5">
+          <v-col :cols="12" :md="3">
             <peopleCount :model="filter" />
           </v-col>
-          <v-col :cols="12" :md="2" style="display:flex;justify-content:center"><v-btn height="44" style="width:90%;" :loading="loading" @click="goFromWidget" :style="btnPrimary">Искать</v-btn></v-col>
+          <v-col :cols="12" :md="3">
+            <v-text-field
+                v-model="filter.room_count"
+                hide-details
+                outlined
+                dense
+                solo
+                height="44"
+                placeholder="Количество номеров"
+                prepend-inner-icon="mdi-bed-queen"
+              ></v-text-field>
+          </v-col>
+          <v-col :cols="12" :md="3" style="display:flex;justify-content:center"><v-btn height="44" style="width:90%;" :loading="loading" @click="goFromWidget" :style="btnPrimary">Искать</v-btn></v-col>
         </v-row>
         <v-row v-if="status == 'searched' && results.length > 0">
           <v-col cols="9"></v-col>
@@ -276,6 +288,14 @@ export default {
         });
         return
       }
+      if(!this.filter.room_count) {
+        this.$store.commit("SET_NOTIFICATION", {
+          show: true,
+          message: "Введите количество номеров!",
+          color: "#c54949",
+        });
+        return
+      }
       localStorage.setItem("adult_count", this.adult_count);
       localStorage.setItem("child_count", this.children_count);
       localStorage.setItem("start", this.filter.dates[0]);
@@ -286,6 +306,7 @@ export default {
         end: this.filter.dates[1],
         adult_count: this.filter.adult, 
         child_count: this.filter.child,
+        room_count: this.filter.room_count,
         'page[number]': 1, 
         'page[size]': 10
       }      
