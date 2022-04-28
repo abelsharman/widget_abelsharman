@@ -2,7 +2,7 @@
   <div class="main_box main_box_2">
     <div class="box" v-for="(item, idx) in updatedordercard" :key="idx">
       <h2 class="box__title" :style="pTextColor">
-        {{ item.room_name }}
+        <!-- {{ item.room_name }} -->
         <v-btn v-if="width < 550" icon style="float:right" @click="$emit('close')"><v-icon class="">mdi-close</v-icon></v-btn>
       </h2>
       <div class="box__header">
@@ -30,7 +30,7 @@
               />
               {{ item.location }}
             </p>
-            <p :style="pTextColor" class="descr__name">{{ item.room_name }}</p>
+            <!-- <p :style="pTextColor" class="descr__name">{{ item.room_name }}</p> -->
           </div>
         </div>
       </div>
