@@ -1,7 +1,7 @@
 <template>
   <v-expansion-panels v-model="panel">
     <v-expansion-panel class="mb-5" readonly>
-      <v-expansion-panel-header class="panel_header" hide-actions style="padding: 3% !important">
+      <v-expansion-panel-header class="panel_header" hide-actions style="height: 100%;padding: 3% !important">
         <div class="visible">
         <div
           @click="openImages"
