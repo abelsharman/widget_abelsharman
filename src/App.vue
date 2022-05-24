@@ -358,6 +358,10 @@ export default {
 #app_widget th, td {
   border: 0px;
 }
+#app_widget input, #app_widget p, #app_widget a, #app_widget button, #app_widget strong, #app_widget ul, #app_widget li, #app_widget h1, #app_widget h2, #app_widget h3, #app_widget h4, #app_widget h5 {
+  margin: 0;
+  padding: 0;
+}
 #app_widget .app_widget_main{
   background: #e7ecef; 
   max-height: 90vh; 
