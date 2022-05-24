@@ -362,6 +362,7 @@ export default {
   margin: 0;
   padding: 0;
   box-shadow: 0px 0px 0px;
+  text-transform: initial;
 }
 #app_widget .app_widget_main{
   background: #e7ecef; 
